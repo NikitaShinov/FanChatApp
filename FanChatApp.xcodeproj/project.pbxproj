@@ -11,8 +11,6 @@
 		5022245F27B1D4AE00E3B4D5 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022245E27B1D4AE00E3B4D5 /* UserProfile.swift */; };
 		5022246127B1D86600E3B4D5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022246027B1D86600E3B4D5 /* Extensions.swift */; };
 		5022260A27E215BD00E3B4D5 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022260927E215BD00E3B4D5 /* RegistrationViewController.swift */; };
-		5022260D27E21F5300E3B4D5 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022260B27E21F5300E3B4D5 /* DropDownCell.swift */; };
-		5022260E27E21F5300E3B4D5 /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5022260C27E21F5300E3B4D5 /* DropDownCell.xib */; };
 		50C058BE27AB2263004A0D61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C058BD27AB2263004A0D61 /* AppDelegate.swift */; };
 		50C058C027AB2263004A0D61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C058BF27AB2263004A0D61 /* SceneDelegate.swift */; };
 		50C058C227AB2263004A0D61 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C058C127AB2263004A0D61 /* WelcomeViewController.swift */; };
@@ -25,8 +23,6 @@
 		5022245E27B1D4AE00E3B4D5 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		5022246027B1D86600E3B4D5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5022260927E215BD00E3B4D5 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
-		5022260B27E21F5300E3B4D5 /* DropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
-		5022260C27E21F5300E3B4D5 /* DropDownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownCell.xib; sourceTree = "<group>"; };
 		50C058BA27AB2263004A0D61 /* FanChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FanChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C058BD27AB2263004A0D61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50C058BF27AB2263004A0D61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -83,8 +79,6 @@
 				50C058BF27AB2263004A0D61 /* SceneDelegate.swift */,
 				50C058C127AB2263004A0D61 /* WelcomeViewController.swift */,
 				5022260927E215BD00E3B4D5 /* RegistrationViewController.swift */,
-				5022260B27E21F5300E3B4D5 /* DropDownCell.swift */,
-				5022260C27E21F5300E3B4D5 /* DropDownCell.xib */,
 				5022245E27B1D4AE00E3B4D5 /* UserProfile.swift */,
 				5022246027B1D86600E3B4D5 /* Extensions.swift */,
 				50C058C627AB2267004A0D61 /* Assets.xcassets */,
@@ -164,7 +158,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				50C058CA27AB2267004A0D61 /* LaunchScreen.storyboard in Resources */,
-				5022260E27E21F5300E3B4D5 /* DropDownCell.xib in Resources */,
 				50C058C727AB2267004A0D61 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,7 +214,6 @@
 				5022260A27E215BD00E3B4D5 /* RegistrationViewController.swift in Sources */,
 				5022246127B1D86600E3B4D5 /* Extensions.swift in Sources */,
 				5022245F27B1D4AE00E3B4D5 /* UserProfile.swift in Sources */,
-				5022260D27E21F5300E3B4D5 /* DropDownCell.swift in Sources */,
 				50C058C227AB2263004A0D61 /* WelcomeViewController.swift in Sources */,
 				50C058BE27AB2263004A0D61 /* AppDelegate.swift in Sources */,
 				50C058C027AB2263004A0D61 /* SceneDelegate.swift in Sources */,

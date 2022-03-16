@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import DropDown
 
 class RegisterViewController: UIViewController {
     
@@ -85,16 +84,99 @@ class RegisterViewController: UIViewController {
         return field
     }()
     
-    private let teamMenu: DropDown = {
-        let menu = DropDown()
-        menu.dataSource = ["Arsenal", "Chelsea", "Liverpool"]
-        menu.cellNib = UINib(nibName: "DropDownCell", bundle: nil)
-        menu.customCellConfiguration = { index, title, cell in
-            guard let cell = cell as? TeamCell else {
-                return
-            }
-            cell.teamImage.image = UIImage(named: "")
-        }
-        return menu
+    private let chooseTeamLabel: UILabel = {
+        let label = UILabel()
+        label.text = "Choose your favourite team:"
+        label.textAlignment = .center
+        label.font = .boldSystemFont(ofSize: 20)
+        label.textColor = .black
+        return label
     }()
+    
+    private let arrayOfTeams = ["Arsenal", "Chelsea", "Liverpool", "Man City"]
+    
+    private let teamChooseOption: UIPickerView = {
+        let picker = UIPickerView()
+        picker.backgroundColor = .systemBackground
+        return picker
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = .white
+        view.addSubview(scrollView)
+        scrollView.addSubview(imageView)
+        scrollView.addSubview(teamChooseOption)
+        teamChooseOption.delegate = self
+        teamChooseOption.dataSource = self
+        scrollView.addSubview(emailField)
+        scrollView.addSubview(passwordField)
+        scrollView.addSubview(firstNameField)
+        scrollView.addSubview(lastNameField)
+        scrollView.addSubview(chooseTeamLabel)
+
+        
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        scrollView.frame = view.bounds
+        let size = scrollView.width / 3
+        
+        imageView.frame = CGRect(x: (scrollView.width - size)/2,
+                                 y: 20,
+                                 width: size,
+                                 height: size)
+        
+        emailField.frame = CGRect(x: 30,
+                                  y: imageView.bottom + 20,
+                                  width: scrollView.width - 70,
+                                  height: 50)
+        
+        passwordField.frame = CGRect(x: 30,
+                                     y: emailField.bottom + 10,
+                                     width: scrollView.width - 70,
+                                     height: 50)
+        
+        firstNameField.frame = CGRect(x: 30,
+                                      y: passwordField.bottom + 10,
+                                      width: scrollView.width - 70,
+                                      height: 50)
+        
+        lastNameField.frame = CGRect(x: 30,
+                                     y: firstNameField.bottom + 10,
+                                     width: scrollView.width - 70,
+                                     height: 50)
+        
+        
+        chooseTeamLabel.frame = CGRect(x: 30,
+                                       y: lastNameField.bottom + 20,
+                                       width: scrollView.width - 70,
+                                       height: 70)
+        
+        teamChooseOption.frame = CGRect(x: 30,
+                                        y: chooseTeamLabel.bottom + 20,
+                                        width: scrollView.width - 70,
+                                        height: 70)
+        
+    }
+
+}
+
+extension RegisterViewController: UIPickerViewDataSource, UIPickerViewDelegate {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        arrayOfTeams.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        arrayOfTeams[row]
+    }
+    
+    
 }

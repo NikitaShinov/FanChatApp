@@ -22,7 +22,7 @@ class WelcomeViewController: UIViewController {
         scrollView.addSubview(registerButton)
         
         registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
-        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+//        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
     }
     
@@ -135,7 +135,7 @@ class WelcomeViewController: UIViewController {
     }
     
     @objc private func registerButtonTapped() {
-        let vc = RegistrationViewController()
+        let vc = RegisterViewController()
         vc.title = "Create new User"
         navigationController?.pushViewController(vc, animated: true)
     }
