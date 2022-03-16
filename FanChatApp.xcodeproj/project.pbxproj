@@ -7,8 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42B8E83C8E18E3DDD6BC0347 /* Pods_FanChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B9840BD96542C9C53888B60 /* Pods_FanChatApp.framework */; };
 		5022245F27B1D4AE00E3B4D5 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022245E27B1D4AE00E3B4D5 /* UserProfile.swift */; };
 		5022246127B1D86600E3B4D5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022246027B1D86600E3B4D5 /* Extensions.swift */; };
+		5022260A27E215BD00E3B4D5 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022260927E215BD00E3B4D5 /* RegistrationViewController.swift */; };
+		5022260D27E21F5300E3B4D5 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022260B27E21F5300E3B4D5 /* DropDownCell.swift */; };
+		5022260E27E21F5300E3B4D5 /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5022260C27E21F5300E3B4D5 /* DropDownCell.xib */; };
 		50C058BE27AB2263004A0D61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C058BD27AB2263004A0D61 /* AppDelegate.swift */; };
 		50C058C027AB2263004A0D61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C058BF27AB2263004A0D61 /* SceneDelegate.swift */; };
 		50C058C227AB2263004A0D61 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C058C127AB2263004A0D61 /* WelcomeViewController.swift */; };
@@ -17,8 +21,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3C881E109ABB2A9057635903 /* Pods-FanChatApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FanChatApp.debug.xcconfig"; path = "Target Support Files/Pods-FanChatApp/Pods-FanChatApp.debug.xcconfig"; sourceTree = "<group>"; };
 		5022245E27B1D4AE00E3B4D5 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		5022246027B1D86600E3B4D5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		5022260927E215BD00E3B4D5 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		5022260B27E21F5300E3B4D5 /* DropDownCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
+		5022260C27E21F5300E3B4D5 /* DropDownCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DropDownCell.xib; sourceTree = "<group>"; };
 		50C058BA27AB2263004A0D61 /* FanChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FanChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C058BD27AB2263004A0D61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50C058BF27AB2263004A0D61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +34,8 @@
 		50C058C627AB2267004A0D61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50C058C927AB2267004A0D61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50C058CB27AB2267004A0D61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6B9840BD96542C9C53888B60 /* Pods_FanChatApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FanChatApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AB1963437BE25CA28D1FD64B /* Pods-FanChatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FanChatApp.release.xcconfig"; path = "Target Support Files/Pods-FanChatApp/Pods-FanChatApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +43,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42B8E83C8E18E3DDD6BC0347 /* Pods_FanChatApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		46BCFFFC8DFB15EC8156C5FD /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6B9840BD96542C9C53888B60 /* Pods_FanChatApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		50C058B127AB2263004A0D61 = {
 			isa = PBXGroup;
 			children = (
 				50C058BC27AB2263004A0D61 /* FanChatApp */,
 				50C058BB27AB2263004A0D61 /* Products */,
+				75E7C8077F0603D2C61DA579 /* Pods */,
+				46BCFFFC8DFB15EC8156C5FD /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -61,6 +82,9 @@
 				50C058BD27AB2263004A0D61 /* AppDelegate.swift */,
 				50C058BF27AB2263004A0D61 /* SceneDelegate.swift */,
 				50C058C127AB2263004A0D61 /* WelcomeViewController.swift */,
+				5022260927E215BD00E3B4D5 /* RegistrationViewController.swift */,
+				5022260B27E21F5300E3B4D5 /* DropDownCell.swift */,
+				5022260C27E21F5300E3B4D5 /* DropDownCell.xib */,
 				5022245E27B1D4AE00E3B4D5 /* UserProfile.swift */,
 				5022246027B1D86600E3B4D5 /* Extensions.swift */,
 				50C058C627AB2267004A0D61 /* Assets.xcassets */,
@@ -70,6 +94,15 @@
 			path = FanChatApp;
 			sourceTree = "<group>";
 		};
+		75E7C8077F0603D2C61DA579 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3C881E109ABB2A9057635903 /* Pods-FanChatApp.debug.xcconfig */,
+				AB1963437BE25CA28D1FD64B /* Pods-FanChatApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -77,9 +110,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 50C058CE27AB2267004A0D61 /* Build configuration list for PBXNativeTarget "FanChatApp" */;
 			buildPhases = (
+				796D004C034FA8F3C12EA509 /* [CP] Check Pods Manifest.lock */,
 				50C058B627AB2263004A0D61 /* Sources */,
 				50C058B727AB2263004A0D61 /* Frameworks */,
 				50C058B827AB2263004A0D61 /* Resources */,
+				F953C4C8A79C74DBB0DAB20E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -129,19 +164,64 @@
 			buildActionMask = 2147483647;
 			files = (
 				50C058CA27AB2267004A0D61 /* LaunchScreen.storyboard in Resources */,
+				5022260E27E21F5300E3B4D5 /* DropDownCell.xib in Resources */,
 				50C058C727AB2267004A0D61 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		796D004C034FA8F3C12EA509 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FanChatApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F953C4C8A79C74DBB0DAB20E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FanChatApp/Pods-FanChatApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FanChatApp/Pods-FanChatApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FanChatApp/Pods-FanChatApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		50C058B627AB2263004A0D61 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5022260A27E215BD00E3B4D5 /* RegistrationViewController.swift in Sources */,
 				5022246127B1D86600E3B4D5 /* Extensions.swift in Sources */,
 				5022245F27B1D4AE00E3B4D5 /* UserProfile.swift in Sources */,
+				5022260D27E21F5300E3B4D5 /* DropDownCell.swift in Sources */,
 				50C058C227AB2263004A0D61 /* WelcomeViewController.swift in Sources */,
 				50C058BE27AB2263004A0D61 /* AppDelegate.swift in Sources */,
 				50C058C027AB2263004A0D61 /* SceneDelegate.swift in Sources */,
@@ -280,6 +360,7 @@
 		};
 		50C058CF27AB2267004A0D61 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3C881E109ABB2A9057635903 /* Pods-FanChatApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -306,6 +387,7 @@
 		};
 		50C058D027AB2267004A0D61 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AB1963437BE25CA28D1FD64B /* Pods-FanChatApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

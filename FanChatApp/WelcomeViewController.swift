@@ -13,13 +13,16 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         title = "Welcome"
         navigationController?.navigationBar.prefersLargeTitles = true
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = #colorLiteral(red: 0.9114710668, green: 1, blue: 0.7352172452, alpha: 1)
         view.addSubview(scrollView)
         scrollView.addSubview(appLogo)
         scrollView.addSubview(emailTextField)
         scrollView.addSubview(passwordTextField)
         scrollView.addSubview(loginButton)
         scrollView.addSubview(registerButton)
+        
+        registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
     }
     
@@ -129,6 +132,12 @@ class WelcomeViewController: UIViewController {
                                       height: 50)
         
         
+    }
+    
+    @objc private func registerButtonTapped() {
+        let vc = RegistrationViewController()
+        vc.title = "Create new User"
+        navigationController?.pushViewController(vc, animated: true)
     }
     
 
