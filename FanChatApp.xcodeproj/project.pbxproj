@@ -14,6 +14,7 @@
 		5022261027E355E600E3B4D5 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022260F27E355E600E3B4D5 /* Team.swift */; };
 		5022261227E356BC00E3B4D5 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022261127E356BC00E3B4D5 /* NetworkManager.swift */; };
 		5022261427E36B5E00E3B4D5 /* RegistrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022261327E36B5D00E3B4D5 /* RegistrationViewModel.swift */; };
+		5022261627E3D59700E3B4D5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5022261527E3D59700E3B4D5 /* GoogleService-Info.plist */; };
 		50C058BE27AB2263004A0D61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C058BD27AB2263004A0D61 /* AppDelegate.swift */; };
 		50C058C027AB2263004A0D61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C058BF27AB2263004A0D61 /* SceneDelegate.swift */; };
 		50C058C227AB2263004A0D61 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C058C127AB2263004A0D61 /* WelcomeViewController.swift */; };
@@ -29,6 +30,7 @@
 		5022260F27E355E600E3B4D5 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
 		5022261127E356BC00E3B4D5 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		5022261327E36B5D00E3B4D5 /* RegistrationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewModel.swift; sourceTree = "<group>"; };
+		5022261527E3D59700E3B4D5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		50C058BA27AB2263004A0D61 /* FanChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FanChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C058BD27AB2263004A0D61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50C058BF27AB2263004A0D61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				50C058C627AB2267004A0D61 /* Assets.xcassets */,
 				50C058C827AB2267004A0D61 /* LaunchScreen.storyboard */,
 				50C058CB27AB2267004A0D61 /* Info.plist */,
+				5022261527E3D59700E3B4D5 /* GoogleService-Info.plist */,
 			);
 			path = FanChatApp;
 			sourceTree = "<group>";
@@ -117,7 +120,7 @@
 				50C058B627AB2263004A0D61 /* Sources */,
 				50C058B727AB2263004A0D61 /* Frameworks */,
 				50C058B827AB2263004A0D61 /* Resources */,
-				F953C4C8A79C74DBB0DAB20E /* [CP] Embed Pods Frameworks */,
+				B8E7C92666EC26FACBAA3686 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -168,6 +171,7 @@
 			files = (
 				50C058CA27AB2267004A0D61 /* LaunchScreen.storyboard in Resources */,
 				50C058C727AB2267004A0D61 /* Assets.xcassets in Resources */,
+				5022261627E3D59700E3B4D5 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -196,7 +200,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		F953C4C8A79C74DBB0DAB20E /* [CP] Embed Pods Frameworks */ = {
+		B8E7C92666EC26FACBAA3686 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (

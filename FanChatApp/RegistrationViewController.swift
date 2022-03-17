@@ -93,8 +93,6 @@ class RegisterViewController: UIViewController {
         return label
     }()
     
-    private let arrayOfTeams = ["Arsenal", "Chelsea", "Liverpool", "Man City"]
-    
     private let teamChooseOption: UIPickerView = {
         let picker = UIPickerView()
         picker.backgroundColor = .systemBackground
@@ -130,6 +128,10 @@ class RegisterViewController: UIViewController {
         scrollView.isUserInteractionEnabled = true
         imageView.isUserInteractionEnabled = true
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create",
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(addTapped))
         
         
         let gesture = UITapGestureRecognizer(target: self,
@@ -140,6 +142,10 @@ class RegisterViewController: UIViewController {
     
     @objc private func didTapChangeProfileImage() {
         presentPhotoActionSheet()
+    }
+    
+    @objc private func addTapped() {
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLayoutSubviews() {

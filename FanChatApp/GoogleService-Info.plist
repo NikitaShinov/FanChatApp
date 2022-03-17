@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>23802673761-28n5vvjkvkv1vpgjvg9iv11buriq8cqo.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.23802673761-28n5vvjkvkv1vpgjvg9iv11buriq8cqo</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCEPo9WH6irv8ql-7hIwcVuxk5OOuK_UhQ</string>
+	<key>GCM_SENDER_ID</key>
+	<string>23802673761</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>shinov-96-mail.ru.FanChatApp</string>
+	<key>PROJECT_ID</key>
+	<string>fanchatapp-7c411</string>
+	<key>STORAGE_BUCKET</key>
+	<string>fanchatapp-7c411.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:23802673761:ios:2553bf682d0b95bd940820</string>
+</dict>
+</plist>
