@@ -101,8 +101,19 @@ class RegisterViewController: UIViewController {
         return picker
     }()
     
+    private var viewModel: TeamsViewModelProtocol! {
+        didSet {
+            viewModel.getResults {
+                self.teamChooseOption.reloadAllComponents()
+            }
+        }
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewModel = RegistrationViewModel()
         
         view.backgroundColor = .white
         view.addSubview(scrollView)
@@ -115,8 +126,20 @@ class RegisterViewController: UIViewController {
         scrollView.addSubview(firstNameField)
         scrollView.addSubview(lastNameField)
         scrollView.addSubview(chooseTeamLabel)
-
         
+        scrollView.isUserInteractionEnabled = true
+        imageView.isUserInteractionEnabled = true
+        
+        
+        
+        let gesture = UITapGestureRecognizer(target: self,
+                                             action: #selector(didTapChangeProfileImage))
+        imageView.addGestureRecognizer(gesture)
+        
+    }
+    
+    @objc private func didTapChangeProfileImage() {
+        presentPhotoActionSheet()
     }
     
     override func viewDidLayoutSubviews() {
@@ -171,12 +194,62 @@ extension RegisterViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        arrayOfTeams.count
+        viewModel.numberOfItems()
+        
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        arrayOfTeams[row]
+        viewModel.titleForRow(for: row)
+    }
+}
+
+extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    func presentPhotoActionSheet() {
+        let actionSheet = UIAlertController(title: nil,
+                                            message: nil,
+                                            preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Take Photo",
+                                            style: .default,
+                                            handler: { [weak self]_ in
+                                                        self?.presentCamera()
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Choose Photo",
+                                            style: .default,
+                                            handler: { [weak self]_ in
+                                                        self?.presentPhotoLibrary()
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Cancel",
+                                            style: .cancel))
+        
+        present(actionSheet, animated: true)
     }
     
+    func presentCamera() {
+        let vc = UIImagePickerController()
+        vc.sourceType = .camera
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+    }
     
+    func presentPhotoLibrary() {
+        let vc = UIImagePickerController()
+        vc.sourceType = .photoLibrary
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        
+        guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else { return }
+        self.imageView.image = selectedImage
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
 }
