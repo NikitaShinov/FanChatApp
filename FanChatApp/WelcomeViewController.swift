@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class WelcomeViewController: UIViewController {
 
@@ -22,7 +23,7 @@ class WelcomeViewController: UIViewController {
         scrollView.addSubview(registerButton)
         
         registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
-//        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
     }
     
@@ -140,6 +141,32 @@ class WelcomeViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc private func loginButtonTapped() {
+        guard let emailAdress = emailTextField.text, emailAdress != "",
+              let password = passwordTextField.text, password != "", password.count >= 6 else {
+                  alertPopUp()
+                  return
+              }
+        Auth.auth().signIn(withEmail: emailAdress, password: password) { user, error in
+            if let error = error {
+                self.alertPopUp()
+                print (error.localizedDescription)
+                return
+            }
+            self.view.endEditing(true)
+            
+            
+        }
+        
+        
+    }
+    
+    private func alertPopUp() {
+        let alert = UIAlertController(title: "Ooops!", message: "Wrong input.\nPlease check your credentials.", preferredStyle: .alert)
+        let okayAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+        alert.addAction(okayAction)
+        present(alert, animated: true)
+    }
 
 
 }
