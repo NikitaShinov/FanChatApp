@@ -16,6 +16,12 @@ class DatabaseManager {
     
     private let database = Database.database().reference()
     
+    static func safeEmail(with email: String) -> String {
+        var safeEmail = email.replacingOccurrences(of: ".", with: "-")
+        safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
+        return safeEmail
+    }
+    
     public func insertUser(with user: User, completion: @escaping (Bool) -> Void ) {
         database.child(user.safeEmail).setValue(["first_name" : user.firstName,
                                                  "last_name": user.lastName,
@@ -63,6 +69,19 @@ class DatabaseManager {
                 }
             })
             
+        })
+    }
+    
+    public func userExists(with email: String, completion: @escaping (Bool) -> Void) {
+        
+        let safeEmail = DatabaseManager.safeEmail(with: email)
+        
+        database.child(safeEmail).observeSingleEvent(of: .value, with: { snapshot in
+            guard snapshot.value as? [String: Any] != nil else {
+                completion(false)
+                return
+            }
+            completion(true)
         })
     }
     
