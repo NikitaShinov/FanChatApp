@@ -33,3 +33,14 @@ extension UIView {
         return frame.size.width + frame.origin.x
     }
 }
+
+extension UIAlertController {
+    
+    public func errorAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        
+        alert.addAction(okAction)
+        present(alert, animated: true)
+    }
+}

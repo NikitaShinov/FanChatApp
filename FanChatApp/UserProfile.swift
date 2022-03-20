@@ -8,5 +8,15 @@
 import Foundation
 
 struct User {
-    let userName: String
+    
+    let firstName: String
+    let lastName: String
+    let emailAddress: String
+    let preferredTeam: String
+    
+    var safeEmail: String {
+        var safeEmail = emailAddress.replacingOccurrences(of: ".", with: "-")
+        safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
+        return safeEmail
+    }
 }

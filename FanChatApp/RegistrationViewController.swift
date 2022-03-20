@@ -107,6 +107,8 @@ class RegisterViewController: UIViewController {
         }
     }
     
+    private var favouriteTeamChosen: String?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -145,7 +147,27 @@ class RegisterViewController: UIViewController {
     }
     
     @objc private func addTapped() {
+        
+        firstNameField.resignFirstResponder()
+        lastNameField.resignFirstResponder()
+        
+        guard let name = firstNameField.text, !name.isEmpty,
+              let lastName = lastNameField.text, !lastName.isEmpty,
+              let email = emailField.text, !email.isEmpty,
+              let password = passwordField.text, !password.isEmpty,
+              let team = favouriteTeamChosen else {
+                  aletUserLoginError(message: "Please review the information entered")
+                  return
+              }
+        print (team)
+
         navigationController?.dismiss(animated: true, completion: nil)
+    }
+    
+    func aletUserLoginError(message: String = "Please enter correct information") {
+        let alert = UIAlertController(title: "Ooops", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Got it!", style: .cancel))
+        present(alert, animated: true)
     }
     
     override func viewDidLayoutSubviews() {
@@ -205,7 +227,10 @@ extension RegisterViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        viewModel.titleForRow(for: row)
+        
+        favouriteTeamChosen = viewModel.titleForRow(for: row)
+        return favouriteTeamChosen
+        
     }
 }
 
