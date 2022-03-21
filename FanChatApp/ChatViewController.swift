@@ -11,7 +11,7 @@ class ChatViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "CHAT"
+        title = "Chat"
         view.backgroundColor = .blue
     }
 

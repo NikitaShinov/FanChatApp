@@ -156,10 +156,26 @@ class WelcomeViewController: UIViewController {
             self.view.endEditing(true)
             print ("login success")
             let tabBarVC = UITabBarController()
-            let feedVC = FeedViewController()
-            let chatVC = ChatViewController()
-            let resultsVC = ResultsViewController()
-            tabBarVC.setViewControllers([feedVC, chatVC, resultsVC], animated: true)
+            let feedVC = UINavigationController(rootViewController: FeedViewController())
+            feedVC.title = "Feed"
+            let chatVC = UINavigationController(rootViewController: ChatViewController())
+            chatVC.title = "Chat"
+            let resultsVC = UINavigationController(rootViewController: ResultsViewController())
+            resultsVC.title = "Results"
+            let profileVC = UINavigationController(rootViewController: ProfileViewController())
+            profileVC.title = "Profile"
+            tabBarVC.setViewControllers([feedVC, chatVC, resultsVC, profileVC], animated: true)
+            
+            guard let items = tabBarVC.tabBar.items else {
+                return
+            }
+            
+            let images = ["newspaper", "message", "timer.square", "person"]
+            
+            for counter in 0..<items.count {
+                items[counter].image = UIImage(systemName: images[counter])
+            }
+            
             tabBarVC.modalPresentationStyle = .fullScreen
             self.present(tabBarVC, animated: true, completion: nil)
         }

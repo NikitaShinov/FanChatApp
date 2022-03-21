@@ -11,7 +11,7 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "FEED"
+        title = "Feed"
         view.backgroundColor = .gray
         
     }

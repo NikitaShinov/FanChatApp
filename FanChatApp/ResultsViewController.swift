@@ -11,7 +11,7 @@ class ResultsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "RESULTS"
+        title = "Results"
         view.backgroundColor = .green
     }
 
