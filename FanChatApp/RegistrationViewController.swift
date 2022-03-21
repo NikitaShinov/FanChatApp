@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import Firebase
 
 class RegisterViewController: UIViewController {
     
@@ -161,49 +162,66 @@ class RegisterViewController: UIViewController {
                   return
               }
         
-        DatabaseManager.shared.userExists(with: email, completion: { [weak self] user in
-            guard !user else {
-                self?.aletUserLoginError(title: "Registration error!", message: "it looks like the user with this e-mail already exists.")
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
+            if let error = error {
+                self?.aletUserLoginError(title: "Registration error.", message: error.localizedDescription)
                 return
             }
             
-            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { result, error in
-                guard result != nil, error == nil else {
-                    self?.aletUserLoginError(title: "Error!", message: "It looks like some error occured when creating your profile.\nPlease try again later.")
-                    return
-                }
-                UserDefaults.standard.setValue(email, forKey: "email")
-                UserDefaults.standard.setValue(team, forKey: "team")
-                UserDefaults.standard.setValue("\(name) \(lastName)", forKey: "name")
-                
-                let newUser = User(firstName: name,
-                                   lastName: lastName,
-                                   emailAddress: email,
-                                   preferredTeam: team)
-                
-                DatabaseManager.shared.insertUser(with: newUser) { success in
-                    if success {
-                        guard let image = self?.imageView.image,
-                              let data = image.pngData() else {
-                                  return
-                              }
-                        let fileName = newUser.profilePictureFileName
-                        StorageManager.shared.pictureUpload(with: data, fileName: fileName) { result in
-                            switch result {
-                            case .success(let downloadUrl):
-                                UserDefaults.standard.set(downloadUrl, forKey: "profile_picture_url")
-                                print(downloadUrl)
-                            case .failure(let error):
-                                print ("Storage manager error: \(error)")
-                            }
-                        }
+            if let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest() {
+                changeRequest.displayName = name
+                changeRequest.commitChanges { error in
+                    if let error = error {
+                        print ("Failed to change the display name:\(error.localizedDescription)")
                     }
                 }
-            })
-        })
-        print (team)
+            }
+            self?.view.endEditing(true)
+            self?.dismiss(animated: true)
+        }
         
-        navigationController?.dismiss(animated: true, completion: nil)
+//        DatabaseManager.shared.userExists(with: email, completion: { [weak self] user in
+//            guard !user else {
+//                self?.aletUserLoginError(title: "Registration error!", message: "it looks like the user with this e-mail already exists.")
+//                return
+//            }
+//
+//            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { result, error in
+//                guard result != nil, error == nil else {
+//                    self?.aletUserLoginError(title: "Error!", message: "It looks like some error occured when creating your profile.\nPlease try again later.")
+//                    return
+//                }
+//                UserDefaults.standard.setValue(email, forKey: "email")
+//                UserDefaults.standard.setValue(team, forKey: "team")
+//                UserDefaults.standard.setValue("\(name) \(lastName)", forKey: "name")
+//
+//                let newUser = User(firstName: name,
+//                                   lastName: lastName,
+//                                   emailAddress: email,
+//                                   preferredTeam: team)
+//
+//                DatabaseManager.shared.insertUser(with: newUser) { success in
+//                    if success {
+//                        guard let image = self?.imageView.image,
+//                              let data = image.pngData() else {
+//                                  return
+//                              }
+//                        let fileName = newUser.profilePictureFileName
+//                        StorageManager.shared.pictureUpload(with: data, fileName: fileName) { result in
+//                            switch result {
+//                            case .success(let downloadUrl):
+//                                UserDefaults.standard.set(downloadUrl, forKey: "profile_picture_url")
+//                                print(downloadUrl)
+//                            case .failure(let error):
+//                                print ("Storage manager error: \(error)")
+//                            }
+//                        }
+//                    }
+//                }
+//                self?.navigationController?.dismiss(animated: true, completion: nil)
+//            })
+//        })
+        print (team)
     }
     
     func aletUserLoginError(title: String = "Ooops", message: String = "Please enter correct information") {
