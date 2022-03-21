@@ -23,6 +23,8 @@
 		50C058C227AB2263004A0D61 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C058C127AB2263004A0D61 /* WelcomeViewController.swift */; };
 		50C058C727AB2267004A0D61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C058C627AB2267004A0D61 /* Assets.xcassets */; };
 		50C058CA27AB2267004A0D61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50C058C827AB2267004A0D61 /* LaunchScreen.storyboard */; };
+		50EDD06827E9358A00E64B5C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EDD06727E9358A00E64B5C /* ChatViewController.swift */; };
+		50EDD06A27E935C700E64B5C /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EDD06927E935C700E64B5C /* ResultsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +46,8 @@
 		50C058C627AB2267004A0D61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50C058C927AB2267004A0D61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50C058CB27AB2267004A0D61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		50EDD06727E9358A00E64B5C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		50EDD06927E935C700E64B5C /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		6B9840BD96542C9C53888B60 /* Pods_FanChatApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FanChatApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB1963437BE25CA28D1FD64B /* Pods-FanChatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FanChatApp.release.xcconfig"; path = "Target Support Files/Pods-FanChatApp/Pods-FanChatApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -95,6 +99,8 @@
 				5022260927E215BD00E3B4D5 /* RegistrationViewController.swift */,
 				5022261327E36B5D00E3B4D5 /* RegistrationViewModel.swift */,
 				5022261B27E8E70F00E3B4D5 /* FeedViewController.swift */,
+				50EDD06727E9358A00E64B5C /* ChatViewController.swift */,
+				50EDD06927E935C700E64B5C /* ResultsViewController.swift */,
 				5022245E27B1D4AE00E3B4D5 /* UserProfile.swift */,
 				5022246027B1D86600E3B4D5 /* Extensions.swift */,
 				5022260F27E355E600E3B4D5 /* Team.swift */,
@@ -236,12 +242,14 @@
 				5022260A27E215BD00E3B4D5 /* RegistrationViewController.swift in Sources */,
 				5022261427E36B5E00E3B4D5 /* RegistrationViewModel.swift in Sources */,
 				5022261A27E78BF200E3B4D5 /* StorageManager.swift in Sources */,
+				50EDD06A27E935C700E64B5C /* ResultsViewController.swift in Sources */,
 				5022261827E776CE00E3B4D5 /* DatabaseManager.swift in Sources */,
 				5022246127B1D86600E3B4D5 /* Extensions.swift in Sources */,
 				5022261027E355E600E3B4D5 /* Team.swift in Sources */,
 				5022245F27B1D4AE00E3B4D5 /* UserProfile.swift in Sources */,
 				5022261227E356BC00E3B4D5 /* NetworkManager.swift in Sources */,
 				50C058C227AB2263004A0D61 /* WelcomeViewController.swift in Sources */,
+				50EDD06827E9358A00E64B5C /* ChatViewController.swift in Sources */,
 				50C058BE27AB2263004A0D61 /* AppDelegate.swift in Sources */,
 				5022261C27E8E70F00E3B4D5 /* FeedViewController.swift in Sources */,
 				50C058C027AB2263004A0D61 /* SceneDelegate.swift in Sources */,

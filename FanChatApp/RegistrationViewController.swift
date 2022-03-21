@@ -176,9 +176,11 @@ class RegisterViewController: UIViewController {
                     }
                 }
             }
+            self?.navigationController?.popToRootViewController(animated: true)
             self?.view.endEditing(true)
-            self?.dismiss(animated: true)
+            print (team)
         }
+        
         
 //        DatabaseManager.shared.userExists(with: email, completion: { [weak self] user in
 //            guard !user else {
@@ -221,7 +223,6 @@ class RegisterViewController: UIViewController {
 //                self?.navigationController?.dismiss(animated: true, completion: nil)
 //            })
 //        })
-        print (team)
     }
     
     func aletUserLoginError(title: String = "Ooops", message: String = "Please enter correct information") {

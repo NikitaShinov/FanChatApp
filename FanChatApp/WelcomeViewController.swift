@@ -154,8 +154,14 @@ class WelcomeViewController: UIViewController {
                 return
             }
             self.view.endEditing(true)
-            
-            
+            print ("login success")
+            let tabBarVC = UITabBarController()
+            let feedVC = FeedViewController()
+            let chatVC = ChatViewController()
+            let resultsVC = ResultsViewController()
+            tabBarVC.setViewControllers([feedVC, chatVC, resultsVC], animated: true)
+            tabBarVC.modalPresentationStyle = .fullScreen
+            self.present(tabBarVC, animated: true, completion: nil)
         }
         
         
