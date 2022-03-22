@@ -35,4 +35,30 @@ class NetworkManager {
             }
         } .resume()
     }
+    
+    public func getFeed(completion: @escaping (Result<[News]?, Error>) -> Void) {
+        
+        guard let url = URL(string: "https://skysportsapi.herokuapp.com/sky/football/getteamnews/liverpool/v1.0/") else {
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+            }
+            
+            guard let data = data else {
+                return
+            }
+            
+            let decodedData = try? JSONDecoder().decode([News].self, from: data)
+            
+            if let data = decodedData {
+                DispatchQueue.main.async {
+                    completion(.success(data))
+                }
+            }
+
+        } .resume()
+    }
 }
