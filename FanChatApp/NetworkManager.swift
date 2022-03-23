@@ -38,7 +38,7 @@ class NetworkManager {
     
     public func getFeed(completion: @escaping (Result<[News]?, Error>) -> Void) {
         
-        guard let url = URL(string: "https://skysportsapi.herokuapp.com/sky/football/getteamnews/liverpool/v1.0/") else {
+        guard let url = URL(string: "https://skysportsapi.herokuapp.com/sky/football/getteamnews/arsenal/v1.0/") else {
             return
         }
         

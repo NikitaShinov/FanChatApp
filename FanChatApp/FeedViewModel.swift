@@ -9,25 +9,26 @@ import Foundation
 
 protocol FeedViewModelProtocol {
     var news: [News] { get }
-    func getNews()
+    func getNews(completion: @escaping() -> Void)
     func refreshNews()
     func numberOfArticles() -> Int
+    func cellViewModel(at indexPath: IndexPath) -> FeedCellViewModelProtocol
 }
 
 class FeedViewModel: FeedViewModelProtocol {
     
     var news: [News] = []
     
-    func getNews() {
+    func getNews(completion: @escaping() -> Void) {
         NetworkManager.shared.getFeed { [weak self] result in
             switch result {
             case .success(let data):
                 guard let receivedData = data else { return }
                 self?.news = receivedData
-                
+                completion()
             case .failure(let error):
                 print (error.localizedDescription)
-                
+                completion()
             }
         }
     }
@@ -53,6 +54,11 @@ class FeedViewModel: FeedViewModelProtocol {
     
     func numberOfArticles() -> Int {
         news.count
+    }
+    
+    func cellViewModel(at indexPath: IndexPath) -> FeedCellViewModelProtocol {
+        let newsItem = news[indexPath.row]
+        return FeedCellViewModel(article: newsItem)
     }
     
     

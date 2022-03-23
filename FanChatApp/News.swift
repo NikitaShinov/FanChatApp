@@ -9,7 +9,7 @@ import Foundation
 
 struct News: Codable {
     
-    let imgsrc: String
+    let imgsrc: URL
     let title: String
     let shortdesc: String
     let link: String

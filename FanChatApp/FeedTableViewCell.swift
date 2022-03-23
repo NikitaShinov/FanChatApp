@@ -8,6 +8,15 @@
 import UIKit
 
 class FeedTableViewCell: UITableViewCell {
+    
+    var viewModel: FeedCellViewModelProtocol! {
+        didSet {
+            title.text = viewModel.articleName
+            subtitle.text = viewModel.decription
+            guard let image = viewModel.image else { return }
+            newsImage.image = UIImage(data: image)
+        }
+    }
 
     static let identifier = "FeedCell"
     
