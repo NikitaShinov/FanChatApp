@@ -94,9 +94,9 @@ class ProfileViewController: UIViewController {
             return
             
         }
-        
+        tabBarController?.dismiss(animated: true, completion: nil)
         let vc = WelcomeViewController()
-        
+        present(vc, animated: true, completion: nil)
         
         
     }
