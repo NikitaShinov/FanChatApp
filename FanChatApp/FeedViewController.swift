@@ -60,6 +60,12 @@ class FeedViewController: UITableViewController {
         }
     }
     
+//    let pulltoRefresh: UIRefreshControl = {
+//        let refreshControl = UIRefreshControl()
+//        refreshControl.addTarget(self, action: #selector(), for: .valueChanged)
+//        return refreshControl
+//    }()
+    
     func showAlert(title: String, message: String) {
            let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
            alert.addAction(UIAlertAction(title: "Ок", style: UIAlertAction.Style.default, handler: nil))
