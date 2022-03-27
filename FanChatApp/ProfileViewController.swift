@@ -97,8 +97,7 @@ class ProfileViewController: UIViewController {
         tabBarController?.dismiss(animated: true, completion: nil)
         let vc = WelcomeViewController()
         present(vc, animated: true, completion: nil)
-        
-        
+    
     }
     
     private func alertPopUp(title: String, message: String) {

@@ -21,9 +21,11 @@ class WelcomeViewController: UIViewController {
         scrollView.addSubview(passwordTextField)
         scrollView.addSubview(loginButton)
         scrollView.addSubview(registerButton)
+        scrollView.addSubview(forgotPasswordButton)
         
         registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        forgotPasswordButton.addTarget(self, action: #selector(forgotPassword), for: .touchUpInside)
         
     }
     
@@ -102,6 +104,15 @@ class WelcomeViewController: UIViewController {
         return button
     }()
     
+    private let forgotPasswordButton: UIButton = {
+       let button =  UIButton()
+        button.isOpaque = true
+        button.setTitle("Forgot password?", for: .normal)
+        button.setTitleColor(.blue, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 15, weight: .thin)
+        return button
+    }()
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         scrollView.frame = view.bounds
@@ -123,7 +134,7 @@ class WelcomeViewController: UIViewController {
                                          height: 50)
         
         loginButton.frame = CGRect(x: 30,
-                                   y: scrollView.bottom - 350,
+                                   y: scrollView.bottom - 450,
                                    width: scrollView.width - 70,
                                    height: 50)
         
@@ -132,12 +143,21 @@ class WelcomeViewController: UIViewController {
                                       width: scrollView.width - 70,
                                       height: 50)
         
+        forgotPasswordButton.frame = CGRect(x: 30,
+                                            y: registerButton.bottom + 10,
+                                            width: scrollView.width - 70,
+                                            height: 50)
         
     }
     
     @objc private func registerButtonTapped() {
         let vc = RegisterViewController()
         vc.title = "Create new User"
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @objc private func forgotPassword() {
+        let vc = ResetPasswordViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
