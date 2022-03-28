@@ -34,13 +34,23 @@ extension UIView {
     }
 }
 
-extension UIAlertController {
+extension UIImage {
     
-    public func errorAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+    func scale(newWidth: CGFloat) -> UIImage {
+        if self.size.width == newWidth {
+            return self
+        }
         
-        alert.addAction(okAction)
-        present(alert, animated: true)
+        let scaleFactor = newWidth / self.size.width
+        let newHeight = self.size.height * scaleFactor
+        let newSize = CGSize(width: newWidth, height: newHeight)
+        
+        UIGraphicsBeginImageContextWithOptions(newSize, false, 0.0)
+        self.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        
+        let newImage: UIImage? = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        return newImage ?? self
     }
 }
