@@ -173,8 +173,33 @@ class WelcomeViewController: UIViewController {
                 print (error.localizedDescription)
                 return
             }
+            
             self.view.endEditing(true)
-            print ("login success")
+            
+            guard let result = user else { return }
+            
+            let user = result.user
+            
+            let safeEmail = DatabaseManager.safeEmail(with: emailAdress)
+            DatabaseManager.shared.getDataFor(path: safeEmail) { result in
+                switch result {
+                case .success(let data):
+                    guard let userData = data as? [String: Any],
+                          let firstName = userData["first_name"] as? String,
+                          let lastName = userData["last_name"] as? String else {
+                              return
+                          }
+                    UserDefaults.standard.set("\(firstName) \(lastName)", forKey: "name")
+                case .failure(let error):
+                    print ("Failed to read data with error: \(error)")
+                    
+                }
+            }
+            
+            UserDefaults.standard.set(emailAdress, forKey: "email")
+            
+            print ("User \(user) logged in.")
+            
             let tabBarVC = UITabBarController()
             let feedVC = UINavigationController(rootViewController: FeedViewController())
             feedVC.title = "Feed"
@@ -185,17 +210,17 @@ class WelcomeViewController: UIViewController {
             let profileVC = UINavigationController(rootViewController: ProfileViewController())
             profileVC.title = "Profile"
             tabBarVC.setViewControllers([feedVC, chatVC, resultsVC, profileVC], animated: true)
-            
+
             guard let items = tabBarVC.tabBar.items else {
                 return
             }
-            
+
             let images = ["newspaper", "message", "timer.square", "person"]
-            
+
             for counter in 0..<items.count {
                 items[counter].image = UIImage(systemName: images[counter])
             }
-            
+
             tabBarVC.modalPresentationStyle = .fullScreen
             self.present(tabBarVC, animated: true, completion: nil)
         }

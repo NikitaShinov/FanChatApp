@@ -162,24 +162,66 @@ class RegisterViewController: UIViewController {
                   return
               }
         
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
-            if let error = error {
-                self?.aletUserLoginError(title: "Registration error.", message: error.localizedDescription)
+        DatabaseManager.shared.userExists(with: email) { [weak self] exists in
+            guard !exists else {
+                print ("error when logging in (RegisterVC)")
                 return
             }
-            
-            if let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest() {
-                changeRequest.displayName = name
-                changeRequest.commitChanges { error in
-                    if let error = error {
-                        print ("Failed to change the display name:\(error.localizedDescription)")
+            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+                guard authResult != nil, error == nil else {
+                    print ("Error in creation of User")
+                    return
+                }
+                UserDefaults.standard.setValue(email, forKey: "email")
+                UserDefaults.standard.setValue("\(name) \(lastName)", forKey: "name")
+                
+                let newUser = User(firstName: name,
+                                    lastName: lastName,
+                                    emailAddress: email,
+                                    preferredTeam: team
+                )
+                DatabaseManager.shared.insertUser(with: newUser) { success in
+                    if success {
+                        guard let image = self?.imageView.image,
+                              let data = image.pngData() else {
+                                  return
+                              }
+                        let fileName = newUser.profilePictureFileName
+                        StorageManager.shared.pictureUpload(with: data, fileName: fileName) { result in
+                            switch result {
+                            case .success(let downloadURL):
+                                UserDefaults.standard.set(downloadURL, forKey: "profile_picture_url")
+                                print ("Download URL: \(downloadURL)")
+                            case .failure(let error):
+                                print ("Error in storing data: \(error)")
+                            }
+                        }
                     }
                 }
+                self?.navigationController?.popToRootViewController(animated: true)
+                self?.view.endEditing(true)
+                print (team)
             }
-            self?.navigationController?.popToRootViewController(animated: true)
-            self?.view.endEditing(true)
-            print (team)
         }
+        
+//        Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
+//            if let error = error {
+//                self?.aletUserLoginError(title: "Registration error.", message: error.localizedDescription)
+//                return
+//            }
+//
+//            if let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest() {
+//                changeRequest.displayName = name
+//                changeRequest.commitChanges { error in
+//                    if let error = error {
+//                        print ("Failed to change the display name:\(error.localizedDescription)")
+//                    }
+//                }
+//            }
+//            self?.navigationController?.popToRootViewController(animated: true)
+//            self?.view.endEditing(true)
+//            print (team)
+//        }
         
         
 //        DatabaseManager.shared.userExists(with: email, completion: { [weak self] user in

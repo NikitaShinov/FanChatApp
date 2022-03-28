@@ -107,33 +107,65 @@
 		50C058BC27AB2263004A0D61 /* FanChatApp */ = {
 			isa = PBXGroup;
 			children = (
+				50EDD07C27F2620A00E64B5C /* ViewModels */,
+				50EDD07927F2619400E64B5C /* ViewControllers */,
+				50EDD07B27F261E400E64B5C /* Models */,
+				50EDD07A27F261C900E64B5C /* Services */,
 				50C058BD27AB2263004A0D61 /* AppDelegate.swift */,
 				50C058BF27AB2263004A0D61 /* SceneDelegate.swift */,
-				50C058C127AB2263004A0D61 /* WelcomeViewController.swift */,
-				50EDD07727F0902400E64B5C /* ResetPasswordViewController.swift */,
-				5022260927E215BD00E3B4D5 /* RegistrationViewController.swift */,
-				5022261327E36B5D00E3B4D5 /* RegistrationViewModel.swift */,
-				50EDD06F27E9E01C00E64B5C /* FeedViewModel.swift */,
-				5022261B27E8E70F00E3B4D5 /* FeedViewController.swift */,
-				50EDD07127EA0C3E00E64B5C /* FeedTableViewCell.swift */,
-				50EDD07527EA7ABD00E64B5C /* FeedCellViewModel.swift */,
-				50EDD06727E9358A00E64B5C /* ChatViewController.swift */,
-				50EDD06927E935C700E64B5C /* ResultsViewController.swift */,
-				50EDD06B27E9407600E64B5C /* ProfileViewController.swift */,
-				5022245E27B1D4AE00E3B4D5 /* UserProfile.swift */,
 				5022246027B1D86600E3B4D5 /* Extensions.swift */,
-				5022260F27E355E600E3B4D5 /* Team.swift */,
-				50EDD06D27E9D6FD00E64B5C /* News.swift */,
-				5022261127E356BC00E3B4D5 /* NetworkManager.swift */,
-				50EDD07327EA0EE100E64B5C /* ImageManager.swift */,
-				5022261727E776CD00E3B4D5 /* DatabaseManager.swift */,
-				5022261927E78BF200E3B4D5 /* StorageManager.swift */,
 				50C058C627AB2267004A0D61 /* Assets.xcassets */,
 				50C058C827AB2267004A0D61 /* LaunchScreen.storyboard */,
 				50C058CB27AB2267004A0D61 /* Info.plist */,
 				5022261527E3D59700E3B4D5 /* GoogleService-Info.plist */,
 			);
 			path = FanChatApp;
+			sourceTree = "<group>";
+		};
+		50EDD07927F2619400E64B5C /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				50C058C127AB2263004A0D61 /* WelcomeViewController.swift */,
+				50EDD07727F0902400E64B5C /* ResetPasswordViewController.swift */,
+				5022260927E215BD00E3B4D5 /* RegistrationViewController.swift */,
+				5022261B27E8E70F00E3B4D5 /* FeedViewController.swift */,
+				50EDD07127EA0C3E00E64B5C /* FeedTableViewCell.swift */,
+				50EDD06727E9358A00E64B5C /* ChatViewController.swift */,
+				50EDD06927E935C700E64B5C /* ResultsViewController.swift */,
+				50EDD06B27E9407600E64B5C /* ProfileViewController.swift */,
+				5022245E27B1D4AE00E3B4D5 /* UserProfile.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		50EDD07A27F261C900E64B5C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				5022261727E776CD00E3B4D5 /* DatabaseManager.swift */,
+				50EDD07327EA0EE100E64B5C /* ImageManager.swift */,
+				5022261127E356BC00E3B4D5 /* NetworkManager.swift */,
+				5022261927E78BF200E3B4D5 /* StorageManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		50EDD07B27F261E400E64B5C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5022260F27E355E600E3B4D5 /* Team.swift */,
+				50EDD06D27E9D6FD00E64B5C /* News.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		50EDD07C27F2620A00E64B5C /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5022261327E36B5D00E3B4D5 /* RegistrationViewModel.swift */,
+				50EDD06F27E9E01C00E64B5C /* FeedViewModel.swift */,
+				50EDD07527EA7ABD00E64B5C /* FeedCellViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		75E7C8077F0603D2C61DA579 /* Pods */ = {
