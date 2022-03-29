@@ -10,7 +10,7 @@ import Foundation
 protocol FeedViewModelProtocol {
     var news: [News] { get }
     func getNews(completion: @escaping() -> Void)
-    func refreshNews()
+    func refreshNews(completion: @escaping(Result<[News], Error>) -> Void)
     func numberOfArticles() -> Int
     func cellViewModel(at indexPath: IndexPath) -> FeedCellViewModelProtocol
 }
@@ -33,7 +33,7 @@ class FeedViewModel: FeedViewModelProtocol {
         }
     }
     
-    func refreshNews() {
+    func refreshNews(completion: @escaping(Result<[News], Error>) -> Void) {
         NetworkManager.shared.getFeed { [weak self] result in
             switch result {
             case .success(let data):
@@ -46,8 +46,10 @@ class FeedViewModel: FeedViewModelProtocol {
                 } catch {
                     print ("error while encoding")
                 }
+                completion(.success(receivedData))
             case .failure(let error):
                 print (error.localizedDescription)
+                completion(.failure(error))
             }
         }
     }

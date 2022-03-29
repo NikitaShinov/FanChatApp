@@ -125,15 +125,9 @@
 		50EDD07927F2619400E64B5C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				50C058C127AB2263004A0D61 /* WelcomeViewController.swift */,
-				50EDD07727F0902400E64B5C /* ResetPasswordViewController.swift */,
-				5022260927E215BD00E3B4D5 /* RegistrationViewController.swift */,
-				5022261B27E8E70F00E3B4D5 /* FeedViewController.swift */,
-				50EDD07127EA0C3E00E64B5C /* FeedTableViewCell.swift */,
-				50EDD06727E9358A00E64B5C /* ChatViewController.swift */,
-				50EDD06927E935C700E64B5C /* ResultsViewController.swift */,
-				50EDD06B27E9407600E64B5C /* ProfileViewController.swift */,
-				5022245E27B1D4AE00E3B4D5 /* UserProfile.swift */,
+				50EDD07D27F2766600E64B5C /* Login */,
+				50EDD07E27F2771700E64B5C /* Tabbar VC */,
+				50EDD07F27F2775300E64B5C /* Custom Cells */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -152,6 +146,7 @@
 		50EDD07B27F261E400E64B5C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				5022245E27B1D4AE00E3B4D5 /* UserProfile.swift */,
 				5022260F27E355E600E3B4D5 /* Team.swift */,
 				50EDD06D27E9D6FD00E64B5C /* News.swift */,
 			);
@@ -166,6 +161,35 @@
 				50EDD07527EA7ABD00E64B5C /* FeedCellViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		50EDD07D27F2766600E64B5C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				50C058C127AB2263004A0D61 /* WelcomeViewController.swift */,
+				50EDD07727F0902400E64B5C /* ResetPasswordViewController.swift */,
+				5022260927E215BD00E3B4D5 /* RegistrationViewController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		50EDD07E27F2771700E64B5C /* Tabbar VC */ = {
+			isa = PBXGroup;
+			children = (
+				5022261B27E8E70F00E3B4D5 /* FeedViewController.swift */,
+				50EDD06727E9358A00E64B5C /* ChatViewController.swift */,
+				50EDD06927E935C700E64B5C /* ResultsViewController.swift */,
+				50EDD06B27E9407600E64B5C /* ProfileViewController.swift */,
+			);
+			path = "Tabbar VC";
+			sourceTree = "<group>";
+		};
+		50EDD07F27F2775300E64B5C /* Custom Cells */ = {
+			isa = PBXGroup;
+			children = (
+				50EDD07127EA0C3E00E64B5C /* FeedTableViewCell.swift */,
+			);
+			path = "Custom Cells";
 			sourceTree = "<group>";
 		};
 		75E7C8077F0603D2C61DA579 /* Pods */ = {
