@@ -32,6 +32,7 @@
 		50EDD07427EA0EE100E64B5C /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EDD07327EA0EE100E64B5C /* ImageManager.swift */; };
 		50EDD07627EA7ABD00E64B5C /* FeedCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EDD07527EA7ABD00E64B5C /* FeedCellViewModel.swift */; };
 		50EDD07827F0902400E64B5C /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EDD07727F0902400E64B5C /* ResetPasswordViewController.swift */; };
+		50EDD08327F4A45900E64B5C /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EDD08227F4A45900E64B5C /* ProfileViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		50EDD07327EA0EE100E64B5C /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		50EDD07527EA7ABD00E64B5C /* FeedCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCellViewModel.swift; sourceTree = "<group>"; };
 		50EDD07727F0902400E64B5C /* ResetPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordViewController.swift; sourceTree = "<group>"; };
+		50EDD08227F4A45900E64B5C /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		6B9840BD96542C9C53888B60 /* Pods_FanChatApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FanChatApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB1963437BE25CA28D1FD64B /* Pods-FanChatApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FanChatApp.release.xcconfig"; path = "Target Support Files/Pods-FanChatApp/Pods-FanChatApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -159,6 +161,7 @@
 				5022261327E36B5D00E3B4D5 /* RegistrationViewModel.swift */,
 				50EDD06F27E9E01C00E64B5C /* FeedViewModel.swift */,
 				50EDD07527EA7ABD00E64B5C /* FeedCellViewModel.swift */,
+				50EDD08227F4A45900E64B5C /* ProfileViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				50C058C227AB2263004A0D61 /* WelcomeViewController.swift in Sources */,
 				50EDD06827E9358A00E64B5C /* ChatViewController.swift in Sources */,
 				50C058BE27AB2263004A0D61 /* AppDelegate.swift in Sources */,
+				50EDD08327F4A45900E64B5C /* ProfileViewModel.swift in Sources */,
 				50EDD06C27E9407600E64B5C /* ProfileViewController.swift in Sources */,
 				5022261C27E8E70F00E3B4D5 /* FeedViewController.swift in Sources */,
 				50C058C027AB2263004A0D61 /* SceneDelegate.swift in Sources */,

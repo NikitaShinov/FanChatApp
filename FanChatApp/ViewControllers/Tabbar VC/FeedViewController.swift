@@ -13,14 +13,6 @@ class FeedViewController: UITableViewController {
     private var viewModel: FeedViewModelProtocol!
     
     let spinner = UIActivityIndicatorView(style: .large)
-//    {
-//        didSet {
-//            viewModel.getNews {
-//                self.tableView.reloadData()
-//                print ("Start filling the tableview")
-//            }
-//        }
-//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -83,8 +75,6 @@ class FeedViewController: UITableViewController {
     
     private func configureSpinnerView() {
         
-        spinner.translatesAutoresizingMaskIntoConstraints = false
-        
         tableView.addSubview(spinner)
         
         spinner.translatesAutoresizingMaskIntoConstraints = false
@@ -95,6 +85,7 @@ class FeedViewController: UITableViewController {
             spinner.heightAnchor.constraint(equalToConstant: 24),
             spinner.widthAnchor.constraint(equalToConstant: 24)
         ])
+        
         spinner.isHidden = true
     }
     

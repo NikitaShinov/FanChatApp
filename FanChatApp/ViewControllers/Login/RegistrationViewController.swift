@@ -190,7 +190,7 @@ class RegisterViewController: UIViewController {
                         StorageManager.shared.pictureUpload(with: data, fileName: fileName) { result in
                             switch result {
                             case .success(let downloadURL):
-                                UserDefaults.standard.set(downloadURL, forKey: "profile_picture_url")
+                                UserDefaults.standard.setValue(downloadURL, forKey: "profile_picture_url")
                                 print ("Download URL: \(downloadURL)")
                             case .failure(let error):
                                 print ("Error in storing data: \(error)")

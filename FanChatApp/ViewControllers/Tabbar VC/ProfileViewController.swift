@@ -20,6 +20,14 @@ class ProfileViewController: UIViewController {
         scrollView.addSubview(logoutButton)
         scrollView.isUserInteractionEnabled = true
         logoutButton.addTarget(self, action: #selector(logOutButtonPressed), for: .touchUpInside)
+        
+        imageView.isUserInteractionEnabled = true
+        scrollView.isUserInteractionEnabled = true
+        
+        let gesture = UITapGestureRecognizer(target: self,
+                                             action: #selector(didTapChangeProfileImage))
+        imageView.addGestureRecognizer(gesture)
+        
     }
     
     private let scrollView: UIScrollView = {
@@ -39,7 +47,7 @@ class ProfileViewController: UIViewController {
     private let nameLabel: UILabel = {
         let label = UILabel()
         if let currentUser = Auth.auth().currentUser {
-            label.text = currentUser.displayName
+            label.text = UserDefaults.standard.value(forKey: "name") as? String ?? "Name not found"
         }
         return label
     }()
@@ -83,6 +91,10 @@ class ProfileViewController: UIViewController {
         
     }
     
+    @objc private func didTapChangeProfileImage() {
+        presentPhotoActionSheet()
+    }
+    
     @objc private func logOutButtonPressed() {
         do {
             
@@ -106,7 +118,59 @@ class ProfileViewController: UIViewController {
         alert.addAction(okAction)
         present(alert,animated: true)
     }
+}
+
+extension ProfileViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-
-
+    func presentPhotoActionSheet() {
+        let actionSheet = UIAlertController(title: nil,
+                                            message: nil,
+                                            preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Take photo",
+                                            style: .default,
+                                            handler: { [weak self] _ in
+            self?.presentCamera()
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Choose photo",
+                                            style: .default,
+                                            handler: { [weak self] _ in
+            self?.presentPhotoLibrary()
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel",
+                                            style: .cancel,
+                                            handler: nil))
+        
+        present(actionSheet, animated: true)
+        
+    }
+    
+    func presentCamera() {
+        let vc = UIImagePickerController()
+        vc.sourceType = .camera
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+    }
+    
+    func presentPhotoLibrary() {
+        let vc = UIImagePickerController()
+        vc.sourceType = .photoLibrary
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true)
+        
+        guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else { return }
+        self.imageView.image = selectedImage
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true)
+    }
+    
 }
