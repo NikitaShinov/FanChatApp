@@ -30,6 +30,8 @@ class ProfileViewController: UIViewController {
         
     }
     
+    
+    
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.clipsToBounds = true
@@ -38,7 +40,9 @@ class ProfileViewController: UIViewController {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(systemName: "person.fill.badge.plus")
+//        let image = ImageManager.shared.fetchImageData(from: URL(string: UserDefaults.standard.value(forKey: "profile_picture_url") as! String))
+//        imageView.image = UIImage(data: image!)
+        imageView.image = UIImage(named: "person.fill.badge.plus")
         imageView.tintColor = .gray
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -88,7 +92,6 @@ class ProfileViewController: UIViewController {
                                    width: scrollView.width - 70,
                                    height: 50)
         
-        
     }
     
     @objc private func didTapChangeProfileImage() {
@@ -107,7 +110,7 @@ class ProfileViewController: UIViewController {
             
         }
         tabBarController?.dismiss(animated: true, completion: nil)
-        let vc = WelcomeViewController()
+        let vc = LoginViewController()
         present(vc, animated: true, completion: nil)
     
     }

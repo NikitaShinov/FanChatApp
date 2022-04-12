@@ -6,8 +6,11 @@
 //
 
 import Foundation
+import Firebase
 
 class NetworkManager {
+    
+    var team: String?
     
     static let shared = NetworkManager()
     
@@ -38,27 +41,41 @@ class NetworkManager {
     
     public func getFeed(completion: @escaping (Result<[News]?, Error>) -> Void) {
         
-        guard let url = URL(string: "https://skysportsapi.herokuapp.com/sky/football/getteamnews/arsenal/v1.0/") else {
-            return
-        }
+        guard let userUID = Auth.auth().currentUser?.uid else { return }
         
-        URLSession.shared.dataTask(with: url) { data, response, error in
-            if let error = error {
-                completion(.failure(error))
-            }
-            
-            guard let data = data else {
+        Database.database().reference().child("users").child(userUID).getData { error, snapshot in
+            guard error == nil else {
                 return
             }
             
-            let decodedData = try? JSONDecoder().decode([News].self, from: data)
+            print ("getting snapshot")
             
-            if let data = decodedData {
-                DispatchQueue.main.async {
-                    completion(.success(data))
-                }
+            guard let dictionary = snapshot.value as? [String: Any] else { return }
+            self.team = dictionary["favourite_team"] as? String
+            
+            guard let searchedTeam = self.team?.lowercased() else { return }
+            
+            guard let url = URL(string: "https://skysportsapi.herokuapp.com/sky/football/getteamnews/\(searchedTeam)/v1.0/") else {
+                return
             }
-
-        } .resume()
+            
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                if let error = error {
+                    completion(.failure(error))
+                }
+                
+                guard let data = data else {
+                    return
+                }
+                
+                let decodedData = try? JSONDecoder().decode([News].self, from: data)
+                
+                if let data = decodedData {
+                    DispatchQueue.main.async {
+                        completion(.success(data))
+                    }
+                }
+            } .resume()
+        }
     }
 }

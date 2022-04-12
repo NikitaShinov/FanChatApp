@@ -20,7 +20,7 @@
 		5022261C27E8E70F00E3B4D5 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022261B27E8E70F00E3B4D5 /* FeedViewController.swift */; };
 		50C058BE27AB2263004A0D61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C058BD27AB2263004A0D61 /* AppDelegate.swift */; };
 		50C058C027AB2263004A0D61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C058BF27AB2263004A0D61 /* SceneDelegate.swift */; };
-		50C058C227AB2263004A0D61 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C058C127AB2263004A0D61 /* WelcomeViewController.swift */; };
+		50C058C227AB2263004A0D61 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C058C127AB2263004A0D61 /* LoginViewController.swift */; };
 		50C058C727AB2267004A0D61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C058C627AB2267004A0D61 /* Assets.xcassets */; };
 		50C058CA27AB2267004A0D61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50C058C827AB2267004A0D61 /* LaunchScreen.storyboard */; };
 		50EDD06827E9358A00E64B5C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EDD06727E9358A00E64B5C /* ChatViewController.swift */; };
@@ -50,7 +50,7 @@
 		50C058BA27AB2263004A0D61 /* FanChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FanChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C058BD27AB2263004A0D61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50C058BF27AB2263004A0D61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		50C058C127AB2263004A0D61 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		50C058C127AB2263004A0D61 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		50C058C627AB2267004A0D61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50C058C927AB2267004A0D61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50C058CB27AB2267004A0D61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -169,7 +169,7 @@
 		50EDD07D27F2766600E64B5C /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				50C058C127AB2263004A0D61 /* WelcomeViewController.swift */,
+				50C058C127AB2263004A0D61 /* LoginViewController.swift */,
 				50EDD07727F0902400E64B5C /* ResetPasswordViewController.swift */,
 				5022260927E215BD00E3B4D5 /* RegistrationViewController.swift */,
 			);
@@ -334,7 +334,7 @@
 				5022261027E355E600E3B4D5 /* Team.swift in Sources */,
 				5022245F27B1D4AE00E3B4D5 /* UserProfile.swift in Sources */,
 				5022261227E356BC00E3B4D5 /* NetworkManager.swift in Sources */,
-				50C058C227AB2263004A0D61 /* WelcomeViewController.swift in Sources */,
+				50C058C227AB2263004A0D61 /* LoginViewController.swift in Sources */,
 				50EDD06827E9358A00E64B5C /* ChatViewController.swift in Sources */,
 				50C058BE27AB2263004A0D61 /* AppDelegate.swift in Sources */,
 				50EDD08327F4A45900E64B5C /* ProfileViewModel.swift in Sources */,

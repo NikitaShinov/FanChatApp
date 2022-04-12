@@ -162,48 +162,93 @@ class RegisterViewController: UIViewController {
                   return
               }
         
-        DatabaseManager.shared.userExists(with: email) { [weak self] exists in
-            guard !exists else {
-                print ("error when logging in (RegisterVC)")
-                return
-            }
-            Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
-                guard authResult != nil, error == nil else {
+//        DatabaseManager.shared.userExists(with: email) { [weak self] exists in
+//            guard !exists else {
+//                print ("error when logging in (RegisterVC)")
+//                return
+//            }
+            Auth.auth().createUser(withEmail: email, password: password) { user, error in
+                guard user != nil, error == nil else {
                     print ("Error in creation of User")
                     return
                 }
-                UserDefaults.standard.setValue(email, forKey: "email")
-                UserDefaults.standard.setValue("\(name) \(lastName)", forKey: "name")
                 
-                let newUser = User(firstName: name,
-                                    lastName: lastName,
-                                    emailAddress: email,
-                                    preferredTeam: team
-                )
-                DatabaseManager.shared.insertUser(with: newUser) { success in
-                    if success {
-                        guard let image = self?.imageView.image,
-                              let data = image.pngData() else {
-                                  return
-                              }
-                        let fileName = newUser.profilePictureFileName
-                        StorageManager.shared.pictureUpload(with: data, fileName: fileName) { result in
-                            switch result {
-                            case .success(let downloadURL):
-                                UserDefaults.standard.setValue(downloadURL, forKey: "profile_picture_url")
-                                print ("Download URL: \(downloadURL)")
-                            case .failure(let error):
-                                print ("Error in storing data: \(error)")
+                guard let image = self.imageView.image else { return }
+                guard let imageData = image.jpegData(compressionQuality: 0.3) else { return }
+                
+                let storage = Storage.storage().reference()
+                
+                let fileName = NSUUID().uuidString
+                
+                print ("start uploading image")
+                
+                storage.child("profile_avatars").child(fileName).putData(imageData, metadata: nil) { _, error in
+                    guard error == nil else {
+                        print ("failed to upload profile image")
+                        return
+                }
+                    
+                    print ("success in download")
+                    storage.child("profile_avatars").child(fileName).downloadURL { url, error in
+                        guard error == nil, let url = url else {
+                            return
+                        }
+                        
+                        print ("success in download url")
+                        
+                        let urlString = url.absoluteString
+                        print ("Downloaded url: \(urlString)")
+                        
+                        guard let uid = user?.user.uid else { return }
+                        
+                        let userPreferences = ["username": name + " " + lastName,
+                                               "favourite_team": team]
+                        
+                        let values = [uid: userPreferences]
+                        
+                        Database.database().reference().child("users").updateChildValues(values) { error, reference in
+                            if let error = error {
+                                print ("Failed to save user info into DB: \(error)")
                             }
+                            
+                            print ("successfully saved")
+                            
+                            self.navigationController?.popToRootViewController(animated: true)
+                            self.view.endEditing(true)
+                            print (team)
                         }
                     }
-                }
-                self?.navigationController?.popToRootViewController(animated: true)
-                self?.view.endEditing(true)
-                print (team)
             }
         }
     }
+    //                UserDefaults.standard.setValue(email, forKey: "email")
+    //                UserDefaults.standard.setValue("\(name) \(lastName)", forKey: "name")
+    //
+    //                let newUser = User(firstName: name,
+    //                                    lastName: lastName,
+    //                                    emailAddress: email,
+    //                                    preferredTeam: team
+    //                )
+    //                DatabaseManager.shared.insertUser(with: newUser) { success in
+    //                    if success {
+    //                        guard let image = self?.imageView.image,
+    //                              let data = image.pngData() else {
+    //                                  return
+    //                              }
+    //                        let fileName = newUser.profilePictureFileName
+    //                        StorageManager.shared.pictureUpload(with: data, fileName: fileName) { result in
+    //                            switch result {
+    //                            case .success(let downloadURL):
+    //                                UserDefaults.standard.setValue(downloadURL, forKey: "profile_picture_url")
+    //                                print ("Download URL: \(downloadURL)")
+    //                            case .failure(let error):
+    //                                print ("Error in storing data: \(error)")
+    //                            }
+    //                        }
+    //                    }
+    //                }
+    
+    
         
 //        Auth.auth().createUser(withEmail: email, password: password) { [weak self] result, error in
 //            if let error = error {

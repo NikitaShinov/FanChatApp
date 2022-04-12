@@ -22,8 +22,10 @@ class FeedViewController: UITableViewController {
         configureSpinnerView()
         showSpinnerLoadingView(isShowing: true)
         viewModel.getNews {
-            self.tableView.reloadData()
-            self.showSpinnerLoadingView(isShowing: false)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.showSpinnerLoadingView(isShowing: false)
+            }
         }
     }
     
