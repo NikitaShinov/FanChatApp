@@ -8,7 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		42B8E83C8E18E3DDD6BC0347 /* Pods_FanChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B9840BD96542C9C53888B60 /* Pods_FanChatApp.framework */; };
-		5022245F27B1D4AE00E3B4D5 /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022245E27B1D4AE00E3B4D5 /* UserProfile.swift */; };
+		5020490D28072BE1001D6AA8 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5020490C28072BE1001D6AA8 /* Post.swift */; };
+		5020490F28072EB4001D6AA8 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5020490E28072EB4001D6AA8 /* CustomImageView.swift */; };
+		5022245F27B1D4AE00E3B4D5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022245E27B1D4AE00E3B4D5 /* User.swift */; };
 		5022246127B1D86600E3B4D5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022246027B1D86600E3B4D5 /* Extensions.swift */; };
 		5022260A27E215BD00E3B4D5 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022260927E215BD00E3B4D5 /* RegistrationViewController.swift */; };
 		5022261027E355E600E3B4D5 /* Team.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022260F27E355E600E3B4D5 /* Team.swift */; };
@@ -37,7 +39,9 @@
 
 /* Begin PBXFileReference section */
 		3C881E109ABB2A9057635903 /* Pods-FanChatApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FanChatApp.debug.xcconfig"; path = "Target Support Files/Pods-FanChatApp/Pods-FanChatApp.debug.xcconfig"; sourceTree = "<group>"; };
-		5022245E27B1D4AE00E3B4D5 /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		5020490C28072BE1001D6AA8 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		5020490E28072EB4001D6AA8 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		5022245E27B1D4AE00E3B4D5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5022246027B1D86600E3B4D5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5022260927E215BD00E3B4D5 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		5022260F27E355E600E3B4D5 /* Team.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Team.swift; sourceTree = "<group>"; };
@@ -148,9 +152,10 @@
 		50EDD07B27F261E400E64B5C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5022245E27B1D4AE00E3B4D5 /* UserProfile.swift */,
+				5022245E27B1D4AE00E3B4D5 /* User.swift */,
 				5022260F27E355E600E3B4D5 /* Team.swift */,
 				50EDD06D27E9D6FD00E64B5C /* News.swift */,
+				5020490C28072BE1001D6AA8 /* Post.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -191,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				50EDD07127EA0C3E00E64B5C /* FeedTableViewCell.swift */,
+				5020490E28072EB4001D6AA8 /* CustomImageView.swift */,
 			);
 			path = "Custom Cells";
 			sourceTree = "<group>";
@@ -320,6 +326,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5022260A27E215BD00E3B4D5 /* RegistrationViewController.swift in Sources */,
+				5020490F28072EB4001D6AA8 /* CustomImageView.swift in Sources */,
 				50EDD07027E9E01C00E64B5C /* FeedViewModel.swift in Sources */,
 				50EDD07427EA0EE100E64B5C /* ImageManager.swift in Sources */,
 				5022261427E36B5E00E3B4D5 /* RegistrationViewModel.swift in Sources */,
@@ -331,8 +338,9 @@
 				5022261827E776CE00E3B4D5 /* DatabaseManager.swift in Sources */,
 				50EDD07227EA0C3E00E64B5C /* FeedTableViewCell.swift in Sources */,
 				5022246127B1D86600E3B4D5 /* Extensions.swift in Sources */,
+				5020490D28072BE1001D6AA8 /* Post.swift in Sources */,
 				5022261027E355E600E3B4D5 /* Team.swift in Sources */,
-				5022245F27B1D4AE00E3B4D5 /* UserProfile.swift in Sources */,
+				5022245F27B1D4AE00E3B4D5 /* User.swift in Sources */,
 				5022261227E356BC00E3B4D5 /* NetworkManager.swift in Sources */,
 				50C058C227AB2263004A0D61 /* LoginViewController.swift in Sources */,
 				50EDD06827E9358A00E64B5C /* ChatViewController.swift in Sources */,

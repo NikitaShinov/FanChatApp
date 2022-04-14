@@ -9,40 +9,54 @@ import UIKit
 import Firebase
 
 class ProfileViewController: UIViewController {
+    
+    var user: User? {
+        didSet {
+            guard let imageUrl = user?.profileImageUrl else { return }
+            imageView.loadImage(urlString: imageUrl)
+            print (imageUrl)
+            nameLabel.text = user?.username
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Profile"
         view.backgroundColor = .brown
+        
+        setupScrollView()
+//        setupProfile()
+        
+    }
+    
+    private func setupScrollView() {
         view.addSubview(scrollView)
         scrollView.addSubview(imageView)
         scrollView.addSubview(nameLabel)
         scrollView.addSubview(logoutButton)
-        scrollView.isUserInteractionEnabled = true
-        logoutButton.addTarget(self, action: #selector(logOutButtonPressed), for: .touchUpInside)
-        
-        imageView.isUserInteractionEnabled = true
-        scrollView.isUserInteractionEnabled = true
-        
-        let gesture = UITapGestureRecognizer(target: self,
-                                             action: #selector(didTapChangeProfileImage))
-        imageView.addGestureRecognizer(gesture)
-        
     }
     
-    
+//    private func setupProfile() {
+//        viewModel = ProfileViewModel()
+//        guard let image = viewModel.profileImage else { return }
+//        imageView.image = UIImage(data: image)
+//        nameLabel.text = viewModel.profileName
+//        print (viewModel.profileName)
+//    }
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.clipsToBounds = true
+        scrollView.isUserInteractionEnabled = true
         return scrollView
     }()
     
-    private let imageView: UIImageView = {
-        let imageView = UIImageView()
-//        let image = ImageManager.shared.fetchImageData(from: URL(string: UserDefaults.standard.value(forKey: "profile_picture_url") as! String))
-//        imageView.image = UIImage(data: image!)
-        imageView.image = UIImage(named: "person.fill.badge.plus")
+    private let imageView: CustomImageView = {
+        let imageView = CustomImageView()
+//        imageView.isUserInteractionEnabled = true
+//        let gesture = UITapGestureRecognizer(target: self,
+//                                             action: #selector(didTapChangeProfileImage))
+//        imageView.addGestureRecognizer(gesture)
         imageView.tintColor = .gray
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -64,6 +78,7 @@ class ProfileViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 15
         button.layer.masksToBounds = true
+        button.addTarget(self, action: #selector(logOutButtonPressed), for: .touchUpInside)
         button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
         button.titleLabel?.textColor = .white
         
