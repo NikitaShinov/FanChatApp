@@ -53,7 +53,11 @@ class NetworkManager {
             guard let dictionary = snapshot.value as? [String: Any] else { return }
             self.team = dictionary["favourite_team"] as? String
             
+            print ("getting team")
+            
             guard let searchedTeam = self.team?.lowercased() else { return }
+            
+            print (searchedTeam)
             
             guard let url = URL(string: "https://skysportsapi.herokuapp.com/sky/football/getteamnews/\(searchedTeam)/v1.0/") else {
                 return
@@ -62,6 +66,7 @@ class NetworkManager {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let error = error {
                     completion(.failure(error))
+                    print ("error loading news")
                 }
                 
                 guard let data = data else {

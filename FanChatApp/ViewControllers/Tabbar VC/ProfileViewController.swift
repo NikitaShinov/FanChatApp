@@ -10,22 +10,25 @@ import Firebase
 
 class ProfileViewController: UIViewController {
     
-    var user: User? {
-        didSet {
-            guard let imageUrl = user?.profileImageUrl else { return }
-            imageView.loadImage(urlString: imageUrl)
-            print (imageUrl)
-            nameLabel.text = user?.username
-        }
-    }
+    var profileViewModel: ProfileViewModelProtocol!
+    
+//    var user: User? {
+//        didSet {
+//            guard let imageUrl = user?.profileImageUrl else { return }
+//            imageView.loadImage(urlString: imageUrl)
+//            print (imageUrl)
+//            nameLabel.text = user?.username
+//        }
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Profile"
         view.backgroundColor = .brown
+        profileViewModel = ProfileViewModel()
         
         setupScrollView()
-//        setupProfile()
+        setupProfile()
         
     }
     
@@ -36,13 +39,16 @@ class ProfileViewController: UIViewController {
         scrollView.addSubview(logoutButton)
     }
     
-//    private func setupProfile() {
-//        viewModel = ProfileViewModel()
-//        guard let image = viewModel.profileImage else { return }
+    private func setupProfile() {
+//        profileViewModel = ProfileViewModel()
+//        guard let image = profileViewModel.profileImage else { return }
 //        imageView.image = UIImage(data: image)
-//        nameLabel.text = viewModel.profileName
-//        print (viewModel.profileName)
-//    }
+//        profileViewModel.getUserName {
+//            nameLabel.text =
+        profileViewModel.getUserName { username in
+            self.nameLabel.text = username
+        }
+    }
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -53,10 +59,10 @@ class ProfileViewController: UIViewController {
     
     private let imageView: CustomImageView = {
         let imageView = CustomImageView()
-//        imageView.isUserInteractionEnabled = true
-//        let gesture = UITapGestureRecognizer(target: self,
-//                                             action: #selector(didTapChangeProfileImage))
-//        imageView.addGestureRecognizer(gesture)
+        imageView.isUserInteractionEnabled = true
+        let gesture = UITapGestureRecognizer(target: self,
+                                             action: #selector(didTapChangeProfileImage))
+        imageView.addGestureRecognizer(gesture)
         imageView.tintColor = .gray
         imageView.contentMode = .scaleAspectFit
         return imageView
@@ -64,6 +70,7 @@ class ProfileViewController: UIViewController {
     
     private let nameLabel: UILabel = {
         let label = UILabel()
+//        label.text = profileViewModel.user?.profileImageUrl
         if let currentUser = Auth.auth().currentUser {
             label.text = UserDefaults.standard.value(forKey: "name") as? String ?? "Name not found"
         }

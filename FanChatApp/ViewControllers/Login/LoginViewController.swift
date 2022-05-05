@@ -47,6 +47,7 @@ class LoginViewController: UIViewController {
         
         let login = UITextField()
         login.placeholder = "Enter your e-mail"
+        login.text = "a@mail.ru"
         login.autocorrectionType = .no
         login.returnKeyType = .continue
         login.layer.cornerRadius = 15
@@ -64,6 +65,7 @@ class LoginViewController: UIViewController {
         
         let password = UITextField()
         password.placeholder = "Enter your password"
+        password.text = "arsenal"
         password.autocorrectionType = .no
         password.returnKeyType = .done
         password.layer.cornerRadius = 15
