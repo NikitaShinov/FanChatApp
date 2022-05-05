@@ -11,21 +11,10 @@ import Firebase
 class ProfileViewController: UIViewController {
     
     var profileViewModel: ProfileViewModelProtocol!
-    
-//    var user: User? {
-//        didSet {
-//            guard let imageUrl = user?.profileImageUrl else { return }
-//            imageView.loadImage(urlString: imageUrl)
-//            print (imageUrl)
-//            nameLabel.text = user?.username
-//        }
-//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Profile"
-        view.backgroundColor = .brown
-        profileViewModel = ProfileViewModel()
         
         setupScrollView()
         setupProfile()
@@ -40,13 +29,10 @@ class ProfileViewController: UIViewController {
     }
     
     private func setupProfile() {
-//        profileViewModel = ProfileViewModel()
-//        guard let image = profileViewModel.profileImage else { return }
-//        imageView.image = UIImage(data: image)
-//        profileViewModel.getUserName {
-//            nameLabel.text =
-        profileViewModel.getUserName { username in
-            self.nameLabel.text = username
+        profileViewModel = ProfileViewModel()
+        profileViewModel.getUser { user in
+            self.nameLabel.text = user.username
+            self.imageView.loadImage(urlString: user.profileImageUrl)
         }
     }
     
@@ -70,10 +56,11 @@ class ProfileViewController: UIViewController {
     
     private let nameLabel: UILabel = {
         let label = UILabel()
-//        label.text = profileViewModel.user?.profileImageUrl
-        if let currentUser = Auth.auth().currentUser {
-            label.text = UserDefaults.standard.value(forKey: "name") as? String ?? "Name not found"
-        }
+        label.textAlignment = .center
+//        label.text = name
+//        if let currentUser = Auth.auth().currentUser {
+//            label.text = UserDefaults.standard.value(forKey: "name") as? String ?? "Name not found"
+//        }
         return label
     }()
     
