@@ -10,6 +10,7 @@
 		42B8E83C8E18E3DDD6BC0347 /* Pods_FanChatApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B9840BD96542C9C53888B60 /* Pods_FanChatApp.framework */; };
 		5020490D28072BE1001D6AA8 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5020490C28072BE1001D6AA8 /* Post.swift */; };
 		5020490F28072EB4001D6AA8 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5020490E28072EB4001D6AA8 /* CustomImageView.swift */; };
+		5020495628282F56001D6AA8 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5020495528282F56001D6AA8 /* UsersViewModel.swift */; };
 		5022245F27B1D4AE00E3B4D5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022245E27B1D4AE00E3B4D5 /* User.swift */; };
 		5022246127B1D86600E3B4D5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022246027B1D86600E3B4D5 /* Extensions.swift */; };
 		5022260A27E215BD00E3B4D5 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022260927E215BD00E3B4D5 /* RegistrationViewController.swift */; };
@@ -25,7 +26,7 @@
 		50C058C227AB2263004A0D61 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C058C127AB2263004A0D61 /* LoginViewController.swift */; };
 		50C058C727AB2267004A0D61 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50C058C627AB2267004A0D61 /* Assets.xcassets */; };
 		50C058CA27AB2267004A0D61 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 50C058C827AB2267004A0D61 /* LaunchScreen.storyboard */; };
-		50EDD06827E9358A00E64B5C /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EDD06727E9358A00E64B5C /* ChatViewController.swift */; };
+		50EDD06827E9358A00E64B5C /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EDD06727E9358A00E64B5C /* UsersViewController.swift */; };
 		50EDD06A27E935C700E64B5C /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EDD06927E935C700E64B5C /* ResultsViewController.swift */; };
 		50EDD06C27E9407600E64B5C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EDD06B27E9407600E64B5C /* ProfileViewController.swift */; };
 		50EDD06E27E9D6FD00E64B5C /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EDD06D27E9D6FD00E64B5C /* News.swift */; };
@@ -41,6 +42,7 @@
 		3C881E109ABB2A9057635903 /* Pods-FanChatApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FanChatApp.debug.xcconfig"; path = "Target Support Files/Pods-FanChatApp/Pods-FanChatApp.debug.xcconfig"; sourceTree = "<group>"; };
 		5020490C28072BE1001D6AA8 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		5020490E28072EB4001D6AA8 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		5020495528282F56001D6AA8 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		5022245E27B1D4AE00E3B4D5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5022246027B1D86600E3B4D5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5022260927E215BD00E3B4D5 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -58,7 +60,7 @@
 		50C058C627AB2267004A0D61 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		50C058C927AB2267004A0D61 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		50C058CB27AB2267004A0D61 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		50EDD06727E9358A00E64B5C /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		50EDD06727E9358A00E64B5C /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		50EDD06927E935C700E64B5C /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		50EDD06B27E9407600E64B5C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		50EDD06D27E9D6FD00E64B5C /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				50EDD06F27E9E01C00E64B5C /* FeedViewModel.swift */,
 				50EDD07527EA7ABD00E64B5C /* FeedCellViewModel.swift */,
 				50EDD08227F4A45900E64B5C /* ProfileViewModel.swift */,
+				5020495528282F56001D6AA8 /* UsersViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -185,7 +188,7 @@
 			isa = PBXGroup;
 			children = (
 				5022261B27E8E70F00E3B4D5 /* FeedViewController.swift */,
-				50EDD06727E9358A00E64B5C /* ChatViewController.swift */,
+				50EDD06727E9358A00E64B5C /* UsersViewController.swift */,
 				50EDD06927E935C700E64B5C /* ResultsViewController.swift */,
 				50EDD06B27E9407600E64B5C /* ProfileViewController.swift */,
 			);
@@ -343,7 +346,8 @@
 				5022245F27B1D4AE00E3B4D5 /* User.swift in Sources */,
 				5022261227E356BC00E3B4D5 /* NetworkManager.swift in Sources */,
 				50C058C227AB2263004A0D61 /* LoginViewController.swift in Sources */,
-				50EDD06827E9358A00E64B5C /* ChatViewController.swift in Sources */,
+				50EDD06827E9358A00E64B5C /* UsersViewController.swift in Sources */,
+				5020495628282F56001D6AA8 /* UsersViewModel.swift in Sources */,
 				50C058BE27AB2263004A0D61 /* AppDelegate.swift in Sources */,
 				50EDD08327F4A45900E64B5C /* ProfileViewModel.swift in Sources */,
 				50EDD06C27E9407600E64B5C /* ProfileViewController.swift in Sources */,

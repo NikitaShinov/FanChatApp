@@ -7,11 +7,11 @@
 
 import UIKit
 
-class ChatViewController: UIViewController {
+class UsersViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Chat"
+        title = "Users"
         view.backgroundColor = .blue
     }
 
