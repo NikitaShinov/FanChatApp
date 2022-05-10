@@ -178,36 +178,11 @@ class LoginViewController: UIViewController {
             
             print ("successfully logged in user: \(user?.user.uid ?? "no user")")
             
-//            self.view.endEditing(true)
-//
-//            guard let result = user else { return }
-//
-//            let user = result.user
-//
-//            let safeEmail = DatabaseManager.safeEmail(with: emailAdress)
-//            DatabaseManager.shared.getDataFor(path: safeEmail) { result in
-//                switch result {
-//                case .success(let data):
-//                    guard let userData = data as? [String: Any],
-//                          let firstName = userData["first_name"] as? String,
-//                          let lastName = userData["last_name"] as? String else {
-//                              return
-//                          }
-//                    UserDefaults.standard.set("\(firstName) \(lastName)", forKey: "name")
-//                case .failure(let error):
-//                    print ("Failed to read data with error: \(error)")
-//
-//                }
-//            }
-//
-//            UserDefaults.standard.set(emailAdress, forKey: "email")
-            
-//            print ("User \(user) logged in.")
             
             let tabBarVC = UITabBarController()
             let feedVC = UINavigationController(rootViewController: FeedViewController())
             feedVC.title = "Feed"
-            let chatVC = UINavigationController(rootViewController: ChatViewController())
+            let chatVC = UINavigationController(rootViewController: UsersViewController())
             chatVC.title = "Chat"
             let resultsVC = UINavigationController(rootViewController: ResultsViewController())
             resultsVC.title = "Results"

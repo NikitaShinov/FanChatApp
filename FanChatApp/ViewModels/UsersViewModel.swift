@@ -11,6 +11,7 @@ import Firebase
 protocol UsersViewModelProtocol {
     var users: [User] { get }
     func getUsers(completion: @escaping() -> Void)
+    func userCellViewModel(at indexPath: IndexPath) -> UserCellViewModelProtocol
 }
 
 class UsersViewModel: UsersViewModelProtocol {
@@ -33,6 +34,10 @@ class UsersViewModel: UsersViewModelProtocol {
                 self.users.append(user)
             }
         }
+    }
+    func userCellViewModel(at indexPath: IndexPath) -> UserCellViewModelProtocol {
+        let userItem = users[indexPath.item]
+        return UserCellViewModel(user: userItem)
     }
     
 }
