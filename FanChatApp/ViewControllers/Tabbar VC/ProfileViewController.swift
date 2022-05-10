@@ -57,10 +57,7 @@ class ProfileViewController: UIViewController {
     private let nameLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
-//        label.text = name
-//        if let currentUser = Auth.auth().currentUser {
-//            label.text = UserDefaults.standard.value(forKey: "name") as? String ?? "Name not found"
-//        }
+
         return label
     }()
     

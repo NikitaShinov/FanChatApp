@@ -12,6 +12,7 @@
 		5020490F28072EB4001D6AA8 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5020490E28072EB4001D6AA8 /* CustomImageView.swift */; };
 		5020495628282F56001D6AA8 /* UsersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5020495528282F56001D6AA8 /* UsersViewModel.swift */; };
 		50204958282AD665001D6AA8 /* UserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50204957282AD665001D6AA8 /* UserCellViewModel.swift */; };
+		5020495A282ADB25001D6AA8 /* UserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50204959282ADB25001D6AA8 /* UserCollectionViewCell.swift */; };
 		5022245F27B1D4AE00E3B4D5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022245E27B1D4AE00E3B4D5 /* User.swift */; };
 		5022246127B1D86600E3B4D5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022246027B1D86600E3B4D5 /* Extensions.swift */; };
 		5022260A27E215BD00E3B4D5 /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022260927E215BD00E3B4D5 /* RegistrationViewController.swift */; };
@@ -45,6 +46,7 @@
 		5020490E28072EB4001D6AA8 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		5020495528282F56001D6AA8 /* UsersViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewModel.swift; sourceTree = "<group>"; };
 		50204957282AD665001D6AA8 /* UserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellViewModel.swift; sourceTree = "<group>"; };
+		50204959282ADB25001D6AA8 /* UserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCollectionViewCell.swift; sourceTree = "<group>"; };
 		5022245E27B1D4AE00E3B4D5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		5022246027B1D86600E3B4D5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		5022260927E215BD00E3B4D5 /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
@@ -202,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				50EDD07127EA0C3E00E64B5C /* FeedTableViewCell.swift */,
+				50204959282ADB25001D6AA8 /* UserCollectionViewCell.swift */,
 				5020490E28072EB4001D6AA8 /* CustomImageView.swift */,
 			);
 			path = "Custom Cells";
@@ -337,6 +340,7 @@
 				50EDD07427EA0EE100E64B5C /* ImageManager.swift in Sources */,
 				5022261427E36B5E00E3B4D5 /* RegistrationViewModel.swift in Sources */,
 				50EDD06E27E9D6FD00E64B5C /* News.swift in Sources */,
+				5020495A282ADB25001D6AA8 /* UserCollectionViewCell.swift in Sources */,
 				5022261A27E78BF200E3B4D5 /* StorageManager.swift in Sources */,
 				50EDD07827F0902400E64B5C /* ResetPasswordViewController.swift in Sources */,
 				50EDD07627EA7ABD00E64B5C /* FeedCellViewModel.swift in Sources */,

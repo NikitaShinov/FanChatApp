@@ -9,9 +9,26 @@ import Foundation
 
 protocol UserCellViewModelProtocol {
     init (user: User)
+    var userName: String { get }
+    var userImage: String? { get }
+    var userSupportedTeam: String { get }
+    
 }
 
 class UserCellViewModel: UserCellViewModelProtocol {
+    
+    
+    var userName: String {
+        receivedUser.username
+    }
+    
+    var userImage: String? {
+        receivedUser.profileImageUrl
+    }
+    
+    var userSupportedTeam: String {
+        receivedUser.favouriteTeam
+    }
     
     private let receivedUser: User
     
