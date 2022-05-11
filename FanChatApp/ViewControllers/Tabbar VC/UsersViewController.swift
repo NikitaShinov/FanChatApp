@@ -16,15 +16,26 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
+        setupLayout()
+        setupCollectionView()
+        setupViewModel()
     }
     
     private func setupUI() {
         title = "Users"
-        view.backgroundColor = .blue
+    }
+    
+    private func setupLayout() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: view.frame.size.width / 3, height: view.frame.size.width / 3)
+        layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 1
+        layout.itemSize = CGSize(width: (view.frame.size.width / 3) - 1,
+                                 height: (view.frame.size.width / 3) - 1)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    }
+    
+    private func setupCollectionView() {
         guard let collectionView = collectionView else { return }
         collectionView.register(UserCollectionViewCell.self,
                                 forCellWithReuseIdentifier: UserCollectionViewCell.identifier)
@@ -32,16 +43,21 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
         collectionView.dataSource = self
         collectionView.frame = view.bounds
         view.addSubview(collectionView)
+    }
+    
+    private func setupViewModel() {
         viewModel = UsersViewModel()
         viewModel.getUsers {
             DispatchQueue.main.async {
-                
+                self.collectionView?.reloadData()
             }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        30
+        print (viewModel.users.count)
+        return viewModel.users.count
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

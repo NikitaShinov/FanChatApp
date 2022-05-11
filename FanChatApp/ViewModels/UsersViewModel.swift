@@ -32,6 +32,7 @@ class UsersViewModel: UsersViewModelProtocol {
                 guard let userDictionary = value as? [String: Any] else { return }
                 let user = User(uid: key, dictionary: userDictionary)
                 self.users.append(user)
+                print (self.users.count)
             }
         }
     }

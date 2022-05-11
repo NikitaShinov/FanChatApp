@@ -12,7 +12,9 @@ class UserCollectionViewCell: UICollectionViewCell {
     
     var viewModel: UserCellViewModelProtocol! {
         didSet {
-            
+            userName.text = viewModel.userName
+//            guard let image = viewModel.userImage else { return }
+//            userImage.loadImage(urlString: image)
         }
     }
     
@@ -20,11 +22,10 @@ class UserCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.backgroundColor = .systemRed
         contentView.addSubview(userImage)
         contentView.addSubview(userName)
         contentView.addSubview(userTeam)
-        
+        contentView.clipsToBounds = true
     }
     
     required init?(coder: NSCoder) {
@@ -33,11 +34,16 @@ class UserCollectionViewCell: UICollectionViewCell {
     
     lazy var userImage: CustomImageView = {
         let image = CustomImageView()
+        image.backgroundColor = .red
+        image.clipsToBounds = true
+        image.contentMode = .scaleAspectFill
         return image
     }()
     
     lazy var userName: UILabel = {
         let label = UILabel()
+        label.textAlignment = .center
+        label.backgroundColor = .yellow
         return label
     }()
     
@@ -59,5 +65,11 @@ class UserCollectionViewCell: UICollectionViewCell {
                                  width: contentView.frame.size.width-10,
                                  height: contentView.frame.size.height-50)
         
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        userName.text = nil
+        userImage.image = nil
     }
 }
