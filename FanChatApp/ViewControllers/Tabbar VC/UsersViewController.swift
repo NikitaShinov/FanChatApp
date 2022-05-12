@@ -7,11 +7,19 @@
 
 import UIKit
 
-class UsersViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class UsersViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
     
     private var viewModel: UsersViewModelProtocol!
     
     var collectionView: UICollectionView?
+    
+    var searchBar: UISearchBar = {
+        let search = UISearchBar()
+        search.placeholder = "Search for user"
+        search.barTintColor = .gray
+//        search.delegate = self
+        return search
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +28,11 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
         setupUI()
         setupLayout()
         setupCollectionView()
+        
+        navigationController?.navigationBar.addSubview(searchBar)
+        let navBar = navigationController?.navigationBar
+        searchBar.anchor(top: navBar?.topAnchor, left: navBar?.leftAnchor, bottom: navBar?.bottomAnchor, right: navBar?.rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 0)
+        
     }
     
     private func setupUI() {
@@ -53,6 +66,13 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
         }
     }
     
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        if searchText.isEmpty {
+            
+        }
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print ("NUMBER OF USERS ON USERCOLLECTION:\(viewModel.numberOfUsers())")
         return viewModel.numberOfUsers()
@@ -66,7 +86,7 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+        print ("did tap cell at: \(indexPath.item)")
     }
 
 }
