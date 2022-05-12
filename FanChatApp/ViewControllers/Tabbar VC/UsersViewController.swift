@@ -15,10 +15,11 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setupViewModel()
         setupUI()
         setupLayout()
         setupCollectionView()
-        setupViewModel()
     }
     
     private func setupUI() {
@@ -48,20 +49,19 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
     private func setupViewModel() {
         viewModel = UsersViewModel()
         viewModel.getUsers {
-            DispatchQueue.main.async {
-                self.collectionView?.reloadData()
-            }
+            self.collectionView?.reloadData()
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        print (viewModel.users.count)
-        return viewModel.users.count
+        print ("NUMBER OF USERS ON USERCOLLECTION:\(viewModel.numberOfUsers())")
+        return viewModel.numberOfUsers()
         
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserCollectionViewCell.identifier, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserCollectionViewCell.identifier, for: indexPath) as! UserCollectionViewCell
+        cell.viewModel = viewModel.userCellViewModel(at: indexPath)
         return cell
     }
     

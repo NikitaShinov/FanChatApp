@@ -13,8 +13,8 @@ class UserCollectionViewCell: UICollectionViewCell {
     var viewModel: UserCellViewModelProtocol! {
         didSet {
             userName.text = viewModel.userName
-//            guard let image = viewModel.userImage else { return }
-//            userImage.loadImage(urlString: image)
+            guard let image = viewModel.userImage else { return }
+            userImage.loadImage(urlString: image)
         }
     }
     

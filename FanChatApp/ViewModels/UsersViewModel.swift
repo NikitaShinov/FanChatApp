@@ -12,6 +12,7 @@ protocol UsersViewModelProtocol {
     var users: [User] { get }
     func getUsers(completion: @escaping() -> Void)
     func userCellViewModel(at indexPath: IndexPath) -> UserCellViewModelProtocol
+    func numberOfUsers() -> Int
 }
 
 class UsersViewModel: UsersViewModelProtocol {
@@ -28,17 +29,23 @@ class UsersViewModel: UsersViewModelProtocol {
                     print ("FOUND MYSELF")
                     return
                 }
-                
+                print (self.users.count)
                 guard let userDictionary = value as? [String: Any] else { return }
                 let user = User(uid: key, dictionary: userDictionary)
                 self.users.append(user)
                 print (self.users.count)
+                print (self.users[0].username)
+                completion()
             }
         }
     }
     func userCellViewModel(at indexPath: IndexPath) -> UserCellViewModelProtocol {
         let userItem = users[indexPath.item]
         return UserCellViewModel(user: userItem)
+    }
+    
+    func numberOfUsers() -> Int {
+        users.count
     }
     
 }
