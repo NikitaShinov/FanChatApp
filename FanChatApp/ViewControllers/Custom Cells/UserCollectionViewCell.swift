@@ -25,7 +25,7 @@ class UserCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         contentView.addSubview(userImage)
         contentView.addSubview(userName)
-        contentView.addSubview(userTeam)
+//        contentView.addSubview(userTeam)
         contentView.clipsToBounds = true
     }
     
@@ -49,7 +49,6 @@ class UserCollectionViewCell: UICollectionViewCell {
         label.textAlignment = .center
         label.font = label.font.withSize(14)
         label.numberOfLines = 0
-        label.backgroundColor = .red
         return label
     }()
     
