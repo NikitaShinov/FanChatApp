@@ -13,8 +13,6 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     var collectionView: UICollectionView?
     
-    var filteredUsers: [User] = []
-    
     var searchBar: UISearchBar = {
         let search = UISearchBar()
         search.placeholder = "Search for user"
@@ -24,17 +22,19 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        searchBar.delegate = self
+
         setupViewModel()
         setupUI()
         setupLayout()
         setupCollectionView()
+
         
-//        navigationController?.navigationBar.addSubview(searchBar)
-//        let navBar = navigationController?.navigationBar
-//        searchBar.anchor(top: navBar?.topAnchor, left: navBar?.leftAnchor, bottom: navBar?.bottomAnchor, right: navBar?.rightAnchor, paddingTop: 0, paddingLeft: 8, paddingBottom: 0, paddingRight: 8, width: 0, height: 0)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        tabBarController?.tabBar.isHidden = false
     }
     
     private func setupUI() {
@@ -69,13 +69,6 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
         }
     }
     
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//
-//        if searchText.isEmpty {
-//
-//        }
-//    }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print ("NUMBER OF USERS ON USERCOLLECTION:\(viewModel.numberOfUsers())")
         return viewModel.numberOfUsers()
@@ -90,6 +83,15 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print ("did tap cell at: \(indexPath.item)")
+        
+        let user = viewModel.users[indexPath.item]
+        
+        let vc = UserDetailsViewController()
+        vc.user = user
+        navigationController?.pushViewController(vc, animated: true)
+        tabBarController?.tabBar.isHidden = true
+        
+        
     }
 
 }
