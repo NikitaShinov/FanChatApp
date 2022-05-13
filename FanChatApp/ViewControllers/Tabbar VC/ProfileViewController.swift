@@ -17,6 +17,7 @@ class ProfileViewController: UIViewController {
         title = "Profile"
         view.backgroundColor = .systemBackground
         setupScrollView()
+        setupNavBarItem()
         setupProfile()
         
     }
@@ -25,7 +26,12 @@ class ProfileViewController: UIViewController {
         view.addSubview(scrollView)
         scrollView.addSubview(imageView)
         scrollView.addSubview(nameLabel)
-        scrollView.addSubview(logoutButton)
+//        scrollView.addSubview(logoutButton)
+    }
+    
+    private func setupNavBarItem() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "gear"), style: .plain, target: self, action: #selector(logOutButtonPressed))
+        
     }
     
     private func setupProfile() {
@@ -50,7 +56,9 @@ class ProfileViewController: UIViewController {
                                              action: #selector(didTapChangeProfileImage))
         imageView.addGestureRecognizer(gesture)
         imageView.tintColor = .gray
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
+        imageView.backgroundColor = .gray
         return imageView
     }()
     
@@ -61,20 +69,20 @@ class ProfileViewController: UIViewController {
         return label
     }()
     
-    private let logoutButton: UIButton = {
-        
-        let button = UIButton()
-        button.backgroundColor = #colorLiteral(red: 0.8017725994, green: 0.1414930071, blue: 0.1230983969, alpha: 1)
-        button.setTitle("Log Out", for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 15
-        button.layer.masksToBounds = true
-        button.addTarget(self, action: #selector(logOutButtonPressed), for: .touchUpInside)
-        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
-        button.titleLabel?.textColor = .white
-        
-        return button
-    }()
+//    private let logoutButton: UIButton = {
+//
+//        let button = UIButton()
+//        button.backgroundColor = #colorLiteral(red: 0.8017725994, green: 0.1414930071, blue: 0.1230983969, alpha: 1)
+//        button.setTitle("Log Out", for: .normal)
+//        button.setTitleColor(.white, for: .normal)
+//        button.layer.cornerRadius = 15
+//        button.layer.masksToBounds = true
+//        button.addTarget(self, action: #selector(logOutButtonPressed), for: .touchUpInside)
+//        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
+//        button.titleLabel?.textColor = .white
+//
+//        return button
+//    }()
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -82,21 +90,22 @@ class ProfileViewController: UIViewController {
         let size = scrollView.width / 3
         
         imageView.frame = CGRect(x: (scrollView.width - size)/2,
-                               y: 20,
-                               width: size,
-                               height: size)
+                                 y: 20,
+                                 width: size,
+                                 height: size)
+        imageView.layer.cornerRadius = size / 2
         
         nameLabel.frame = CGRect(x: 30,
-                                      y: imageView.bottom + 10,
-                                      width: scrollView.width - 70,
-                                      height: 50)
-        
-        
-        
-        logoutButton.frame = CGRect(x: 30,
-                                   y: scrollView.bottom - 350,
-                                   width: scrollView.width - 70,
-                                   height: 50)
+                                 y: imageView.bottom + 10,
+                                 width: scrollView.width - 70,
+                                 height: 50)
+//
+//
+//
+//        logoutButton.frame = CGRect(x: 30,
+//                                    y: scrollView.bottom - 350,
+//                                    width: scrollView.width - 70,
+//                                    height: 50)
         
     }
     
@@ -105,19 +114,30 @@ class ProfileViewController: UIViewController {
     }
     
     @objc private func logOutButtonPressed() {
-        do {
-            
-            try Auth.auth().signOut()
-            
-        } catch {
-            
-            alertPopUp(title: "Error!", message: "Something went wrong when logging out.\nPlease try again.")
-            return
-            
-        }
-        tabBarController?.dismiss(animated: true, completion: nil)
-        let vc = LoginViewController()
-        present(vc, animated: true, completion: nil)
+        
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        alert.addAction(UIAlertAction(title: "Log out", style: .destructive, handler: { _ in
+            do {
+                
+                try Auth.auth().signOut()
+                
+                self.tabBarController?.dismiss(animated: true, completion: nil)
+                let vc = LoginViewController()
+                self.present(vc, animated: true, completion: nil)
+                
+            } catch {
+                
+                self.alertPopUp(title: "Error!", message: "Something went wrong when logging out.\nPlease try again.")
+                return
+                
+            }
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
+        
     
     }
     

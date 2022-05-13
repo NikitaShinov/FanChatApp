@@ -181,20 +181,16 @@ class LoginViewController: UIViewController {
             
             let tabBarVC = UITabBarController()
             let feedVC = UINavigationController(rootViewController: FeedViewController())
-            feedVC.title = "Feed"
             let chatVC = UINavigationController(rootViewController: UsersViewController())
-            chatVC.title = "Chat"
             let resultsVC = UINavigationController(rootViewController: ResultsViewController())
-            resultsVC.title = "Results"
             let profileVC = UINavigationController(rootViewController: ProfileViewController())
-            profileVC.title = "Profile"
             tabBarVC.setViewControllers([feedVC, chatVC, resultsVC, profileVC], animated: true)
 
             guard let items = tabBarVC.tabBar.items else {
                 return
             }
 
-            let images = ["newspaper", "message", "timer.square", "person"]
+            let images = ["newspaper", "person.2", "timer.square", "person"]
 
             for counter in 0..<items.count {
                 items[counter].image = UIImage(systemName: images[counter])
