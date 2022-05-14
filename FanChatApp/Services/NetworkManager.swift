@@ -55,11 +55,13 @@ class NetworkManager {
             
             print ("getting team")
             
-            guard let searchedTeam = self.team?.lowercased() else { return }
+            var searchedTeam = self.team?.lowercased()
+            let chars: Set<Character> = [" ", ",", "."]
+            searchedTeam?.removeAll(where: {chars.contains($0)})
+            guard let filteredTeam = searchedTeam else { return }
+            print (filteredTeam)
             
-            print (searchedTeam)
-            
-            guard let url = URL(string: "https://skysportsapi.herokuapp.com/sky/football/getteamnews/\(searchedTeam)/v1.0/") else {
+            guard let url = URL(string: "https://skysportsapi.herokuapp.com/sky/football/getteamnews/\(filteredTeam)/v1.0/") else {
                 return
             }
             
