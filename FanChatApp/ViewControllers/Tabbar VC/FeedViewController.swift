@@ -52,15 +52,14 @@ class FeedViewController: UITableViewController {
                 DispatchQueue.main.async {
                     self?.showSpinnerLoadingView(isShowing: false)
                     self?.tableView.reloadData()
-                    print ("success refreshing")
                 }
+                print ("success refreshing")
             case .failure(_):
                 DispatchQueue.main.async {
                     self?.showSpinnerLoadingView(isShowing: false)
                     self?.showAlert(title: "Network error!", message: "Check your network connection or restart the app")
                 }
-            }
-            
+            } 
         }
         sender.endRefreshing()
     }
@@ -104,8 +103,9 @@ class FeedViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: FeedTableViewCell.identifier,
                                                  for: indexPath) as! FeedTableViewCell
-        cell.viewModel = viewModel.cellViewModel(at: indexPath)
         
+        cell.viewModel = viewModel.cellViewModel(at: indexPath)
+
         return cell
     }
     

@@ -7,11 +7,24 @@
 
 import Foundation
 import UIKit
+import Firebase
 
 class MainTabbarViewController: UITabBarController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.delegate = self
+        
+        DispatchQueue.main.async {
+            if Auth.auth().currentUser == nil {
+                //showing if not logged in
+                let loginController = LoginViewController()
+                let navController = UINavigationController(rootViewController: loginController)
+                navController.modalPresentationStyle = .fullScreen
+                self.present(navController, animated: true, completion: nil)
+            }
+        }
         
         setupTabBar()
         setupMiddleButton()
@@ -36,6 +49,7 @@ class MainTabbarViewController: UITabBarController, UITabBarControllerDelegate {
         let controller4 = ProfileViewController()
         controller4.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 4)
         let nav4 = UINavigationController(rootViewController: controller4)
+        tabBarController?.tabBar.isTranslucent = true
 
         viewControllers = [nav1, nav2, nav3, nav4]
 

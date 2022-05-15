@@ -10,7 +10,7 @@ import Foundation
 protocol FeedCellViewModelProtocol {
     var articleName: String { get }
     var decription: String { get }
-    var image: Data? { get }
+    var image: String? { get }
     init (article: News)
 }
 
@@ -23,8 +23,9 @@ class FeedCellViewModel: FeedCellViewModelProtocol {
         news.shortdesc
     }
     
-    var image: Data? {
-        ImageManager.shared.fetchImageData(from: news.imgsrc)
+    var image: String? {
+        news.imgsrc.absoluteString
+//        ImageManager.shared.fetchImageData(from: news.imgsrc)
     }
     
     private let news: News

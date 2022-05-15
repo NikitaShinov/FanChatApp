@@ -77,7 +77,9 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserCollectionViewCell.identifier, for: indexPath) as! UserCollectionViewCell
-        cell.viewModel = viewModel.userCellViewModel(at: indexPath)
+        DispatchQueue.main.async {
+            cell.viewModel = self.viewModel.userCellViewModel(at: indexPath)
+        }
         return cell
     }
     

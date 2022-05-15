@@ -14,7 +14,7 @@ class FeedTableViewCell: UITableViewCell {
             title.text = viewModel.articleName
             subtitle.text = viewModel.decription
             guard let image = viewModel.image else { return }
-            newsImage.image = UIImage(data: image)
+            newsImage.loadImage(urlString: image)
         }
     }
 
@@ -35,8 +35,8 @@ class FeedTableViewCell: UITableViewCell {
         return subtitle
     }()
 
-    lazy var newsImage: UIImageView = {
-        let image = UIImageView()
+    lazy var newsImage: CustomImageView = {
+        let image = CustomImageView()
         image.backgroundColor = .systemBackground
         image.layer.cornerRadius = 7
         image.layer.masksToBounds = true
