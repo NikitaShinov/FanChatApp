@@ -5,11 +5,11 @@
 //  Created by max on 14.05.2022.
 //
 
-import Foundation
 import UIKit
 import Firebase
+import RAMAnimatedTabBarController
 
-class MainTabbarViewController: UITabBarController, UITabBarControllerDelegate {
+class MainTabbarViewController: RAMAnimatedTabBarController, UITabBarControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,21 +35,34 @@ class MainTabbarViewController: UITabBarController, UITabBarControllerDelegate {
     func setupTabBar() {
         
         let controller1 = FeedViewController()
-        controller1.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "newspaper"), tag: 1)
+        controller1.tabBarItem = RAMAnimatedTabBarItem(title: "Feed",
+                                                       image: UIImage(systemName: "newspaper"),
+                                                       tag: 1)
+        (controller1.tabBarItem as? RAMAnimatedTabBarItem)?.animation = RAMRotationAnimation()
         let nav1 = UINavigationController(rootViewController: controller1)
-
+        
         let controller2 = UsersViewController()
-        controller2.tabBarItem = UITabBarItem(title: "Users", image: UIImage(systemName: "person.2"), tag: 2)
+        controller2.tabBarItem = RAMAnimatedTabBarItem(title: "Users",
+                                                       image: UIImage(systemName: "person.2"),
+                                                       tag: 2)
+        (controller2.tabBarItem as? RAMAnimatedTabBarItem)?.animation = RAMRotationAnimation()
         let nav2 = UINavigationController(rootViewController: controller2)
         
         let controller3 = ResultsViewController()
-        controller3.tabBarItem = UITabBarItem(title: "Results", image: UIImage(systemName: "timer.square"), tag: 3)
+        controller3.tabBarItem = RAMAnimatedTabBarItem(title: "Results",
+                                                       image: UIImage(systemName: "timer.square"),
+                                                       tag: 3)
+        (controller3.tabBarItem as? RAMAnimatedTabBarItem)?.animation = RAMRotationAnimation()
         let nav3 = UINavigationController(rootViewController: controller3)
-
+        
         let controller4 = ProfileViewController()
-        controller4.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 4)
+        controller4.tabBarItem = RAMAnimatedTabBarItem(title: "Profile",
+                                                       image: UIImage(systemName: "person"),
+                                                       tag: 4)
+        (controller4.tabBarItem as? RAMAnimatedTabBarItem)?.animation = RAMRotationAnimation()
         let nav4 = UINavigationController(rootViewController: controller4)
-        tabBarController?.tabBar.isTranslucent = true
+        
+//        tabBarController?.tabBar.isTranslucent = true
 
         viewControllers = [nav1, nav2, nav3, nav4]
 
