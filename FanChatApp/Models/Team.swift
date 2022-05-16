@@ -20,12 +20,22 @@ struct DataClass: Codable {
 
 struct Standing: Codable {
     let team: Team
+    let note: Note?
     let stats: [Stat]
+}
+
+// MARK: - Note
+struct Note: Codable {
+    let color, description: String
+    let rank: Int
 }
 
 // MARK: - Stat
 struct Stat: Codable {
-    let name, displayName, shortDisplayName, description: String
+//    let name: Name
+//    let displayName: Description
+    let shortDisplayName: String
+//    let description: Description
     let abbreviation, type: String
     let value: Int?
     let displayValue: String
@@ -48,3 +58,24 @@ struct Logo: Codable {
     let rel: [String]
     let lastUpdated: String
 }
+
+//enum Description: String, Codable {
+//    case draws = "Draws"
+//    case gamesPlayed = "Games Played"
+//    case goalDifference = "Goal Difference"
+//    case goalsAgainst = "Goals Against"
+//    case goalsFor = "Goals For"
+//    case losses = "Losses"
+//    case overall = "Overall"
+//    case overallRecord = "Overall Record"
+//    case pointDeductions = "Point Deductions"
+//    case points = "Points"
+//    case pointsPerGame = "Points Per Game"
+//    case rank = "Rank"
+//    case rankChange = "Rank Change"
+//    case teamSCurrentWinLossRecord = "Team's current Win-Loss record"
+//    case wins = "Wins"
+//}
+
+
+

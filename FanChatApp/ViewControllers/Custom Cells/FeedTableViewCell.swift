@@ -69,7 +69,7 @@ class FeedTableViewCell: UITableViewCell {
                                 height: contentView.frame.size.height / 2)
 
         newsImage.frame = CGRect(x: contentView.frame.size.width - 150,
-                                 y: 5,
+                                 y: 25,
                                  width: 130,
                                  height: contentView.frame.size.height - 50)
 

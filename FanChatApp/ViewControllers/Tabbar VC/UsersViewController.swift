@@ -38,6 +38,7 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     private func setupUI() {
+        navigationController?.navigationBar.prefersLargeTitles = true
         title = "Users"
     }
     

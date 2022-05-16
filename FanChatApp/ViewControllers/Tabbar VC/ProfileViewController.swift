@@ -14,6 +14,7 @@ class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = true
         title = "Profile"
         view.backgroundColor = .systemBackground
         setupScrollView()

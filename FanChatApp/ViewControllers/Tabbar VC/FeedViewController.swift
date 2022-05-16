@@ -30,11 +30,13 @@ class FeedViewController: UITableViewController {
     }
     
     private func configureUI() {
+        navigationController?.navigationBar.prefersLargeTitles = true
         title = "Feed"
         tableView.register(FeedTableViewCell.self,
                            forCellReuseIdentifier: FeedTableViewCell.identifier)
         tableView.refreshControl = pulltoRefresh
         view.backgroundColor = .systemBackground
+        tableView.separatorStyle = .none
         
     }
     
@@ -110,7 +112,7 @@ class FeedViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        200
+        170
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
