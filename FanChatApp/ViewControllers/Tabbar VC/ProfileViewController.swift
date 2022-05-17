@@ -8,7 +8,9 @@
 import UIKit
 import Firebase
 
+
 class ProfileViewController: UIViewController {
+    
     
     var profileViewModel: ProfileViewModelProtocol!
 
@@ -30,7 +32,12 @@ class ProfileViewController: UIViewController {
     }
     
     private func setupNavBarItem() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "gear"), style: .plain, target: self, action: #selector(logOutButtonPressed))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "gear"),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(logOutButtonPressed))
+        
+        
         navigationItem.rightBarButtonItem?.tintColor = .black
         
     }

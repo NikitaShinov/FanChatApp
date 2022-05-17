@@ -179,25 +179,13 @@ class LoginViewController: UIViewController {
             print ("successfully logged in user: \(user?.user.uid ?? "no user")")
             
             
-            let tabBarVC = MainTabbarViewController()
-//            let feedVC = UINavigationController(rootViewController: FeedViewController())
-//            let chatVC = UINavigationController(rootViewController: UsersViewController())
-//            let resultsVC = UINavigationController(rootViewController: ResultsViewController())
-//            let profileVC = UINavigationController(rootViewController: ProfileViewController())
-//            tabBarVC.setViewControllers([feedVC, chatVC, resultsVC, profileVC], animated: true)
-//
-//            guard let items = tabBarVC.tabBar.items else {
-//                return
-//            }
-//
-//            let images = ["newspaper", "person.2", "timer.square", "person"]
-//
-//            for counter in 0..<items.count {
-//                items[counter].image = UIImage(systemName: images[counter])
-//            }
-
-            tabBarVC.modalPresentationStyle = .fullScreen
-            self.present(tabBarVC, animated: true, completion: nil)
+//            let tabBarVC = MainTabbarViewController()
+//            tabBarVC.modalPresentationStyle = .fullScreen
+//            self.present(tabBarVC, animated: true, completion: nil)
+            
+            let vc = ContainerViewController()
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true, completion: nil)
         }
         
         

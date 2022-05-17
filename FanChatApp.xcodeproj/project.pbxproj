@@ -40,6 +40,10 @@
 		50E03F2A2831A4AC005E87C0 /* SharePhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E03F292831A4AC005E87C0 /* SharePhotoController.swift */; };
 		50E03F2C28325769005E87C0 /* TeamStandingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E03F2B28325769005E87C0 /* TeamStandingCell.swift */; };
 		50E03F2E28325856005E87C0 /* TeamStandigViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E03F2D28325856005E87C0 /* TeamStandigViewModel.swift */; };
+		50E03F8A2833E8B3005E87C0 /* MenuCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E03F892833E8B3005E87C0 /* MenuCellViewModel.swift */; };
+		50E03F8C2833E8BE005E87C0 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E03F8B2833E8BE005E87C0 /* MenuTableViewCell.swift */; };
+		50E03F8E2833E8C7005E87C0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E03F8D2833E8C7005E87C0 /* MenuViewController.swift */; };
+		50E03F902833E8CD005E87C0 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E03F8F2833E8CD005E87C0 /* ContainerViewController.swift */; };
 		50EDD06827E9358A00E64B5C /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EDD06727E9358A00E64B5C /* UsersViewController.swift */; };
 		50EDD06A27E935C700E64B5C /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EDD06927E935C700E64B5C /* ResultsViewController.swift */; };
 		50EDD06C27E9407600E64B5C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EDD06B27E9407600E64B5C /* ProfileViewController.swift */; };
@@ -88,6 +92,10 @@
 		50E03F292831A4AC005E87C0 /* SharePhotoController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharePhotoController.swift; sourceTree = "<group>"; };
 		50E03F2B28325769005E87C0 /* TeamStandingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamStandingCell.swift; sourceTree = "<group>"; };
 		50E03F2D28325856005E87C0 /* TeamStandigViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamStandigViewModel.swift; sourceTree = "<group>"; };
+		50E03F892833E8B3005E87C0 /* MenuCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCellViewModel.swift; sourceTree = "<group>"; };
+		50E03F8B2833E8BE005E87C0 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
+		50E03F8D2833E8C7005E87C0 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		50E03F8F2833E8CD005E87C0 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		50EDD06727E9358A00E64B5C /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		50EDD06927E935C700E64B5C /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		50EDD06B27E9407600E64B5C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -162,6 +170,7 @@
 		50C058BC27AB2263004A0D61 /* FanChatApp */ = {
 			isa = PBXGroup;
 			children = (
+				50E03F882833E89C005E87C0 /* Side */,
 				50E03F222831A46E005E87C0 /* AddPhoto */,
 				5020496228300F4D001D6AA8 /* Camera */,
 				50EDD07C27F2620A00E64B5C /* ViewModels */,
@@ -188,6 +197,17 @@
 				50E03F292831A4AC005E87C0 /* SharePhotoController.swift */,
 			);
 			path = AddPhoto;
+			sourceTree = "<group>";
+		};
+		50E03F882833E89C005E87C0 /* Side */ = {
+			isa = PBXGroup;
+			children = (
+				50E03F8F2833E8CD005E87C0 /* ContainerViewController.swift */,
+				50E03F892833E8B3005E87C0 /* MenuCellViewModel.swift */,
+				50E03F8B2833E8BE005E87C0 /* MenuTableViewCell.swift */,
+				50E03F8D2833E8C7005E87C0 /* MenuViewController.swift */,
+			);
+			path = Side;
 			sourceTree = "<group>";
 		};
 		50EDD07927F2619400E64B5C /* ViewControllers */ = {
@@ -396,6 +416,7 @@
 			files = (
 				5020496A28301007001D6AA8 /* CustomAnimationDismisser.swift in Sources */,
 				5022260A27E215BD00E3B4D5 /* RegistrationViewController.swift in Sources */,
+				50E03F8C2833E8BE005E87C0 /* MenuTableViewCell.swift in Sources */,
 				5020490F28072EB4001D6AA8 /* CustomImageView.swift in Sources */,
 				50EDD07027E9E01C00E64B5C /* FeedViewModel.swift in Sources */,
 				50EDD07427EA0EE100E64B5C /* ImageManager.swift in Sources */,
@@ -405,6 +426,7 @@
 				50E03F2A2831A4AC005E87C0 /* SharePhotoController.swift in Sources */,
 				5020495A282ADB25001D6AA8 /* UserCollectionViewCell.swift in Sources */,
 				5022261A27E78BF200E3B4D5 /* StorageManager.swift in Sources */,
+				50E03F8A2833E8B3005E87C0 /* MenuCellViewModel.swift in Sources */,
 				50EDD07827F0902400E64B5C /* ResetPasswordViewController.swift in Sources */,
 				50EDD07627EA7ABD00E64B5C /* FeedCellViewModel.swift in Sources */,
 				50E03F282831A49E005E87C0 /* PhotoSelectorHeader.swift in Sources */,
@@ -423,6 +445,7 @@
 				5022261227E356BC00E3B4D5 /* NetworkManager.swift in Sources */,
 				50E03F262831A491005E87C0 /* PhotoSelectorCell.swift in Sources */,
 				50C058C227AB2263004A0D61 /* LoginViewController.swift in Sources */,
+				50E03F8E2833E8C7005E87C0 /* MenuViewController.swift in Sources */,
 				50EDD06827E9358A00E64B5C /* UsersViewController.swift in Sources */,
 				5020495628282F56001D6AA8 /* UsersViewModel.swift in Sources */,
 				5020496428300F5C001D6AA8 /* CameraController.swift in Sources */,
@@ -433,6 +456,7 @@
 				5020496628300FA2001D6AA8 /* PreviewPhotoContainerView.swift in Sources */,
 				5022261C27E8E70F00E3B4D5 /* FeedViewController.swift in Sources */,
 				50C058C027AB2263004A0D61 /* SceneDelegate.swift in Sources */,
+				50E03F902833E8CD005E87C0 /* ContainerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

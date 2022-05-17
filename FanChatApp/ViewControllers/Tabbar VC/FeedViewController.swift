@@ -8,9 +8,15 @@
 import UIKit
 import SafariServices
 
+protocol HomeViewControllerDelegate: AnyObject {
+    func didTapMenuButton()
+}
+
 class FeedViewController: UITableViewController {
     
     private var viewModel: FeedViewModelProtocol!
+    
+    weak var delegate: HomeViewControllerDelegate?
     
     let spinner = UIActivityIndicatorView(style: .large)
     
@@ -19,6 +25,7 @@ class FeedViewController: UITableViewController {
         viewModel = FeedViewModel()
         configureUI()
         print ("configuring UI")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"), style: .done, target: self, action: #selector(didTapMenuButton))
         configureSpinnerView()
         showSpinnerLoadingView(isShowing: true)
         viewModel.getNews {
@@ -29,8 +36,13 @@ class FeedViewController: UITableViewController {
         }
     }
     
+    @objc func didTapMenuButton() {
+        delegate?.didTapMenuButton()
+    }
+    
     private func configureUI() {
         navigationController?.navigationBar.prefersLargeTitles = true
+        
         title = "Feed"
         tableView.register(FeedTableViewCell.self,
                            forCellReuseIdentifier: FeedTableViewCell.identifier)
@@ -45,7 +57,7 @@ class FeedViewController: UITableViewController {
         refreshControl.addTarget(self, action: #selector(refreshFeed(sender:)), for: .valueChanged)
         return refreshControl
     }()
-    
+        
     @objc private func refreshFeed(sender:UIRefreshControl) {
         viewModel.refreshNews { [weak self] result in
             switch result {
