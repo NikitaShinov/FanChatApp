@@ -25,7 +25,7 @@ class FeedViewController: UITableViewController {
         viewModel = FeedViewModel()
         configureUI()
         print ("configuring UI")
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "list.dash"), style: .done, target: self, action: #selector(didTapMenuButton))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "sidebar.leading"), style: .done, target: self, action: #selector(didTapMenuButton))
         configureSpinnerView()
         showSpinnerLoadingView(isShowing: true)
         viewModel.getNews {

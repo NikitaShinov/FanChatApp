@@ -26,9 +26,10 @@ class MenuTableViewCell: UITableViewCell {
     
     private func configure() {
         guard let viewModel = viewModel else { return }
-        imageView?.image = UIImage(systemName: viewModel.imageName)
+        imageView?.image = UIImage(systemName: viewModel.imageName)?.withTintColor(UIColor.lightGreen(),
+                                                                                   renderingMode: .alwaysOriginal)
         textLabel?.text = viewModel.menuOption.rawValue
-        textLabel?.textColor = .red
+        textLabel?.textColor = .white
         imageView?.tintColor = .white
         backgroundColor = .purple
         contentView.backgroundColor = .purple

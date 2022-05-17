@@ -84,6 +84,7 @@ extension ContainerViewController: MenuViewControllerDelegate {
             case .feed:
                 self?.resetToFeed()
             case .users:
+                self?.goToUsers()
                 break
             case .results:
                 self?.goToResult()
@@ -96,17 +97,34 @@ extension ContainerViewController: MenuViewControllerDelegate {
     }
     
     func goToResult() {
-        let vc = resultsVC
-        feedVC.addChild(vc)
-        feedVC.view.addSubview(vc.view)
-        vc.didMove(toParent: feedVC)
-        vc.view.frame = view.frame
-        feedVC.title = vc.title
+//        let vc = resultsVC
+//        feedVC.addChild(vc)
+//        feedVC.view.addSubview(vc.view)
+//        vc.didMove(toParent: feedVC)
+//        vc.view.frame = view.frame
+//        feedVC.title = vc.title
+        let vc = UINavigationController(rootViewController: resultsVC)
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
+    }
+    
+    func goToUsers() {
+//        let vc = usersVC
+//        feedVC.addChild(vc)
+//        feedVC.view.addSubview(vc.view)
+//        vc.didMove(toParent: feedVC)
+//        vc.view.frame = view.frame
+//        feedVC.title = vc.title
+        let vc = UINavigationController(rootViewController: usersVC)
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
     }
     
     func resetToFeed() {
-        resultsVC.view.removeFromSuperview()
-        resultsVC.didMove(toParent: nil)
-        feedVC.title = "Feed"
+//        resultsVC.view.removeFromSuperview()
+//        resultsVC.didMove(toParent: nil)
+//        feedVC.title = "Feed"
+        let vc = feedVC
+        present(vc, animated: true, completion: nil)
     }
 }

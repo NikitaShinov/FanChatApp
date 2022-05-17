@@ -15,6 +15,8 @@ class MenuViewController: UIViewController {
     
     weak var delegate: MenuViewControllerDelegate?
     
+    private var viewModel: ProfileViewModelProtocol!
+    
     let grayColor = UIColor(red: 33/255.0, green: 33/255.0, blue: 33/255.0, alpha: 1)
     
     enum MenuOptions: String, CaseIterable {
@@ -27,8 +29,9 @@ class MenuViewController: UIViewController {
     
     private let tableView: UITableView = {
         let table = UITableView()
-        table.register(MenuTableViewCell.self, forCellReuseIdentifier: MenuTableViewCell.cellId )
-        table.backgroundColor = .purple
+        table.register(MenuTableViewCell.self, forCellReuseIdentifier: MenuTableViewCell.cellId)
+        table.register(MenuHeader.self, forHeaderFooterViewReuseIdentifier: MenuHeader.identifier)
+        table.backgroundColor = nil
         return table
     }()
     
@@ -42,10 +45,16 @@ class MenuViewController: UIViewController {
         view.backgroundColor = .purple
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.frame = view.bounds
+        tableView.separatorStyle = .none
     }
 }
 
 extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        1
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         MenuOptions.allCases.count
@@ -61,5 +70,19 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         let item = MenuOptions.allCases[indexPath.row]
         delegate?.didSelectViewController(vc: item)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = tableView.dequeueReusableHeaderFooterView(withIdentifier: MenuHeader.identifier) as! MenuHeader
+        viewModel = ProfileViewModel()
+        viewModel.getUser { user in
+            view.profileName.text = user.username
+            view.profileImage.loadImage(urlString: user.profileImageUrl)
+        }
+        return view
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        100
     }
 }

@@ -44,6 +44,7 @@
 		50E03F8C2833E8BE005E87C0 /* MenuTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E03F8B2833E8BE005E87C0 /* MenuTableViewCell.swift */; };
 		50E03F8E2833E8C7005E87C0 /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E03F8D2833E8C7005E87C0 /* MenuViewController.swift */; };
 		50E03F902833E8CD005E87C0 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E03F8F2833E8CD005E87C0 /* ContainerViewController.swift */; };
+		50E03F922834176E005E87C0 /* MenuHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E03F912834176E005E87C0 /* MenuHeader.swift */; };
 		50EDD06827E9358A00E64B5C /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EDD06727E9358A00E64B5C /* UsersViewController.swift */; };
 		50EDD06A27E935C700E64B5C /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EDD06927E935C700E64B5C /* ResultsViewController.swift */; };
 		50EDD06C27E9407600E64B5C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EDD06B27E9407600E64B5C /* ProfileViewController.swift */; };
@@ -96,6 +97,7 @@
 		50E03F8B2833E8BE005E87C0 /* MenuTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuTableViewCell.swift; sourceTree = "<group>"; };
 		50E03F8D2833E8C7005E87C0 /* MenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		50E03F8F2833E8CD005E87C0 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		50E03F912834176E005E87C0 /* MenuHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuHeader.swift; sourceTree = "<group>"; };
 		50EDD06727E9358A00E64B5C /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		50EDD06927E935C700E64B5C /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		50EDD06B27E9407600E64B5C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				50E03F892833E8B3005E87C0 /* MenuCellViewModel.swift */,
 				50E03F8B2833E8BE005E87C0 /* MenuTableViewCell.swift */,
 				50E03F8D2833E8C7005E87C0 /* MenuViewController.swift */,
+				50E03F912834176E005E87C0 /* MenuHeader.swift */,
 			);
 			path = Side;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				5022245F27B1D4AE00E3B4D5 /* User.swift in Sources */,
 				5020495D282EAEE2001D6AA8 /* UserDetailsViewController.swift in Sources */,
 				5022261227E356BC00E3B4D5 /* NetworkManager.swift in Sources */,
+				50E03F922834176E005E87C0 /* MenuHeader.swift in Sources */,
 				50E03F262831A491005E87C0 /* PhotoSelectorCell.swift in Sources */,
 				50C058C227AB2263004A0D61 /* LoginViewController.swift in Sources */,
 				50E03F8E2833E8C7005E87C0 /* MenuViewController.swift in Sources */,

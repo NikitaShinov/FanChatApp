@@ -39,7 +39,15 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     private func setupUI() {
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"),
+                                                           style: .done,
+                                                           target: self,
+                                                           action: #selector(didTapClose))
         title = "Users"
+    }
+    
+    @objc private func didTapClose() {
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     private func setupLayout() {
