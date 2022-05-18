@@ -12,9 +12,8 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Welcome"
-        navigationController?.navigationBar.prefersLargeTitles = true
-        view.backgroundColor = #colorLiteral(red: 0.9114710668, green: 1, blue: 0.7352172452, alpha: 1)
+        
+        view.backgroundColor = #colorLiteral(red: 0.02103929222, green: 0.9883262515, blue: 0.4782025814, alpha: 1)
         view.addSubview(scrollView)
         scrollView.addSubview(appLogo)
         scrollView.addSubview(emailTextField)
@@ -30,9 +29,8 @@ class LoginViewController: UIViewController {
     }
     
     private let appLogo: UIImageView = {
-        let appLogoName = "appLogo"
-        let image = UIImage(named: appLogoName)
-        let imageView = UIImageView(image: image)
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "pl-logo")
         
         return imageView
     }()
@@ -52,7 +50,7 @@ class LoginViewController: UIViewController {
         login.returnKeyType = .continue
         login.layer.cornerRadius = 15
         login.layer.borderWidth = 5
-        login.layer.borderColor = UIColor.orange.cgColor
+        login.layer.borderColor = UIColor.systemPurple.cgColor
         login.backgroundColor = .systemBackground
         login.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 0))
         login.leftViewMode = .always
@@ -71,7 +69,7 @@ class LoginViewController: UIViewController {
         password.layer.cornerRadius = 15
         password.layer.borderWidth = 5
         password.isSecureTextEntry = true
-        password.layer.borderColor = UIColor.orange.cgColor
+        password.layer.borderColor = UIColor.systemPurple.cgColor
         password.backgroundColor = .systemBackground
         password.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 20, height: 0))
         password.leftViewMode = .always
@@ -110,8 +108,8 @@ class LoginViewController: UIViewController {
        let button =  UIButton()
         button.isOpaque = true
         button.setTitle("Forgot password?", for: .normal)
-        button.setTitleColor(.blue, for: .normal)
-        button.titleLabel?.font = .systemFont(ofSize: 15, weight: .thin)
+        button.setTitleColor(.purple, for: .normal)
+        button.titleLabel?.font = .systemFont(ofSize: 15, weight: .medium)
         return button
     }()
     
@@ -123,7 +121,8 @@ class LoginViewController: UIViewController {
         appLogo.frame = CGRect(x: (scrollView.width - size)/2,
                                y: 20,
                                width: size,
-                               height: size)
+                               height: size * 1.5)
+//        appLogo.layer.cornerRadius = size / 2
         
         emailTextField.frame = CGRect(x: 30,
                                       y: appLogo.bottom + 10,
@@ -177,11 +176,6 @@ class LoginViewController: UIViewController {
             }
             
             print ("successfully logged in user: \(user?.user.uid ?? "no user")")
-            
-            
-//            let tabBarVC = MainTabbarViewController()
-//            tabBarVC.modalPresentationStyle = .fullScreen
-//            self.present(tabBarVC, animated: true, completion: nil)
             
             let vc = ContainerViewController()
             vc.modalPresentationStyle = .fullScreen

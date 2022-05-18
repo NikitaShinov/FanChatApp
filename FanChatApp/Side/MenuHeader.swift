@@ -12,6 +12,7 @@ class MenuHeader: UITableViewHeaderFooterView {
     let profileName: UILabel = {
         let name = UILabel()
         name.font = UIFont.boldSystemFont(ofSize: 20)
+        name.textColor = UIColor.white
         name.textAlignment = .left
         return name
     }()
