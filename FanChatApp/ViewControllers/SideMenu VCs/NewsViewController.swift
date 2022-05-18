@@ -12,7 +12,7 @@ protocol HomeViewControllerDelegate: AnyObject {
     func didTapMenuButton()
 }
 
-class FeedViewController: UITableViewController {
+class NewsViewController: UITableViewController {
     
     private var viewModel: FeedViewModelProtocol!
     

@@ -17,7 +17,8 @@ class ContainerViewController: UIViewController {
     private var menuState: MenuState = .closed
     
     let menuVC = MenuViewController()
-    let feedVC = FeedViewController()
+    let feedVC = NewsViewController()
+    let userFeedVC = UserFeedViewController()
     let usersVC = UsersViewController()
     let resultsVC = ResultsViewController()
     var navVC: UINavigationController?
@@ -81,8 +82,10 @@ extension ContainerViewController: MenuViewControllerDelegate {
     func didSelectViewController(vc: MenuViewController.MenuOptions) {
         toggleMenu { [weak self] in
             switch vc {
-            case .feed:
+            case .news:
                 self?.resetToFeed()
+            case .userFeed:
+                self?.goToUserFeed()
             case .users:
                 self?.goToUsers()
                 break
@@ -116,6 +119,12 @@ extension ContainerViewController: MenuViewControllerDelegate {
 //        vc.view.frame = view.frame
 //        feedVC.title = vc.title
         let vc = UINavigationController(rootViewController: usersVC)
+        vc.modalPresentationStyle = .fullScreen
+        present(vc, animated: true, completion: nil)
+    }
+    
+    func goToUserFeed() {
+        let vc = UINavigationController(rootViewController: userFeedVC)
         vc.modalPresentationStyle = .fullScreen
         present(vc, animated: true, completion: nil)
     }

@@ -20,7 +20,8 @@ class MenuViewController: UIViewController {
     let grayColor = UIColor(red: 33/255.0, green: 33/255.0, blue: 33/255.0, alpha: 1)
     
     enum MenuOptions: String, CaseIterable {
-        case feed = "Feed"
+        case news = "News"
+        case userFeed = "Feed"
         case users = "Users"
         case results = "Results"
         case profile = "Profile"

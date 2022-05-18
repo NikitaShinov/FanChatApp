@@ -31,11 +31,11 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        tabBarController?.tabBar.isHidden = false
-    }
+//    override func viewWillAppear(_ animated: Bool) {
+//        super.viewWillAppear(animated)
+//        
+//        tabBarController?.tabBar.isHidden = false
+//    }
     
     private func setupUI() {
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -100,7 +100,7 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
         let vc = UserDetailsViewController()
         vc.user = user
         navigationController?.pushViewController(vc, animated: true)
-        tabBarController?.tabBar.isHidden = true
+//        tabBarController?.tabBar.isHidden = true
         
         
     }

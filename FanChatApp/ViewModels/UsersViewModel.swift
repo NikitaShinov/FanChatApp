@@ -39,6 +39,9 @@ class UsersViewModel: UsersViewModelProtocol {
             }
         }
     }
+    
+    // РЕАЛИЗОВАТЬ ПОИСК ПО ЮЗЕРАМ
+    
     func userCellViewModel(at indexPath: IndexPath) -> UserCellViewModelProtocol {
         let userItem = users[indexPath.item]
         return UserCellViewModel(user: userItem)

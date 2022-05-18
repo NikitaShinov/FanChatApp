@@ -13,8 +13,10 @@ struct MenuCellViewModel {
     
     var imageName: String {
         switch menuOption {
-        case .feed:
+        case .news:
             return "newspaper"
+        case .userFeed:
+            return "eyes.inverse"
         case .users:
             return "person.2"
         case .results:
