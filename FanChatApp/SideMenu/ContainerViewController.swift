@@ -18,7 +18,7 @@ class ContainerViewController: UIViewController {
     
     let menuVC = MenuViewController()
     let feedVC = NewsViewController()
-    let userFeedVC = UserFeedViewController()
+    let userFeedVC = UsersFeedCollectionViewController()
     let usersVC = UsersViewController()
     let resultsVC = ResultsViewController()
     var navVC: UINavigationController?
