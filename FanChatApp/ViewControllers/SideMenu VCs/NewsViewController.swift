@@ -24,16 +24,7 @@ class NewsViewController: UITableViewController {
         super.viewDidLoad()
         viewModel = FeedViewModel()
         configureUI()
-        print ("configuring UI")
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "sidebar.leading"), style: .done, target: self, action: #selector(didTapMenuButton))
-        configureSpinnerView()
-        showSpinnerLoadingView(isShowing: true)
-        viewModel.getNews {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-                self.showSpinnerLoadingView(isShowing: false)
-            }
-        }
+
     }
     
     @objc func didTapMenuButton() {
@@ -43,22 +34,28 @@ class NewsViewController: UITableViewController {
     private func configureUI() {
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        title = "Feed"
+        title = "News"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "sidebar.leading"), style: .done, target: self, action: #selector(didTapMenuButton))
+        configureSpinnerView()
+        showSpinnerLoadingView(isShowing: true)
+        viewModel.getNews {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                self.showSpinnerLoadingView(isShowing: false)
+            }
+        }
+        
         tableView.register(FeedTableViewCell.self,
                            forCellReuseIdentifier: FeedTableViewCell.identifier)
-        tableView.refreshControl = pulltoRefresh
+        let pullRefresh = UIRefreshControl()
+        pullRefresh.addTarget(self, action: #selector(refreshFeed), for: .valueChanged)
+        tableView.refreshControl = pullRefresh
         view.backgroundColor = .systemBackground
         tableView.separatorStyle = .none
         
     }
-    
-    let pulltoRefresh: UIRefreshControl = {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(refreshFeed(sender:)), for: .valueChanged)
-        return refreshControl
-    }()
         
-    @objc private func refreshFeed(sender:UIRefreshControl) {
+    @objc private func refreshFeed() {
         viewModel.refreshNews { [weak self] result in
             switch result {
             case .success(_):
@@ -73,9 +70,9 @@ class NewsViewController: UITableViewController {
                     self?.showSpinnerLoadingView(isShowing: false)
                     self?.showAlert(title: "Network error!", message: "Check your network connection or restart the app")
                 }
-            } 
+            }
         }
-        sender.endRefreshing()
+        refreshControl?.endRefreshing()
     }
     
     private func showSpinnerLoadingView(isShowing: Bool) {
