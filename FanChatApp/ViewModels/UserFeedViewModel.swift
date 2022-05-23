@@ -40,6 +40,7 @@ class UserFeedViewModel: UserFeedProtocol {
                         guard let dictionary = value as? [String: Any] else { return }
                         let post = Post(dictionary: dictionary)
                         self.feed.append(post)
+                        completion()
                     }
                 }
             }

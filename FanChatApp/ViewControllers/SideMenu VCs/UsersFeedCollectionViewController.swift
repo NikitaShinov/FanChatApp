@@ -30,7 +30,7 @@ class UsersFeedCollectionViewController: UIViewController, UICollectionViewDeleg
         title = "Some Feed"
         viewModel = UserFeedViewModel()
         viewModel.getUserPosts {
-            print("GETTING POSTS")
+            self.collectionView?.reloadData()
         }
 
 //        viewModel.getFeed {
@@ -54,10 +54,9 @@ class UsersFeedCollectionViewController: UIViewController, UICollectionViewDeleg
     
     @objc private func handleUpdateFeed() {
         viewModel.feed.removeAll()
-//        viewModel.getFeed {
-//            print ("update feed vc")
-//            self.collectionView?.reloadData()
-//        }
+        viewModel.getUserPosts {
+            self.collectionView?.reloadData()
+        }
     }
     
     @objc private func didTapClose() {
@@ -75,15 +74,15 @@ class UsersFeedCollectionViewController: UIViewController, UICollectionViewDeleg
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of items
-        print (viewModel.numberOfPosts())
-        return viewModel.numberOfPosts()
+        viewModel.numberOfPosts()
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! UserPostCollectionViewCell
         
-        cell.postLabel.text = "\(indexPath.item)"
-    
+        cell.postLabel.text = viewModel.feed[indexPath.item].caption
+        cell.userNameLabel.text = viewModel.feed[indexPath.item].userName
+        cell.userProfileImageView.loadImage(urlString: viewModel.feed[indexPath.item].imageUrl)
     
         return cell
     }
