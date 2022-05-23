@@ -9,13 +9,16 @@ import Foundation
 
 
 struct Post {
-
-    let user: String
+    
+    var id: String?
+    let imageUrl: String
+    let userName: String
     let caption: String
     let creationDate: Date
     
-    init(user: String, dictionary: [String: Any]) {
-        self.user = user
+    init(dictionary: [String: Any]) {
+        self.userName = dictionary["username"] as? String ?? ""
+        self.imageUrl = dictionary["image_URL"] as? String ?? ""
         self.caption = dictionary["caption"] as? String ?? ""
         let secondsFrom1970 = dictionary["creationDate"] as? Double ?? 0
         self.creationDate = Date(timeIntervalSince1970: secondsFrom1970)

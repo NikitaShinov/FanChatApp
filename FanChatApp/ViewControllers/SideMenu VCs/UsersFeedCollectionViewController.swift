@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 private let reuseIdentifier = "cellId"
 
@@ -15,6 +16,8 @@ class UsersFeedCollectionViewController: UIViewController, UICollectionViewDeleg
     
     private var viewModel: UserFeedProtocol!
     
+    private var user: User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -22,14 +25,18 @@ class UsersFeedCollectionViewController: UIViewController, UICollectionViewDeleg
         
         NotificationCenter.default.addObserver(self, selector: #selector(handleUpdateFeed), name: updateFeedNotificationName, object: nil)
     }
-
     
     private func configure() {
         title = "Some Feed"
         viewModel = UserFeedViewModel()
-        viewModel.getFeed {
-            self.collectionView?.reloadData()
+        viewModel.getUserPosts {
+            print("GETTING POSTS")
         }
+
+//        viewModel.getFeed {
+//            self.collectionView?.reloadData()
+//        }
+
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.itemSize = CGSize(width: view.frame.size.width, height: view.frame.size.width / 2)
@@ -47,10 +54,10 @@ class UsersFeedCollectionViewController: UIViewController, UICollectionViewDeleg
     
     @objc private func handleUpdateFeed() {
         viewModel.feed.removeAll()
-        viewModel.getFeed {
-            print ("update feed vc")
-            self.collectionView?.reloadData()
-        }
+//        viewModel.getFeed {
+//            print ("update feed vc")
+//            self.collectionView?.reloadData()
+//        }
     }
     
     @objc private func didTapClose() {

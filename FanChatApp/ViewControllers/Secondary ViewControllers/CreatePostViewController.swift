@@ -11,6 +11,7 @@ import Firebase
 class CreatePostViewController: UIViewController {
     
     var post: Post?
+    var user: User?
     
     private let questionLabel: UILabel = {
         let label = UILabel()
@@ -41,6 +42,7 @@ class CreatePostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Создание поста"
+        fetchCurrentUser()
         view.backgroundColor = .systemBackground
         view.addSubview(createButton)
         view.addSubview(textView)
@@ -53,19 +55,26 @@ class CreatePostViewController: UIViewController {
         dismiss(animated: true, completion: nil)
     }
     
-    @objc func createButtonTapped() {
-        
+    private func fetchCurrentUser() {
         guard let uid = Auth.auth().currentUser?.uid else { return }
+        Database.fetchUserWithUID(uid: uid) { user in
+            self.user = user
+        }
+    }
+    
+    @objc func createButtonTapped() {
         
         guard let caption = textView.text, caption.count > 0 else { return }
         
-        createButton.isEnabled = false
+        guard let currentUser = user else { return }
         
-        let values = ["post_text": caption,
+        let values = ["username": currentUser.username,
+                      "image_URL": currentUser.profileImageUrl,
+                      "post_text": caption,
                       "creation_date": Date().timeIntervalSince1970,
-                      "uid": uid] as [String: Any]
+                      "uid": currentUser.uid] as [String: Any]
         
-        Database.database().reference().child("posts").childByAutoId().updateChildValues(values) { error, reference in
+        Database.database().reference().child("posts").child(currentUser.uid).childByAutoId().updateChildValues(values) { error, reference in
             if let error = error {
                 print ("failed to insert post: \(error)")
             }
