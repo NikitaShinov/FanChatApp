@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import Firebase
 
 class CreatePostViewController: UIViewController {
+    
+    var post: Post?
     
     private let questionLabel: UILabel = {
         let label = UILabel()
@@ -42,19 +45,46 @@ class CreatePostViewController: UIViewController {
         view.addSubview(createButton)
         view.addSubview(textView)
         view.addSubview(questionLabel)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .done, target: self, action: #selector(didTapCloseButton))
         createButton.addTarget(self, action: #selector(createButtonTapped), for: .touchUpInside)
     }
     
+    @objc private func didTapCloseButton() {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @objc func createButtonTapped() {
-        print ("Post created")
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        guard let caption = textView.text, caption.count > 0 else { return }
+        
+        createButton.isEnabled = false
+        
+        let values = ["post_text": caption,
+                      "creation_date": Date().timeIntervalSince1970,
+                      "uid": uid] as [String: Any]
+        
+        Database.database().reference().child("posts").childByAutoId().updateChildValues(values) { error, reference in
+            if let error = error {
+                print ("failed to insert post: \(error)")
+            }
+            print ("Post created")
+            self.textView.text = ""
+            self.dismiss(animated: true, completion: nil)
+            let updateFeedNotificationName = NSNotification.Name(rawValue: "UpdateFeed")
+            
+            NotificationCenter.default.post(name: updateFeedNotificationName, object: nil)
+        }
+        
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
         createButton.frame = CGRect(x: (view.frame.size.width / 2) - 85, y: view.bottom - 200, width: 170, height: 40)
-        textView.frame = CGRect(x: 20, y: view.top + 100, width: view.frame.size.width - 40, height: 200)
-        questionLabel.frame = CGRect(x: 20, y: view.top + 20, width: textView.frame.size.width, height: 30)
+        textView.frame = CGRect(x: 20, y: view.top + 130, width: view.frame.size.width - 40, height: 200)
+        questionLabel.frame = CGRect(x: 20, y: view.top + 50, width: textView.frame.size.width, height: 30)
     }
     
 }
