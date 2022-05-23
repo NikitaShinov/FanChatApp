@@ -122,7 +122,7 @@ class LoginViewController: UIViewController {
                                y: 20,
                                width: size,
                                height: size * 1.5)
-//        appLogo.layer.cornerRadius = size / 2
+
         
         emailTextField.frame = CGRect(x: 30,
                                       y: appLogo.bottom + 10,

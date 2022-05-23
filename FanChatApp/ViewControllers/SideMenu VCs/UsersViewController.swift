@@ -24,10 +24,9 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
         super.viewDidLoad()
 
         setupViewModel()
-        setupUI()
         setupLayout()
         setupCollectionView()
-
+        setupUI()
         
     }
     
@@ -38,8 +37,7 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
 //    }
     
     private func setupUI() {
-        navigationController?.navigationBar.prefersLargeTitles = true
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"),
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"),
                                                            style: .done,
                                                            target: self,
                                                            action: #selector(didTapClose))
