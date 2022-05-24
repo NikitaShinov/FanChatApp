@@ -41,8 +41,11 @@ class CreatePostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Создание поста"
         fetchCurrentUser()
+        configureUI()
+    }
+    
+    private func configureUI() {
         view.backgroundColor = .systemBackground
         view.addSubview(createButton)
         view.addSubview(textView)

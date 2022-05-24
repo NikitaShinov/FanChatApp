@@ -13,13 +13,14 @@ class UserPostCollectionViewCell: UICollectionViewCell {
     
     let userProfileImageView: CustomImageView = {
         let image = CustomImageView()
-        image.backgroundColor = .yellow
+        image.clipsToBounds = true
+        image.contentMode = .scaleAspectFill
         return image
     }()
     
     let postLabel: UILabel = {
         let post = UILabel()
-        post.backgroundColor = .red
+        post.numberOfLines = 0
         return post
     }()
     
@@ -44,7 +45,10 @@ class UserPostCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentView.backgroundColor = .purple
+        contentView.layer.borderColor = UIColor.purple.cgColor
+        contentView.layer.borderWidth = 3
+        contentView.layer.cornerRadius = 10
+        
         
         let buttonsStackView = UIStackView(arrangedSubviews: [likeButton, commentButton])
         buttonsStackView.distribution = .fillEqually
@@ -55,9 +59,10 @@ class UserPostCollectionViewCell: UICollectionViewCell {
         addSubview(buttonsStackView)
         
         userProfileImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: 30, height: 30)
+        userProfileImageView.layer.cornerRadius = 15
         userNameLabel.anchor(top: topAnchor, left: userProfileImageView.rightAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: 100, height: 30)
-        postLabel.anchor(top: userProfileImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 10, paddingLeft: 5, paddingBottom: 0, paddingRight: 5, width: 0, height: 100)
-        buttonsStackView.anchor(top: postLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: 120, height: 30)
+        postLabel.anchor(top: userProfileImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 10, paddingLeft: 15, paddingBottom: 0, paddingRight: 15, width: 0, height: 0)
+        buttonsStackView.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 15, paddingBottom: 10, paddingRight: 0, width: 120, height: 30)
         
         
     }

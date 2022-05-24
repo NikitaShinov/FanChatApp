@@ -36,11 +36,12 @@ class UsersFeedCollectionViewController: UIViewController, UICollectionViewDeleg
 //        viewModel.getFeed {
 //            self.collectionView?.reloadData()
 //        }
-
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: view.frame.size.width, height: view.frame.size.width / 2)
+        layout.itemSize = CGSize(width: view.frame.size.width - 10, height: view.frame.size.width / 2)
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        
+        
         guard let collectionView = collectionView else { return }
         collectionView.frame = view.bounds
         view.addSubview(collectionView)
