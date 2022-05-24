@@ -21,9 +21,9 @@ class ResetPasswordViewController: UIViewController {
         field.autocapitalizationType = .none
         field.autocorrectionType = .no
         field.returnKeyType = .done
-        field.layer.cornerRadius = 12
-        field.layer.borderWidth = 1
-        field.layer.borderColor = UIColor.lightGray.cgColor
+        field.layer.cornerRadius = 15
+        field.layer.borderWidth = 5
+        field.layer.borderColor = UIColor.systemPurple.cgColor
         field.placeholder = "Enter your e-mail"
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         field.leftViewMode = .always
@@ -48,7 +48,7 @@ class ResetPasswordViewController: UIViewController {
         super.viewDidLoad()
         title = "RESET PASSWORD"
         
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.lightGreen()
         view.addSubview(scrollView)
         scrollView.addSubview(emailField)
         scrollView.addSubview(resetButton)

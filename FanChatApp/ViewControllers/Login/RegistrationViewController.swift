@@ -26,7 +26,7 @@ class RegisterViewController: UIViewController {
         imageView.contentMode = .scaleAspectFill
         imageView.layer.masksToBounds = true
         imageView.layer.borderWidth = 2
-        imageView.layer.borderColor = UIColor.purple.cgColor
+        imageView.layer.borderColor = UIColor.systemPurple.cgColor
         return imageView
     }()
     
@@ -35,9 +35,9 @@ class RegisterViewController: UIViewController {
         field.autocapitalizationType = .none
         field.autocorrectionType = .no
         field.returnKeyType = .continue
-        field.layer.cornerRadius = 12
-        field.layer.borderWidth = 2
-        field.layer.borderColor = UIColor.purple.cgColor
+        field.layer.cornerRadius = 15
+        field.layer.borderWidth = 5
+        field.layer.borderColor = UIColor.systemPurple.cgColor
         field.placeholder = "Enter your e-mail"
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         field.leftViewMode = .always
@@ -50,9 +50,9 @@ class RegisterViewController: UIViewController {
         field.autocapitalizationType = .none
         field.autocorrectionType = .no
         field.returnKeyType = .done
-        field.layer.cornerRadius = 12
-        field.layer.borderWidth = 2
-        field.layer.borderColor = UIColor.purple.cgColor
+        field.layer.cornerRadius = 15
+        field.layer.borderWidth = 5
+        field.layer.borderColor = UIColor.systemPurple.cgColor
         field.placeholder = "Enter your password"
         field.isSecureTextEntry = true
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
@@ -66,9 +66,9 @@ class RegisterViewController: UIViewController {
         field.autocapitalizationType = .none
         field.autocorrectionType = .no
         field.returnKeyType = .continue
-        field.layer.cornerRadius = 12
-        field.layer.borderWidth = 2
-        field.layer.borderColor = UIColor.purple.cgColor
+        field.layer.cornerRadius = 15
+        field.layer.borderWidth = 5
+        field.layer.borderColor = UIColor.systemPurple.cgColor
         field.placeholder = "Enter your first name"
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         field.leftViewMode = .always
@@ -81,9 +81,9 @@ class RegisterViewController: UIViewController {
         field.autocapitalizationType = .none
         field.autocorrectionType = .no
         field.returnKeyType = .continue
-        field.layer.cornerRadius = 12
-        field.layer.borderWidth = 2
-        field.layer.borderColor = UIColor.purple.cgColor
+        field.layer.cornerRadius = 15
+        field.layer.borderWidth = 5
+        field.layer.borderColor = UIColor.systemPurple.cgColor
         field.placeholder = "Enter your last name"
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         field.leftViewMode = .always
@@ -103,9 +103,9 @@ class RegisterViewController: UIViewController {
     private let teamChooseOption: UIPickerView = {
         let picker = UIPickerView()
         picker.backgroundColor = UIColor.lightGreen()
-        picker.layer.cornerRadius = 12
-        picker.layer.borderWidth = 2
-        picker.layer.borderColor = UIColor.purple.cgColor
+        picker.layer.cornerRadius = 15
+        picker.layer.borderWidth = 5
+        picker.layer.borderColor = UIColor.systemPurple.cgColor
         return picker
     }()
     

@@ -16,7 +16,7 @@ class UsersFeedCollectionViewController: UIViewController, UICollectionViewDeleg
     
     private var viewModel: UserFeedProtocol!
     
-    private var user: User?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,20 +33,13 @@ class UsersFeedCollectionViewController: UIViewController, UICollectionViewDeleg
             self.collectionView?.reloadData()
         }
 
-//        viewModel.getFeed {
-//            self.collectionView?.reloadData()
-//        }
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.itemSize = CGSize(width: view.frame.size.width - 10, height: view.frame.size.width / 2)
-//        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
 
 
         guard let collectionView = collectionView else { return }
-//        if let collectionViewLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
-//            collectionViewLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
-//        }
         collectionView.frame = view.bounds
         view.addSubview(collectionView)
         view.backgroundColor = .systemBackground
@@ -78,7 +71,6 @@ class UsersFeedCollectionViewController: UIViewController, UICollectionViewDeleg
     // MARK: UICollectionViewDataSource
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of items
         viewModel.numberOfPosts()
     }
 

@@ -30,12 +30,6 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
         
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        super.viewWillAppear(animated)
-//        
-//        tabBarController?.tabBar.isHidden = false
-//    }
-    
     private func setupUI() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"),
                                                            style: .done,

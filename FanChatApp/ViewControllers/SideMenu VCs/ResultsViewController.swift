@@ -20,6 +20,10 @@ class ResultsViewController: UITableViewController {
     private func configureUI() {
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Results"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"),
+                                                           style: .done,
+                                                           target: self,
+                                                           action: #selector(didTapClose))
         view.backgroundColor = .systemBackground
         tableView.register(TeamStandingCell.self, forCellReuseIdentifier: TeamStandingCell.identifier)
         viewModel = TeamStandingViewModel()
@@ -31,6 +35,10 @@ class ResultsViewController: UITableViewController {
         tableView.separatorStyle = .none
         
         
+    }
+    
+    @objc private func didTapClose() {
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

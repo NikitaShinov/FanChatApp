@@ -23,7 +23,7 @@ class FeedTableViewCell: UITableViewCell {
     lazy var title: UILabel = {
         let title = UILabel()
         title.numberOfLines = 0
-        title.textAlignment = .natural
+        title.textAlignment = .left
         title.font = .systemFont(ofSize: 22, weight: .medium)
         return title
     }()
