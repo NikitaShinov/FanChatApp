@@ -13,7 +13,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = #colorLiteral(red: 0.02103929222, green: 0.9883262515, blue: 0.4782025814, alpha: 1)
+        view.backgroundColor = UIColor.lightGreen()
         view.addSubview(scrollView)
         scrollView.addSubview(appLogo)
         scrollView.addSubview(emailTextField)
@@ -153,7 +153,7 @@ class LoginViewController: UIViewController {
     
     @objc private func registerButtonTapped() {
         let vc = RegisterViewController()
-        vc.title = "Create new User"
+        vc.title = "Create new User".uppercased()
         navigationController?.pushViewController(vc, animated: true)
     }
     

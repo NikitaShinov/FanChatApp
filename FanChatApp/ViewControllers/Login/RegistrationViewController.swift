@@ -11,6 +11,8 @@ import Firebase
 
 class RegisterViewController: UIViewController {
     
+    private let spinner = UIActivityIndicatorView(style: .large)
+    
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.clipsToBounds = true
@@ -21,7 +23,10 @@ class RegisterViewController: UIViewController {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "person.fill.badge.plus")
         imageView.tintColor = .gray
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
+        imageView.layer.masksToBounds = true
+        imageView.layer.borderWidth = 2
+        imageView.layer.borderColor = UIColor.purple.cgColor
         return imageView
     }()
     
@@ -31,8 +36,8 @@ class RegisterViewController: UIViewController {
         field.autocorrectionType = .no
         field.returnKeyType = .continue
         field.layer.cornerRadius = 12
-        field.layer.borderWidth = 1
-        field.layer.borderColor = UIColor.lightGray.cgColor
+        field.layer.borderWidth = 2
+        field.layer.borderColor = UIColor.purple.cgColor
         field.placeholder = "Enter your e-mail"
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         field.leftViewMode = .always
@@ -46,8 +51,8 @@ class RegisterViewController: UIViewController {
         field.autocorrectionType = .no
         field.returnKeyType = .done
         field.layer.cornerRadius = 12
-        field.layer.borderWidth = 1
-        field.layer.borderColor = UIColor.lightGray.cgColor
+        field.layer.borderWidth = 2
+        field.layer.borderColor = UIColor.purple.cgColor
         field.placeholder = "Enter your password"
         field.isSecureTextEntry = true
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
@@ -62,8 +67,8 @@ class RegisterViewController: UIViewController {
         field.autocorrectionType = .no
         field.returnKeyType = .continue
         field.layer.cornerRadius = 12
-        field.layer.borderWidth = 1
-        field.layer.borderColor = UIColor.lightGray.cgColor
+        field.layer.borderWidth = 2
+        field.layer.borderColor = UIColor.purple.cgColor
         field.placeholder = "Enter your first name"
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         field.leftViewMode = .always
@@ -77,8 +82,8 @@ class RegisterViewController: UIViewController {
         field.autocorrectionType = .no
         field.returnKeyType = .continue
         field.layer.cornerRadius = 12
-        field.layer.borderWidth = 1
-        field.layer.borderColor = UIColor.lightGray.cgColor
+        field.layer.borderWidth = 2
+        field.layer.borderColor = UIColor.purple.cgColor
         field.placeholder = "Enter your last name"
         field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
         field.leftViewMode = .always
@@ -97,7 +102,10 @@ class RegisterViewController: UIViewController {
     
     private let teamChooseOption: UIPickerView = {
         let picker = UIPickerView()
-        picker.backgroundColor = .systemBackground
+        picker.backgroundColor = UIColor.lightGreen()
+        picker.layer.cornerRadius = 12
+        picker.layer.borderWidth = 2
+        picker.layer.borderColor = UIColor.purple.cgColor
         return picker
     }()
     
@@ -117,8 +125,10 @@ class RegisterViewController: UIViewController {
         
         viewModel = RegistrationViewModel()
         
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.lightGreen()
         view.addSubview(scrollView)
+        configureSpinnerView()
+        showSpinnerLoadingView(isShowing: false)
         scrollView.addSubview(imageView)
         scrollView.addSubview(teamChooseOption)
         teamChooseOption.delegate = self
@@ -142,6 +152,32 @@ class RegisterViewController: UIViewController {
                                              action: #selector(didTapChangeProfileImage))
         imageView.addGestureRecognizer(gesture)
         
+    }
+    
+    private func showSpinnerLoadingView(isShowing: Bool) {
+        if isShowing {
+            self.spinner.isHidden = false
+            spinner.startAnimating()
+        } else if spinner.isAnimating {
+            spinner.stopAnimating()
+            spinner.isHidden = true
+        }
+    }
+    
+    private func configureSpinnerView() {
+        
+        view.addSubview(spinner)
+        
+        spinner.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
+            spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0),
+            spinner.heightAnchor.constraint(equalToConstant: 24),
+            spinner.widthAnchor.constraint(equalToConstant: 24)
+        ])
+        
+        spinner.isHidden = true
     }
     
     @objc private func didTapChangeProfileImage() {
@@ -177,6 +213,8 @@ class RegisterViewController: UIViewController {
                 
                 print ("start uploading image")
                 
+                self.showSpinnerLoadingView(isShowing: true)
+                
                 storage.child("profile_avatars").child(fileName).putData(imageData, metadata: nil) { _, error in
                     guard error == nil else {
                         print ("failed to upload profile image")
@@ -207,6 +245,7 @@ class RegisterViewController: UIViewController {
                                 print ("Failed to save user info into DB: \(error)")
                             }
                             
+                            self.showSpinnerLoadingView(isShowing: false)
                             print ("successfully saved")
                             
                             self.navigationController?.popToRootViewController(animated: true)
@@ -234,6 +273,8 @@ class RegisterViewController: UIViewController {
                                  y: 20,
                                  width: size,
                                  height: size)
+        
+        imageView.layer.cornerRadius = size / 2
         
         emailField.frame = CGRect(x: 30,
                                   y: imageView.bottom + 20,

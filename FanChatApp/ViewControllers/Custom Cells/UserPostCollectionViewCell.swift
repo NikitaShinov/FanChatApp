@@ -48,7 +48,7 @@ class UserPostCollectionViewCell: UICollectionViewCell {
         contentView.layer.borderColor = UIColor.purple.cgColor
         contentView.layer.borderWidth = 3
         contentView.layer.cornerRadius = 10
-        
+    
         
         let buttonsStackView = UIStackView(arrangedSubviews: [likeButton, commentButton])
         buttonsStackView.distribution = .fillEqually

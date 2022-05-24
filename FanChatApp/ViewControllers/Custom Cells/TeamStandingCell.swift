@@ -15,7 +15,6 @@ class TeamStandingCell: UITableViewCell {
     lazy var teamRank: UILabel = {
         let title = UILabel()
         title.font = .boldSystemFont(ofSize: 14)
-        title.backgroundColor = .yellow
         title.textAlignment = .center
         return title
     }()
@@ -25,7 +24,6 @@ class TeamStandingCell: UITableViewCell {
         title.numberOfLines = 0
         title.textAlignment = .center
         title.textAlignment = .left
-        title.backgroundColor = .cyan
         title.font = .systemFont(ofSize: 14, weight: .medium)
         return title
     }()
@@ -33,7 +31,6 @@ class TeamStandingCell: UITableViewCell {
     lazy var teamSummary: UILabel = {
         let summary = UILabel()
         summary.numberOfLines = 0
-        summary.backgroundColor = .red
         summary.font = .systemFont(ofSize: 12)
         return summary
     }()

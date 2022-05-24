@@ -39,10 +39,14 @@ class UsersFeedCollectionViewController: UIViewController, UICollectionViewDeleg
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.itemSize = CGSize(width: view.frame.size.width - 10, height: view.frame.size.width / 2)
+//        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        
-        
+
+
         guard let collectionView = collectionView else { return }
+//        if let collectionViewLayout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
+//            collectionViewLayout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
+//        }
         collectionView.frame = view.bounds
         view.addSubview(collectionView)
         view.backgroundColor = .systemBackground

@@ -67,7 +67,13 @@ class CreatePostViewController: UIViewController {
     
     @objc func createButtonTapped() {
         
-        guard let caption = textView.text, caption.count > 0 else { return }
+        guard let caption = textView.text, caption.count > 0 && caption.count < 255 else {
+            let alert = UIAlertController(title: "Error", message: "Your input must be between 0 and 255 characters.", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
+            alert.addAction(okAction)
+            present(alert, animated: true, completion: nil)
+            return 
+        }
         
         guard let currentUser = user else { return }
         

@@ -11,7 +11,6 @@ import Firebase
 protocol UserFeedProtocol: AnyObject {
     var feed: [Post] { get set }
     func getUserPosts(completion: @escaping () -> Void)
-//    func getFeed(completion: @escaping () -> Void)
     func numberOfPosts() -> Int
 }
 
@@ -40,6 +39,9 @@ class UserFeedViewModel: UserFeedProtocol {
                         guard let dictionary = value as? [String: Any] else { return }
                         let post = Post(dictionary: dictionary)
                         self.feed.append(post)
+                        self.feed.sort { post1, post2 in
+                            return post1.creationDate.compare(post2.creationDate) == .orderedDescending
+                        }
                         completion()
                     }
                 }
