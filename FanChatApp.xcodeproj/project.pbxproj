@@ -41,6 +41,9 @@
 		50E03FDA283BA90F005E87C0 /* CreatePostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E03FD9283BA90F005E87C0 /* CreatePostViewController.swift */; };
 		50E03FDC283BDF91005E87C0 /* UserFeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E03FDB283BDF91005E87C0 /* UserFeedViewModel.swift */; };
 		50E03FE2283DA463005E87C0 /* UserDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E03FE1283DA462005E87C0 /* UserDetailsViewModel.swift */; };
+		50E03FE4283E58C2005E87C0 /* UserDetailsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E03FE3283E58C2005E87C0 /* UserDetailsCollectionViewController.swift */; };
+		50E03FE6283E5933005E87C0 /* UserDetailsHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E03FE5283E5933005E87C0 /* UserDetailsHeader.swift */; };
+		50E03FE8283E85F4005E87C0 /* UserDetailsPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50E03FE7283E85F4005E87C0 /* UserDetailsPostCollectionViewCell.swift */; };
 		50EDD06827E9358A00E64B5C /* UsersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EDD06727E9358A00E64B5C /* UsersViewController.swift */; };
 		50EDD06A27E935C700E64B5C /* ResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EDD06927E935C700E64B5C /* ResultsViewController.swift */; };
 		50EDD06C27E9407600E64B5C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EDD06B27E9407600E64B5C /* ProfileViewController.swift */; };
@@ -90,6 +93,9 @@
 		50E03FD9283BA90F005E87C0 /* CreatePostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostViewController.swift; sourceTree = "<group>"; };
 		50E03FDB283BDF91005E87C0 /* UserFeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedViewModel.swift; sourceTree = "<group>"; };
 		50E03FE1283DA462005E87C0 /* UserDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsViewModel.swift; sourceTree = "<group>"; };
+		50E03FE3283E58C2005E87C0 /* UserDetailsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsCollectionViewController.swift; sourceTree = "<group>"; };
+		50E03FE5283E5933005E87C0 /* UserDetailsHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsHeader.swift; sourceTree = "<group>"; };
+		50E03FE7283E85F4005E87C0 /* UserDetailsPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsPostCollectionViewCell.swift; sourceTree = "<group>"; };
 		50EDD06727E9358A00E64B5C /* UsersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersViewController.swift; sourceTree = "<group>"; };
 		50EDD06927E935C700E64B5C /* ResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsViewController.swift; sourceTree = "<group>"; };
 		50EDD06B27E9407600E64B5C /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				5020495C282EAEE2001D6AA8 /* UserDetailsViewController.swift */,
+				50E03FE3283E58C2005E87C0 /* UserDetailsCollectionViewController.swift */,
+				50E03FE5283E5933005E87C0 /* UserDetailsHeader.swift */,
 				50E03FD9283BA90F005E87C0 /* CreatePostViewController.swift */,
 			);
 			path = "Secondary ViewControllers";
@@ -260,6 +268,7 @@
 				50E03F2B28325769005E87C0 /* TeamStandingCell.swift */,
 				50204959282ADB25001D6AA8 /* UserCollectionViewCell.swift */,
 				50E03F9528355B79005E87C0 /* UserPostCollectionViewCell.swift */,
+				50E03FE7283E85F4005E87C0 /* UserDetailsPostCollectionViewCell.swift */,
 				5020490E28072EB4001D6AA8 /* CustomImageView.swift */,
 			);
 			path = "Custom Cells";
@@ -390,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50E03F982836AB4F005E87C0 /* UsersFeedCollectionViewController.swift in Sources */,
+				50E03FE4283E58C2005E87C0 /* UserDetailsCollectionViewController.swift in Sources */,
 				5022260A27E215BD00E3B4D5 /* RegistrationViewController.swift in Sources */,
 				50E03F8C2833E8BE005E87C0 /* MenuTableViewCell.swift in Sources */,
 				5020490F28072EB4001D6AA8 /* CustomImageView.swift in Sources */,
@@ -408,6 +418,7 @@
 				50E03FDC283BDF91005E87C0 /* UserFeedViewModel.swift in Sources */,
 				50EDD06A27E935C700E64B5C /* ResultsViewController.swift in Sources */,
 				5022261827E776CE00E3B4D5 /* DatabaseManager.swift in Sources */,
+				50E03FE8283E85F4005E87C0 /* UserDetailsPostCollectionViewCell.swift in Sources */,
 				50EDD07227EA0C3E00E64B5C /* FeedTableViewCell.swift in Sources */,
 				5022246127B1D86600E3B4D5 /* Extensions.swift in Sources */,
 				5020490D28072BE1001D6AA8 /* Post.swift in Sources */,
@@ -422,6 +433,7 @@
 				50E03F8E2833E8C7005E87C0 /* MenuViewController.swift in Sources */,
 				50EDD06827E9358A00E64B5C /* UsersViewController.swift in Sources */,
 				5020495628282F56001D6AA8 /* UsersViewModel.swift in Sources */,
+				50E03FE6283E5933005E87C0 /* UserDetailsHeader.swift in Sources */,
 				50E03F2E28325856005E87C0 /* TeamStandigViewModel.swift in Sources */,
 				50C058BE27AB2263004A0D61 /* AppDelegate.swift in Sources */,
 				50EDD08327F4A45900E64B5C /* ProfileViewModel.swift in Sources */,

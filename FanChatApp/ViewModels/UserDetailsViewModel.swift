@@ -10,6 +10,7 @@ import Firebase
 
 protocol UserDetailsViewModelProtocol: AnyObject {
     var userPosts: [Post] { get }
+    func numberOfItems() -> Int
     func fetchUserPosts(user: String, completion: @escaping () -> Void)
 }
 
@@ -27,8 +28,11 @@ class UserDetailsViewModel: UserDetailsViewModelProtocol {
                 self.userPosts.append(userPost)
                 completion()
             }
-            
         }
+    }
+    
+    func numberOfItems() -> Int {
+        userPosts.count
     }
     
     

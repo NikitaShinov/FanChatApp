@@ -89,7 +89,8 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
         
         let user = viewModel.users[indexPath.item]
         
-        let vc = UserDetailsViewController()
+//        let vc = UserDetailsViewController()
+        let vc = UserDetailsCollectionViewController()
         vc.user = user
         navigationController?.pushViewController(vc, animated: true)
 //        tabBarController?.tabBar.isHidden = true

@@ -36,6 +36,7 @@ class CustomImageView: UIImageView {
             
             DispatchQueue.main.async {
                 self.image = photo
+                print ("Image loaded")
             }
         }.resume()
     }
