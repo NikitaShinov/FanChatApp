@@ -6,17 +6,14 @@
 //
 
 import UIKit
+import SideMenu
 import SafariServices
-
-protocol HomeViewControllerDelegate: AnyObject {
-    func didTapMenuButton()
-}
 
 class NewsViewController: UITableViewController {
     
     private var viewModel: FeedViewModelProtocol!
     
-    weak var delegate: HomeViewControllerDelegate?
+    var menu: SideMenuNavigationController!
     
     let spinner = UIActivityIndicatorView(style: .large)
     
@@ -24,11 +21,13 @@ class NewsViewController: UITableViewController {
         super.viewDidLoad()
         viewModel = FeedViewModel()
         configureUI()
+//        configureNavBar()
 
     }
     
-    @objc func didTapMenuButton() {
-        delegate?.didTapMenuButton()
+
+    @objc private func didTapMenuButton() {
+        present(menu, animated: true)
     }
     
     private func configureUI() {
@@ -36,6 +35,11 @@ class NewsViewController: UITableViewController {
         
         title = "News"
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "sidebar.leading"), style: .done, target: self, action: #selector(didTapMenuButton))
+        menu = SideMenuNavigationController(rootViewController: MenuListController())
+        menu?.leftSide = true
+        menu?.setNavigationBarHidden(true, animated: false)
+        SideMenuManager.default.leftMenuNavigationController = menu
+//        SideMenuManager.default.addPanGestureToPresent(toView: self.view)
         configureSpinnerView()
         showSpinnerLoadingView(isShowing: true)
         viewModel.getNews {

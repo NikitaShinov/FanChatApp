@@ -57,7 +57,7 @@ class UserDetailsCollectionViewController: UIViewController, UICollectionViewDel
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserDetailsPostCollectionViewCell.identifier,
-                                                      for: indexPath) as! UserDetailsPostCollectionViewCell
+                                                       for: indexPath) as! UserDetailsPostCollectionViewCell
         cell.userProfileImageView.loadImage(urlString: viewModel.userPosts[indexPath.item].imageUrl)
         cell.userNameLabel.text = viewModel.userPosts[indexPath.item].userName
         cell.postLabel.text = viewModel.userPosts[indexPath.item].caption
@@ -69,8 +69,6 @@ class UserDetailsCollectionViewController: UIViewController, UICollectionViewDel
                                                                      withReuseIdentifier: headerId,
                                                                      for: indexPath) as! UserDetailsHeader
         if let user = user {
-            print ("Getting user's image profile for header")
-            print (user.profileImageUrl)
             header.userImage.loadImage(urlString: user.profileImageUrl)
             header.detailsLabel.text = "Recent posts by \(user.username):"
         }
@@ -83,58 +81,3 @@ class UserDetailsCollectionViewController: UIViewController, UICollectionViewDel
 
 
 }
-
-//class UserDetailsCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-//
-//    let headerId = "headerId"
-//    var user: User?
-//    var viewModel: UserDetailsViewModelProtocol!
-//
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//
-//        title = user?.username
-//        viewModel = UserDetailsViewModel()
-//        guard let uid = user?.uid else { return }
-//        print (uid)
-//        viewModel.fetchUserPosts(user: uid) {
-//            self.collectionView?.reloadData()
-//            print (self.viewModel.userPosts.count)
-//        }
-//
-//        collectionView.register(UserDetailsPostCollectionViewCell.self,
-//                                forCellWithReuseIdentifier: UserDetailsPostCollectionViewCell.identifier)
-//        collectionView.register(UserDetailsHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
-//
-//    }
-//
-//    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        print ("NUMBER OF ITEMS \(viewModel.numberOfItems())")
-//        return viewModel.numberOfItems()
-//    }
-//
-//    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserDetailsPostCollectionViewCell.identifier,
-//                                                      for: indexPath) as! UserDetailsPostCollectionViewCell
-//        cell.userProfileImageView.loadImage(urlString: viewModel.userPosts[indexPath.item].imageUrl)
-//        cell.userNameLabel.text = viewModel.userPosts[indexPath.item].userName
-//        cell.postLabel.text = viewModel.userPosts[indexPath.item].caption
-//        return cell
-//    }
-//
-//    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-//        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-//                                                                     withReuseIdentifier: headerId,
-//                                                                     for: indexPath) as! UserDetailsHeader
-//        if let user = user {
-//            print ("Getting user's image profile for header")
-//            print (user.profileImageUrl)
-//            header.userImage.loadImage(urlString: user.profileImageUrl)
-//        }
-//        return header
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-//        return CGSize(width: view.frame.width, height: 200)
-//    }
-//}

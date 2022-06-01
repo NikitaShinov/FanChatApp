@@ -177,7 +177,7 @@ class LoginViewController: UIViewController {
             
             print ("successfully logged in user: \(user?.user.uid ?? "no user")")
             
-            let vc = ContainerViewController()
+            let vc = UINavigationController(rootViewController: NewsViewController())
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: nil)
         }

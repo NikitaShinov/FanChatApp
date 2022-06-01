@@ -26,7 +26,6 @@ class UserPostCollectionViewCell: UICollectionViewCell {
     
     let userNameLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .blue
         return label
     }()
     
@@ -60,7 +59,7 @@ class UserPostCollectionViewCell: UICollectionViewCell {
         
         userProfileImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: 30, height: 30)
         userProfileImageView.layer.cornerRadius = 15
-        userNameLabel.anchor(top: topAnchor, left: userProfileImageView.rightAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: 100, height: 30)
+        userNameLabel.anchor(top: topAnchor, left: userProfileImageView.rightAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: 15, paddingBottom: 0, paddingRight: 0, width: contentView.width, height: 30)
         postLabel.anchor(top: userProfileImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 10, paddingLeft: 15, paddingBottom: 0, paddingRight: 15, width: 0, height: 0)
         buttonsStackView.anchor(top: nil, left: leftAnchor, bottom: bottomAnchor, right: nil, paddingTop: 0, paddingLeft: 15, paddingBottom: 10, paddingRight: 0, width: 120, height: 30)
         

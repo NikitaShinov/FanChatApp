@@ -15,6 +15,8 @@ class UserDetailsHeader: UICollectionViewCell {
         let image = CustomImageView()
         image.layer.masksToBounds = true
         image.layer.cornerRadius = 50
+        image.layer.borderColor = UIColor.purple.cgColor
+        image.layer.borderWidth = 2
         image.backgroundColor = .red
         return image
     }()
@@ -42,7 +44,7 @@ class UserDetailsHeader: UICollectionViewCell {
         
         detailsLabel.anchor(top: userImage.bottomAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: contentView.width, height: 30)
         
-        divider.anchor(top: detailsLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 20, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: contentView.width, height: 1)
+        divider.anchor(top: detailsLabel.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 20, paddingLeft: 20, paddingBottom: 0, paddingRight: 20, width: contentView.width, height: 1)
     }
     
     required init?(coder: NSCoder) {

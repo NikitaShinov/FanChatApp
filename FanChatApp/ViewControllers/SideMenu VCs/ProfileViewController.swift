@@ -7,48 +7,15 @@
 
 import UIKit
 import Firebase
+import SideMenu
 
 
 class ProfileViewController: UIViewController {
     
     
     var profileViewModel: ProfileViewModelProtocol!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationController?.navigationBar.prefersLargeTitles = true
-        title = "Profile"
-        view.backgroundColor = .systemBackground
-        setupScrollView()
-        setupNavBarItem()
-        setupProfile()
-        
-    }
     
-    private func setupScrollView() {
-        view.addSubview(scrollView)
-        scrollView.addSubview(imageView)
-        scrollView.addSubview(nameLabel)
-    }
-    
-    private func setupNavBarItem() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "gear"),
-                                                            style: .plain,
-                                                            target: self,
-                                                            action: #selector(logOutButtonPressed))
-        
-        
-        navigationItem.rightBarButtonItem?.tintColor = .black
-        
-    }
-    
-    private func setupProfile() {
-        profileViewModel = ProfileViewModel()
-        profileViewModel.getUser { user in
-            self.nameLabel.text = user.username
-            self.imageView.loadImage(urlString: user.profileImageUrl)
-        }
-    }
+    var menu: SideMenuNavigationController!
     
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -76,6 +43,47 @@ class ProfileViewController: UIViewController {
 
         return label
     }()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "Profile"
+        view.backgroundColor = .systemBackground
+        setupScrollView()
+        setupNavBarItem()
+        setupProfile()
+        
+    }
+    
+    private func setupScrollView() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(imageView)
+        scrollView.addSubview(nameLabel)
+    }
+    
+    private func setupNavBarItem() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "sidebar.leading"), style: .done, target: self, action: #selector(didTapMenuButton))
+        menu = SideMenuNavigationController(rootViewController: MenuListController())
+        menu?.leftSide = true
+        menu?.setNavigationBarHidden(true, animated: false)
+        SideMenuManager.default.leftMenuNavigationController = menu
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "gear"),
+                                                            style: .plain,
+                                                            target: self,
+                                                            action: #selector(logOutButtonPressed))
+        
+        
+        navigationItem.rightBarButtonItem?.tintColor = .black
+        
+    }
+    
+    private func setupProfile() {
+        profileViewModel = ProfileViewModel()
+        profileViewModel.getUser { user in
+            self.nameLabel.text = user.username
+            self.imageView.loadImage(urlString: user.profileImageUrl)
+        }
+    }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -95,6 +103,10 @@ class ProfileViewController: UIViewController {
                                  height: 50)
 
         
+    }
+    
+    @objc private func didTapMenuButton() {
+        present(menu, animated: true)
     }
     
     @objc private func didTapChangeProfileImage() {

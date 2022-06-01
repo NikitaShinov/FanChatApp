@@ -7,6 +7,7 @@
 
 import UIKit
 import Firebase
+import SideMenu
 
 private let reuseIdentifier = "cellId"
 
@@ -16,8 +17,8 @@ class UsersFeedCollectionViewController: UIViewController, UICollectionViewDeleg
     
     private var viewModel: UserFeedProtocol!
     
-    
-    
+    var menu: SideMenuNavigationController!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         configure()
@@ -46,7 +47,12 @@ class UsersFeedCollectionViewController: UIViewController, UICollectionViewDeleg
         collectionView.register(UserPostCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
         collectionView.delegate = self
         collectionView.dataSource = self
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .done, target: self, action: #selector(didTapClose))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "sidebar.leading"), style: .done, target: self, action: #selector(didTapMenuButton))
+        menu = SideMenuNavigationController(rootViewController: MenuListController())
+        menu?.leftSide = true
+        menu?.setNavigationBarHidden(true, animated: false)
+        SideMenuManager.default.leftMenuNavigationController = menu
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .done, target: self, action: #selector(didTapClose))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus.bubble"), style: .done, target: self, action: #selector(createPost))
     }
     
@@ -57,9 +63,13 @@ class UsersFeedCollectionViewController: UIViewController, UICollectionViewDeleg
         }
     }
     
-    @objc private func didTapClose() {
-        navigationController?.dismiss(animated: true, completion: nil)
+    @objc private func didTapMenuButton() {
+        present(menu, animated: true)
     }
+    
+//    @objc private func didTapClose() {
+//        navigationController?.dismiss(animated: true, completion: nil)
+//    }
     
     @objc private func createPost() {
         let vc = UINavigationController(rootViewController: CreatePostViewController())

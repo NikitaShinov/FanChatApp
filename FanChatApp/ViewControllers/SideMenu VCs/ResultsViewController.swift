@@ -6,11 +6,13 @@
 //
 
 import UIKit
-import CoreMedia
+import SideMenu
 
 class ResultsViewController: UITableViewController {
     
     private var viewModel: TeamStandingProtocol!
+    
+    var menu: SideMenuNavigationController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,10 +22,15 @@ class ResultsViewController: UITableViewController {
     private func configureUI() {
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Results"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"),
-                                                           style: .done,
-                                                           target: self,
-                                                           action: #selector(didTapClose))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "sidebar.leading"), style: .done, target: self, action: #selector(didTapMenuButton))
+        menu = SideMenuNavigationController(rootViewController: MenuListController())
+        menu?.leftSide = true
+        menu?.setNavigationBarHidden(true, animated: false)
+        SideMenuManager.default.leftMenuNavigationController = menu
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"),
+//                                                           style: .done,
+//                                                           target: self,
+//                                                           action: #selector(didTapClose))
         view.backgroundColor = .systemBackground
         tableView.register(TeamStandingCell.self, forCellReuseIdentifier: TeamStandingCell.identifier)
         viewModel = TeamStandingViewModel()
@@ -37,9 +44,13 @@ class ResultsViewController: UITableViewController {
         
     }
     
-    @objc private func didTapClose() {
-        navigationController?.dismiss(animated: true, completion: nil)
+    @objc private func didTapMenuButton() {
+        present(menu, animated: true)
     }
+    
+//    @objc private func didTapClose() {
+//        navigationController?.dismiss(animated: true, completion: nil)
+//    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.teams.count

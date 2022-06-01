@@ -63,7 +63,7 @@ extension MenuViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: MenuTableViewCell.cellId, for: indexPath) as! MenuTableViewCell
-        cell.viewModel = MenuCellViewModel(menuOption: MenuOptions.allCases[indexPath.row])
+//        cell.viewModel = MenuCellViewModel(menuOption: MenuOptions.allCases[indexPath.row])
         return cell
     }
     

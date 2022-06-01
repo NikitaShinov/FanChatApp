@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import SideMenu
 
 class UsersViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
     
     private var viewModel: UsersViewModelProtocol!
     
     var collectionView: UICollectionView?
+    
+    var menu: SideMenuNavigationController!
     
     var searchBar: UISearchBar = {
         let search = UISearchBar()
@@ -31,16 +34,26 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     private func setupUI() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"),
-                                                           style: .done,
-                                                           target: self,
-                                                           action: #selector(didTapClose))
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"),
+//                                                           style: .done,
+//                                                           target: self,
+//                                                           action: #selector(didTapClose))
+
         title = "Users"
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "sidebar.leading"), style: .done, target: self, action: #selector(didTapMenuButton))
+        menu = SideMenuNavigationController(rootViewController: MenuListController())
+        menu?.leftSide = true
+        menu?.setNavigationBarHidden(true, animated: false)
+        SideMenuManager.default.leftMenuNavigationController = menu
     }
     
-    @objc private func didTapClose() {
-        navigationController?.dismiss(animated: true, completion: nil)
+    @objc private func didTapMenuButton() {
+        present(menu, animated: true)
     }
+    
+//    @objc private func didTapClose() {
+//        navigationController?.dismiss(animated: true, completion: nil)
+//    }
     
     private func setupLayout() {
         let layout = UICollectionViewFlowLayout()

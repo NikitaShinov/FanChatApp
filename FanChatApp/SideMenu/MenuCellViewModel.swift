@@ -9,7 +9,7 @@ import Foundation
 
 struct MenuCellViewModel {
     
-    let menuOption: MenuViewController.MenuOptions
+    let menuOption: MenuListController.MenuOptions
     
     var imageName: String {
         switch menuOption {
@@ -29,7 +29,7 @@ struct MenuCellViewModel {
         }
     }
     
-    init(menuOption: MenuViewController.MenuOptions) {
+    init(menuOption: MenuListController.MenuOptions) {
         self.menuOption = menuOption
     }
 }

@@ -9,6 +9,6 @@ target 'FanChatApp' do
   pod 'Firebase/Analytics'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
-
+  pod 'SideMenu'
 
 end
