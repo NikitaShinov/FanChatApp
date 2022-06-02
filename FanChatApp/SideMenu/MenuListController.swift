@@ -49,11 +49,31 @@ class MenuListController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-//        let item = MenuOptions.allCases[indexPath.row]
-//        switch indexPath.row {
-//        case 0:
-//            present(<#T##viewControllerToPresent: UIViewController##UIViewController#>, animated: <#T##Bool#>, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
-//        }
+        switch indexPath.row {
+        case 0:
+            let vc = NewsViewController()
+            let navViewController = self.navigationController
+            navViewController?.pushViewController(vc, animated: true)
+        case 1:
+            let vc = UsersFeedCollectionViewController()
+            let navViewController = self.navigationController
+            navViewController?.pushViewController(vc, animated: true)
+        case 2:
+            let vc = UsersViewController()
+            let navViewController = self.navigationController
+            navViewController?.pushViewController(vc, animated: true)
+        case 3:
+            let vc = ResultsViewController()
+            let navViewController = self.navigationController
+            navViewController?.pushViewController(vc, animated: true)
+        case 4:
+            let vc = ProfileViewController()
+            let navViewController = self.navigationController
+            navViewController?.pushViewController(vc, animated: true)
+        default:
+            break
+            
+        }
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
