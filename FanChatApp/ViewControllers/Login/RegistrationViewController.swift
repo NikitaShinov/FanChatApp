@@ -204,6 +204,8 @@ class RegisterViewController: UIViewController {
                     return
                 }
                 
+                self.saveUserCredentials(username: email, password: password)
+                
                 guard let image = self.imageView.image else { return }
                 guard let imageData = image.jpegData(compressionQuality: 0.3) else { return }
                 
@@ -254,6 +256,20 @@ class RegisterViewController: UIViewController {
                         }
                     }
             }
+        }
+    }
+    
+    func saveUserCredentials(username: String, password: String) {
+        UserDefaults.standard.set(username, forKey: Constants.kUserName)
+        UserDefaults.standard.synchronize()
+        
+        
+        let passwordItem = KeychainPasswordItem(service: KeychainConfig.serviceName, account: username, accessGroup: KeychainConfig.accessGroup)
+        
+        do {
+            try passwordItem.savePassword(password)
+        } catch let error {
+            fatalError("Error with Keychain saving password: \(error)")
         }
     }
     

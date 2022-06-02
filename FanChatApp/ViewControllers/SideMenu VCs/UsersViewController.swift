@@ -51,10 +51,6 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
         present(menu, animated: true)
     }
     
-//    @objc private func didTapClose() {
-//        navigationController?.dismiss(animated: true, completion: nil)
-//    }
-    
     private func setupLayout() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical

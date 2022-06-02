@@ -52,7 +52,6 @@ class UsersFeedCollectionViewController: UIViewController, UICollectionViewDeleg
         menu?.leftSide = true
         menu?.setNavigationBarHidden(true, animated: false)
         SideMenuManager.default.leftMenuNavigationController = menu
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .done, target: self, action: #selector(didTapClose))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus.bubble"), style: .done, target: self, action: #selector(createPost))
     }
     
@@ -66,10 +65,6 @@ class UsersFeedCollectionViewController: UIViewController, UICollectionViewDeleg
     @objc private func didTapMenuButton() {
         present(menu, animated: true)
     }
-    
-//    @objc private func didTapClose() {
-//        navigationController?.dismiss(animated: true, completion: nil)
-//    }
     
     @objc private func createPost() {
         let vc = UINavigationController(rootViewController: CreatePostViewController())

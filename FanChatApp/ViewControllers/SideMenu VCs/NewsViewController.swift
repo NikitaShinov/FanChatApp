@@ -21,7 +21,6 @@ class NewsViewController: UITableViewController {
         super.viewDidLoad()
         viewModel = FeedViewModel()
         configureUI()
-//        configureNavBar()
 
     }
     
@@ -39,7 +38,6 @@ class NewsViewController: UITableViewController {
         menu?.leftSide = true
         menu?.setNavigationBarHidden(true, animated: false)
         SideMenuManager.default.leftMenuNavigationController = menu
-//        SideMenuManager.default.addPanGestureToPresent(toView: self.view)
         configureSpinnerView()
         showSpinnerLoadingView(isShowing: true)
         viewModel.getNews {

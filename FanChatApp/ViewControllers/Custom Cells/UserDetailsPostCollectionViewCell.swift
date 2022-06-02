@@ -26,7 +26,7 @@ class UserDetailsPostCollectionViewCell: UICollectionViewCell {
     
     let userNameLabel: UILabel = {
         let label = UILabel()
-        label.backgroundColor = .blue
+//        label.backgroundColor = .blue
         return label
     }()
     

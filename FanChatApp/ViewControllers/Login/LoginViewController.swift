@@ -9,24 +9,6 @@ import UIKit
 import Firebase
 
 class LoginViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        view.backgroundColor = UIColor.lightGreen()
-        view.addSubview(scrollView)
-        scrollView.addSubview(appLogo)
-        scrollView.addSubview(emailTextField)
-        scrollView.addSubview(passwordTextField)
-        scrollView.addSubview(loginButton)
-        scrollView.addSubview(registerButton)
-        scrollView.addSubview(forgotPasswordButton)
-        
-        registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
-        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        forgotPasswordButton.addTarget(self, action: #selector(forgotPassword), for: .touchUpInside)
-        
-    }
     
     private let appLogo: UIImageView = {
         let imageView = UIImageView()
@@ -45,7 +27,7 @@ class LoginViewController: UIViewController {
         
         let login = UITextField()
         login.placeholder = "Enter your e-mail"
-        login.text = "a@mail.ru"
+//        login.text = "a@mail.ru"
         login.autocorrectionType = .no
         login.returnKeyType = .continue
         login.layer.cornerRadius = 15
@@ -63,7 +45,7 @@ class LoginViewController: UIViewController {
         
         let password = UITextField()
         password.placeholder = "Enter your password"
-        password.text = "arsenal"
+//        password.text = "arsenal"
         password.autocorrectionType = .no
         password.returnKeyType = .done
         password.layer.cornerRadius = 15
@@ -112,6 +94,37 @@ class LoginViewController: UIViewController {
         button.titleLabel?.font = .systemFont(ofSize: 15, weight: .medium)
         return button
     }()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = UIColor.lightGreen()
+        view.addSubview(scrollView)
+        scrollView.addSubview(appLogo)
+        scrollView.addSubview(emailTextField)
+        scrollView.addSubview(passwordTextField)
+        scrollView.addSubview(loginButton)
+        scrollView.addSubview(registerButton)
+        scrollView.addSubview(forgotPasswordButton)
+        
+        registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        forgotPasswordButton.addTarget(self, action: #selector(forgotPassword), for: .touchUpInside)
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let userName = UserDefaults.standard.value(forKey: Constants.kUserName) as? String {
+            emailTextField.text = userName
+//            let passwordItem = KeychainPasswordItem(service: KeychainConfig.serviceName, account: userName, accessGroup: KeychainConfig.accessGroup)
+//            if let password = try? passwordItem.readPassword() {
+//                passwordTextField.text = password
+//            }
+        }
+    }
+    
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -176,6 +189,21 @@ class LoginViewController: UIViewController {
             }
             
             print ("successfully logged in user: \(user?.user.uid ?? "no user")")
+            
+            if UserDefaults.standard.value(forKey: Constants.kUserName) == nil {
+                //save username
+                UserDefaults.standard.set(emailAdress, forKey: Constants.kUserName)
+                UserDefaults.standard.synchronize()
+                
+                
+                let passwordItem = KeychainPasswordItem(service: KeychainConfig.serviceName, account: emailAdress, accessGroup: KeychainConfig.accessGroup)
+                
+                do {
+                    try passwordItem.savePassword(password)
+                } catch let error {
+                    fatalError("Error with Keychain saving password: \(error)")
+                }
+            }
             
             let vc = UINavigationController(rootViewController: NewsViewController())
             vc.modalPresentationStyle = .fullScreen

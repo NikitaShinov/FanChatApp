@@ -122,9 +122,7 @@ class ProfileViewController: UIViewController {
                 
                 try Auth.auth().signOut()
                 
-                self.tabBarController?.dismiss(animated: true, completion: nil)
-                let vc = LoginViewController()
-                self.present(vc, animated: true, completion: nil)
+                self.navigationController?.dismiss(animated: true, completion: nil)
                 
             } catch {
                 

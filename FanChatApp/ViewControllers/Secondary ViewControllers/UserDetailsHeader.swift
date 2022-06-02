@@ -17,7 +17,6 @@ class UserDetailsHeader: UICollectionViewCell {
         image.layer.cornerRadius = 50
         image.layer.borderColor = UIColor.purple.cgColor
         image.layer.borderWidth = 2
-        image.backgroundColor = .red
         return image
     }()
     

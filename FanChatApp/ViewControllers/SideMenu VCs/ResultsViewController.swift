@@ -27,10 +27,6 @@ class ResultsViewController: UITableViewController {
         menu?.leftSide = true
         menu?.setNavigationBarHidden(true, animated: false)
         SideMenuManager.default.leftMenuNavigationController = menu
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"),
-//                                                           style: .done,
-//                                                           target: self,
-//                                                           action: #selector(didTapClose))
         view.backgroundColor = .systemBackground
         tableView.register(TeamStandingCell.self, forCellReuseIdentifier: TeamStandingCell.identifier)
         viewModel = TeamStandingViewModel()
@@ -47,10 +43,6 @@ class ResultsViewController: UITableViewController {
     @objc private func didTapMenuButton() {
         present(menu, animated: true)
     }
-    
-//    @objc private func didTapClose() {
-//        navigationController?.dismiss(animated: true, completion: nil)
-//    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         viewModel.teams.count

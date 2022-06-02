@@ -24,6 +24,9 @@
 		5022261827E776CE00E3B4D5 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022261727E776CD00E3B4D5 /* DatabaseManager.swift */; };
 		5022261A27E78BF200E3B4D5 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022261927E78BF200E3B4D5 /* StorageManager.swift */; };
 		5022261C27E8E70F00E3B4D5 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5022261B27E8E70F00E3B4D5 /* NewsViewController.swift */; };
+		503C2470284918350073CEF6 /* KeychainConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503C246F284918350073CEF6 /* KeychainConfig.swift */; };
+		503C247228491A200073CEF6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503C247128491A200073CEF6 /* Constants.swift */; };
+		503C247428491BB10073CEF6 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503C247328491BB10073CEF6 /* KeychainPasswordItem.swift */; };
 		50C058BE27AB2263004A0D61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C058BD27AB2263004A0D61 /* AppDelegate.swift */; };
 		50C058C027AB2263004A0D61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C058BF27AB2263004A0D61 /* SceneDelegate.swift */; };
 		50C058C227AB2263004A0D61 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C058C127AB2263004A0D61 /* LoginViewController.swift */; };
@@ -74,6 +77,9 @@
 		5022261727E776CD00E3B4D5 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		5022261927E78BF200E3B4D5 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		5022261B27E8E70F00E3B4D5 /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		503C246F284918350073CEF6 /* KeychainConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainConfig.swift; sourceTree = "<group>"; };
+		503C247128491A200073CEF6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		503C247328491BB10073CEF6 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
 		50C058BA27AB2263004A0D61 /* FanChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FanChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C058BD27AB2263004A0D61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50C058BF27AB2263004A0D61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -219,6 +225,9 @@
 				5022260F27E355E600E3B4D5 /* Team.swift */,
 				50EDD06D27E9D6FD00E64B5C /* News.swift */,
 				5020490C28072BE1001D6AA8 /* Post.swift */,
+				503C246F284918350073CEF6 /* KeychainConfig.swift */,
+				503C247128491A200073CEF6 /* Constants.swift */,
+				503C247328491BB10073CEF6 /* KeychainPasswordItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -433,12 +442,15 @@
 				50C058C227AB2263004A0D61 /* LoginViewController.swift in Sources */,
 				50E03F8E2833E8C7005E87C0 /* MenuViewController.swift in Sources */,
 				50EDD06827E9358A00E64B5C /* UsersViewController.swift in Sources */,
+				503C247228491A200073CEF6 /* Constants.swift in Sources */,
 				5020495628282F56001D6AA8 /* UsersViewModel.swift in Sources */,
 				50E03FE6283E5933005E87C0 /* UserDetailsHeader.swift in Sources */,
+				503C2470284918350073CEF6 /* KeychainConfig.swift in Sources */,
 				50E03F2E28325856005E87C0 /* TeamStandigViewModel.swift in Sources */,
 				50C058BE27AB2263004A0D61 /* AppDelegate.swift in Sources */,
 				50EDD08327F4A45900E64B5C /* ProfileViewModel.swift in Sources */,
 				50EDD06C27E9407600E64B5C /* ProfileViewController.swift in Sources */,
+				503C247428491BB10073CEF6 /* KeychainPasswordItem.swift in Sources */,
 				5022261C27E8E70F00E3B4D5 /* NewsViewController.swift in Sources */,
 				50C058C027AB2263004A0D61 /* SceneDelegate.swift in Sources */,
 			);

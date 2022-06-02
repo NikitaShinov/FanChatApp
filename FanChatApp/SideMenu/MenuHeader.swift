@@ -24,7 +24,6 @@ class MenuHeader: UITableViewHeaderFooterView {
         image.layer.masksToBounds = true
         image.layer.borderWidth = 2
         image.layer.borderColor = UIColor.lightGreen().cgColor
-        image.backgroundColor = .red
         return image
     }()
     static let identifier = "header"

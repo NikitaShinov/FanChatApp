@@ -31,13 +31,11 @@ class UserPostCollectionViewCell: UICollectionViewCell {
     
     let likeButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .green
         return button
     }()
     
     let commentButton: UIButton = {
         let button = UIButton()
-        button.backgroundColor = .brown
         return button
     }()
     
