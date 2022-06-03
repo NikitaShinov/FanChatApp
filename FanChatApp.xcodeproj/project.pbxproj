@@ -27,6 +27,8 @@
 		503C2470284918350073CEF6 /* KeychainConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503C246F284918350073CEF6 /* KeychainConfig.swift */; };
 		503C247228491A200073CEF6 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503C247128491A200073CEF6 /* Constants.swift */; };
 		503C247428491BB10073CEF6 /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503C247328491BB10073CEF6 /* KeychainPasswordItem.swift */; };
+		503C2476284922BA0073CEF6 /* BiometricAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503C2475284922BA0073CEF6 /* BiometricAuth.swift */; };
+		503C2478284970780073CEF6 /* EnableBiometricViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 503C2477284970780073CEF6 /* EnableBiometricViewController.swift */; };
 		50C058BE27AB2263004A0D61 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C058BD27AB2263004A0D61 /* AppDelegate.swift */; };
 		50C058C027AB2263004A0D61 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C058BF27AB2263004A0D61 /* SceneDelegate.swift */; };
 		50C058C227AB2263004A0D61 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C058C127AB2263004A0D61 /* LoginViewController.swift */; };
@@ -80,6 +82,8 @@
 		503C246F284918350073CEF6 /* KeychainConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainConfig.swift; sourceTree = "<group>"; };
 		503C247128491A200073CEF6 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		503C247328491BB10073CEF6 /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainPasswordItem.swift; sourceTree = "<group>"; };
+		503C2475284922BA0073CEF6 /* BiometricAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuth.swift; sourceTree = "<group>"; };
+		503C2477284970780073CEF6 /* EnableBiometricViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnableBiometricViewController.swift; sourceTree = "<group>"; };
 		50C058BA27AB2263004A0D61 /* FanChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FanChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		50C058BD27AB2263004A0D61 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		50C058BF27AB2263004A0D61 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +180,8 @@
 				50C058BD27AB2263004A0D61 /* AppDelegate.swift */,
 				50C058BF27AB2263004A0D61 /* SceneDelegate.swift */,
 				5022246027B1D86600E3B4D5 /* Extensions.swift */,
+				503C2475284922BA0073CEF6 /* BiometricAuth.swift */,
+				503C2477284970780073CEF6 /* EnableBiometricViewController.swift */,
 				50C058C627AB2267004A0D61 /* Assets.xcassets */,
 				50C058C827AB2267004A0D61 /* LaunchScreen.storyboard */,
 				50C058CB27AB2267004A0D61 /* Info.plist */,
@@ -409,6 +415,7 @@
 			files = (
 				50E03F982836AB4F005E87C0 /* UsersFeedCollectionViewController.swift in Sources */,
 				50E03FE4283E58C2005E87C0 /* UserDetailsCollectionViewController.swift in Sources */,
+				503C2478284970780073CEF6 /* EnableBiometricViewController.swift in Sources */,
 				5022260A27E215BD00E3B4D5 /* RegistrationViewController.swift in Sources */,
 				50E03F8C2833E8BE005E87C0 /* MenuTableViewCell.swift in Sources */,
 				5020490F28072EB4001D6AA8 /* CustomImageView.swift in Sources */,
@@ -433,6 +440,7 @@
 				5022246127B1D86600E3B4D5 /* Extensions.swift in Sources */,
 				5020490D28072BE1001D6AA8 /* Post.swift in Sources */,
 				5022261027E355E600E3B4D5 /* Team.swift in Sources */,
+				503C2476284922BA0073CEF6 /* BiometricAuth.swift in Sources */,
 				50E03F2C28325769005E87C0 /* TeamStandingCell.swift in Sources */,
 				50204958282AD665001D6AA8 /* UserCellViewModel.swift in Sources */,
 				5022245F27B1D4AE00E3B4D5 /* User.swift in Sources */,
