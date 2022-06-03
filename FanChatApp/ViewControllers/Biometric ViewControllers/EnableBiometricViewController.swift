@@ -109,6 +109,13 @@ class EnableBiometricViewController: UIViewController {
     }
     
     @objc private func enableButtonTapped() {
+        biometricAuth.authentificateUser { message in
+            guard message == nil else {
+                return
+            }
+            UserDefaults.standard.set(true, forKey: Constants.kBiometricEnabled)
+            UserDefaults.standard.synchronize()
+        }
         loadMainMenu()
     }
     

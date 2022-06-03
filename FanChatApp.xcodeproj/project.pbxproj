@@ -151,6 +151,24 @@
 			path = "Secondary ViewControllers";
 			sourceTree = "<group>";
 		};
+		503C2479284AC29A0073CEF6 /* Biometric ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				503C2477284970780073CEF6 /* EnableBiometricViewController.swift */,
+				503C2475284922BA0073CEF6 /* BiometricAuth.swift */,
+			);
+			path = "Biometric ViewControllers";
+			sourceTree = "<group>";
+		};
+		503C247C284AC3430073CEF6 /* Root */ = {
+			isa = PBXGroup;
+			children = (
+				50C058BF27AB2263004A0D61 /* SceneDelegate.swift */,
+				50C058BD27AB2263004A0D61 /* AppDelegate.swift */,
+			);
+			path = Root;
+			sourceTree = "<group>";
+		};
 		50C058B127AB2263004A0D61 = {
 			isa = PBXGroup;
 			children = (
@@ -172,16 +190,13 @@
 		50C058BC27AB2263004A0D61 /* FanChatApp */ = {
 			isa = PBXGroup;
 			children = (
+				503C247C284AC3430073CEF6 /* Root */,
 				50E03F882833E89C005E87C0 /* SideMenu */,
 				50EDD07C27F2620A00E64B5C /* ViewModels */,
 				50EDD07927F2619400E64B5C /* ViewControllers */,
 				50EDD07B27F261E400E64B5C /* Models */,
 				50EDD07A27F261C900E64B5C /* Services */,
-				50C058BD27AB2263004A0D61 /* AppDelegate.swift */,
-				50C058BF27AB2263004A0D61 /* SceneDelegate.swift */,
 				5022246027B1D86600E3B4D5 /* Extensions.swift */,
-				503C2475284922BA0073CEF6 /* BiometricAuth.swift */,
-				503C2477284970780073CEF6 /* EnableBiometricViewController.swift */,
 				50C058C627AB2267004A0D61 /* Assets.xcassets */,
 				50C058C827AB2267004A0D61 /* LaunchScreen.storyboard */,
 				50C058CB27AB2267004A0D61 /* Info.plist */,
@@ -205,10 +220,9 @@
 		50EDD07927F2619400E64B5C /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				5020495B282EAEB7001D6AA8 /* Secondary ViewControllers */,
 				50EDD07D27F2766600E64B5C /* Login */,
+				503C2479284AC29A0073CEF6 /* Biometric ViewControllers */,
 				50EDD07E27F2771700E64B5C /* SideMenu VCs */,
-				50EDD07F27F2775300E64B5C /* Custom Cells */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -267,6 +281,8 @@
 		50EDD07E27F2771700E64B5C /* SideMenu VCs */ = {
 			isa = PBXGroup;
 			children = (
+				5020495B282EAEB7001D6AA8 /* Secondary ViewControllers */,
+				50EDD07F27F2775300E64B5C /* Custom Cells */,
 				5022261B27E8E70F00E3B4D5 /* NewsViewController.swift */,
 				50E03F972836AB4F005E87C0 /* UsersFeedCollectionViewController.swift */,
 				50EDD06727E9358A00E64B5C /* UsersViewController.swift */,

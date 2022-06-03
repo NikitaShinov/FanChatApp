@@ -25,7 +25,7 @@ class UserCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         contentView.addSubview(userImage)
         contentView.addSubview(userName)
-//        contentView.addSubview(userTeam)
+        contentView.addSubview(userTeam)
         contentView.clipsToBounds = true
     }
     
@@ -35,9 +35,7 @@ class UserCollectionViewCell: UICollectionViewCell {
     
     lazy var userImage: CustomImageView = {
         let image = CustomImageView()
-        image.backgroundColor = .red
         image.clipsToBounds = true
-//        image.layer.cornerRadius = (contentView.frame.size.height - 30) / 2
         image.layer.borderWidth = 2
         image.layer.borderColor = CGColor.init(_colorLiteralRed: 105, green: 105, blue: 105, alpha: 0)
         image.contentMode = .scaleAspectFill
@@ -56,8 +54,7 @@ class UserCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = .lightGray
-        label.font = label.font.withSize(12)
-        label.backgroundColor = .yellow
+        label.font = label.font.withSize(10)
         label.numberOfLines = 0
         return label
     }()
@@ -65,22 +62,22 @@ class UserCollectionViewCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        userImage.frame = CGRect(x: 13,
+        userImage.frame = CGRect(x: contentView.center.x - (contentView.width / 4),
                                  y: 0,
-                                 width: contentView.frame.size.width / 1.3,
-                                 height: contentView.frame.size.height / 1.3)
+                                 width: contentView.frame.size.width / 2,
+                                 height: contentView.frame.size.height / 2)
         
         userImage.layer.cornerRadius = userImage.frame.size.height / 2
         
         userName.frame = CGRect(x: 5,
                                 y: userImage.bottom + 1,
                                 width: contentView.frame.size.width / 1.1,
-                                height: 35)
+                                height: 25)
         
         userTeam.frame = CGRect(x: 5,
                                 y: userName.bottom + 1,
                                 width: contentView.frame.size.width / 1.1,
-                                height: 35)
+                                height: 25)
         
     }
     

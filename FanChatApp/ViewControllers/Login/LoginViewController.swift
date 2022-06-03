@@ -123,6 +123,7 @@ class LoginViewController: UIViewController {
         registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         forgotPasswordButton.addTarget(self, action: #selector(forgotPassword), for: .touchUpInside)
+        biometricLoginButton.addTarget(self, action: #selector(biometricLoginButtonTapped), for: .touchUpInside)
         
     }
     
@@ -207,15 +208,41 @@ class LoginViewController: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    @objc private func biometricLoginButtonTapped() {
+        biometricAuth.authentificateUser { message in
+            if let message = message {
+                self.alertPopUp(title: "Error!", message: message)
+                return
+            }
+            
+            if let username = UserDefaults.standard.value(forKey: Constants.kUserName) as? String {
+                do {
+                    let passwordItem = KeychainPasswordItem(service: KeychainConfig.serviceName, account: username, accessGroup: KeychainConfig.accessGroup)
+                    let password = try passwordItem.readPassword()
+                    Auth.auth().signIn(withEmail: username, password: password) { user, error in
+                        if let error = error {
+                            self.alertPopUp(title: "Warning!", message: "Wrong input.\nPlease check your credentials.")
+                            print (error.localizedDescription)
+                            return
+                        }
+                        self.goToMainMenu()
+                    }
+                } catch let error {
+                    print ("error getting user from userdefaults:\(error)")
+                }
+            }
+        }
+    }
+    
     @objc private func loginButtonTapped() {
         guard let emailAdress = emailTextField.text, emailAdress != "",
               let password = passwordTextField.text, password != "", password.count >= 6 else {
-                  alertPopUp()
+                  alertPopUp(title: "Warning!", message: "Wrong input.\nPlease check your credentials.")
                   return
               }
         Auth.auth().signIn(withEmail: emailAdress, password: password) { user, error in
             if let error = error {
-                self.alertPopUp()
+                self.alertPopUp(title: "Warning!", message: "Wrong input.\nPlease check your credentials.")
                 print (error.localizedDescription)
                 return
             }
@@ -237,16 +264,29 @@ class LoginViewController: UIViewController {
                 }
             }
             
-            let vc = EnableBiometricViewController()
-            vc.modalPresentationStyle = .fullScreen
-            self.present(vc, animated: true, completion: nil)
+            let biometricEnabled = UserDefaults.standard.value(forKey: Constants.kBiometricEnabled) as? Bool
+            if biometricEnabled != nil && biometricEnabled == true {
+                self.goToMainMenu()
+            } else if self.biometricAuth.canEvaluatePolicy() == true {
+                let vc = EnableBiometricViewController()
+                vc.modalPresentationStyle = .fullScreen
+                self.present(vc, animated: true, completion: nil)
+            } else {
+                self.goToMainMenu()
+            }
         }
         
         
     }
     
-    private func alertPopUp() {
-        let alert = UIAlertController(title: "Ooops!", message: "Wrong input.\nPlease check your credentials.", preferredStyle: .alert)
+    private func goToMainMenu() {
+        let vc = UINavigationController(rootViewController: NewsViewController())
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true, completion: nil)
+    }
+    
+    private func alertPopUp(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okayAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
         alert.addAction(okayAction)
         present(alert, animated: true)
