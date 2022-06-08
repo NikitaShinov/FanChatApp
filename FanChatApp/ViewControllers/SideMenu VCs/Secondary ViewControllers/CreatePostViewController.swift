@@ -100,9 +100,20 @@ class CreatePostViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        createButton.frame = CGRect(x: (view.frame.size.width / 2) - 85, y: view.bottom - 200, width: 170, height: 40)
-        textView.frame = CGRect(x: 20, y: view.top + 130, width: view.frame.size.width - 40, height: 200)
-        questionLabel.frame = CGRect(x: 20, y: view.top + 50, width: textView.frame.size.width, height: 30)
+        createButton.frame = CGRect(x: (view.frame.size.width / 2) - 85,
+                                    y: view.bottom - 200,
+                                    width: 170,
+                                    height: 40)
+        
+        textView.frame = CGRect(x: 20,
+                                y: view.top + 130,
+                                width: view.frame.size.width - 40,
+                                height: 200)
+        
+        questionLabel.frame = CGRect(x: 20,
+                                     y: view.top + 50,
+                                     width: textView.frame.size.width,
+                                     height: 30)
     }
     
 }

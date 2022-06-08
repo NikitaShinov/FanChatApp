@@ -59,23 +59,4 @@ struct Logo: Codable {
     let lastUpdated: String
 }
 
-//enum Description: String, Codable {
-//    case draws = "Draws"
-//    case gamesPlayed = "Games Played"
-//    case goalDifference = "Goal Difference"
-//    case goalsAgainst = "Goals Against"
-//    case goalsFor = "Goals For"
-//    case losses = "Losses"
-//    case overall = "Overall"
-//    case overallRecord = "Overall Record"
-//    case pointDeductions = "Point Deductions"
-//    case points = "Points"
-//    case pointsPerGame = "Points Per Game"
-//    case rank = "Rank"
-//    case rankChange = "Rank Change"
-//    case teamSCurrentWinLossRecord = "Team's current Win-Loss record"
-//    case wins = "Wins"
-//}
-
-
 

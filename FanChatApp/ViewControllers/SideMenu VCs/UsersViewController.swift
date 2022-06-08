@@ -8,7 +8,7 @@
 import UIKit
 import SideMenu
 
-class UsersViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UISearchBarDelegate {
+class UsersViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
     private var viewModel: UsersViewModelProtocol!
     
@@ -16,12 +16,12 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     var menu: SideMenuNavigationController!
     
-    var searchBar: UISearchBar = {
-        let search = UISearchBar()
-        search.placeholder = "Search for user"
-        search.barTintColor = .gray
-        return search
-    }()
+//    var searchBar: UISearchBar = {
+//        let search = UISearchBar()
+//        search.placeholder = "Search for user"
+//        search.barTintColor = .gray
+//        return search
+//    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,15 +30,20 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
         setupLayout()
         setupCollectionView()
         setupUI()
+        setupSearchBar()
         
     }
     
+    private func setupSearchBar() {
+        let searchController = UISearchController(searchResultsController: nil)
+        navigationItem.searchController = searchController
+        navigationItem.hidesSearchBarWhenScrolling = false
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.delegate = self
+    }
+    
     private func setupUI() {
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"),
-//                                                           style: .done,
-//                                                           target: self,
-//                                                           action: #selector(didTapClose))
-
         title = "Users"
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "sidebar.leading"), style: .done, target: self, action: #selector(didTapMenuButton))
         menu = SideMenuNavigationController(rootViewController: MenuListController())
@@ -97,15 +102,30 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
         print ("did tap cell at: \(indexPath.item)")
         
         let user = viewModel.users[indexPath.item]
-        
-//        let vc = UserDetailsViewController()
         let vc = UserDetailsCollectionViewController()
         vc.user = user
         navigationController?.pushViewController(vc, animated: true)
-//        tabBarController?.tabBar.isHidden = true
-        
         
     }
 
 }
 
+extension UsersViewController: UISearchBarDelegate {
+    
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        guard let searchQuery = searchBar.text else { return }
+        viewModel.searchUsers(with: searchQuery) {
+            DispatchQueue.main.async {
+                self.collectionView?.reloadData()
+            }
+        }
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        viewModel.getUsers {
+            DispatchQueue.main.async {
+                self.collectionView?.reloadData()
+            }
+        }
+    }
+}

@@ -169,6 +169,16 @@
 			path = Root;
 			sourceTree = "<group>";
 		};
+		503C24F0285101590073CEF6 /* Keychain */ = {
+			isa = PBXGroup;
+			children = (
+				503C247328491BB10073CEF6 /* KeychainPasswordItem.swift */,
+				503C247128491A200073CEF6 /* Constants.swift */,
+				503C246F284918350073CEF6 /* KeychainConfig.swift */,
+			);
+			path = Keychain;
+			sourceTree = "<group>";
+		};
 		50C058B127AB2263004A0D61 = {
 			isa = PBXGroup;
 			children = (
@@ -241,13 +251,11 @@
 		50EDD07B27F261E400E64B5C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				503C24F0285101590073CEF6 /* Keychain */,
 				5022245E27B1D4AE00E3B4D5 /* User.swift */,
 				5022260F27E355E600E3B4D5 /* Team.swift */,
 				50EDD06D27E9D6FD00E64B5C /* News.swift */,
 				5020490C28072BE1001D6AA8 /* Post.swift */,
-				503C246F284918350073CEF6 /* KeychainConfig.swift */,
-				503C247128491A200073CEF6 /* Constants.swift */,
-				503C247328491BB10073CEF6 /* KeychainPasswordItem.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
