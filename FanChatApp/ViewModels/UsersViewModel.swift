@@ -24,6 +24,7 @@ class UsersViewModel: UsersViewModelProtocol {
     
     func getUsers(completion: @escaping () -> Void) {
         
+        users.removeAll()
         reference.observeSingleEvent(of: .value) { snapshot in
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
             dictionaries.forEach { key, value in

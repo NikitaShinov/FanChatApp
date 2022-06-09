@@ -23,9 +23,6 @@ struct MenuCellViewModel {
             return "timer.square"
         case .profile:
             return "person"
-        case .shareApp:
-            return "message"
-            
         }
     }
     

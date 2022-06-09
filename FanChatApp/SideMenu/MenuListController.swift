@@ -18,7 +18,6 @@ class MenuListController: UITableViewController {
         case users = "Users"
         case results = "Results"
         case profile = "Profile"
-        case shareApp = "Share App"
     }
     
     override func viewDidLoad() {

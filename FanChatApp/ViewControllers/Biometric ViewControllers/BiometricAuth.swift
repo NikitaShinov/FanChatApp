@@ -65,7 +65,9 @@ class BiometricAuth {
                 default:
                     message = "Face ID/ Touch ID may not be configured"
                 }
-                completion(message)
+                DispatchQueue.main.async {
+                    completion(message)
+                }
             }
         }
     }
