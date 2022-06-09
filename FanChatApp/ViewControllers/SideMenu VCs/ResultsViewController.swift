@@ -23,6 +23,7 @@ class ResultsViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Results"
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "sidebar.leading"), style: .done, target: self, action: #selector(didTapMenuButton))
+        navigationItem.leftBarButtonItem?.tintColor = .purple
         menu = SideMenuNavigationController(rootViewController: MenuListController())
         menu?.leftSide = true
         menu?.setNavigationBarHidden(true, animated: false)

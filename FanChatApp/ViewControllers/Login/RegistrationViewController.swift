@@ -13,12 +13,6 @@ class RegisterViewController: UIViewController {
     
     private let spinner = UIActivityIndicatorView(style: .large)
     
-    private let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.clipsToBounds = true
-        return scrollView
-    }()
-    
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(systemName: "person.fill.badge.plus")
@@ -102,7 +96,6 @@ class RegisterViewController: UIViewController {
     
     private let teamChooseOption: UIPickerView = {
         let picker = UIPickerView()
-        picker.backgroundColor = UIColor.lightGreen()
         picker.layer.cornerRadius = 15
         picker.layer.borderWidth = 5
         picker.layer.borderColor = UIColor.systemPurple.cgColor
@@ -124,22 +117,21 @@ class RegisterViewController: UIViewController {
         super.viewDidLoad()
         
         viewModel = RegistrationViewModel()
+        setupUI()
+        addSubviews()
         
-        view.backgroundColor = UIColor.lightGreen()
-        view.addSubview(scrollView)
+    }
+    
+    private func setupUI() {
+        view.backgroundColor = .white
         configureSpinnerView()
         showSpinnerLoadingView(isShowing: false)
-        scrollView.addSubview(imageView)
-        scrollView.addSubview(teamChooseOption)
+        
         teamChooseOption.delegate = self
         teamChooseOption.dataSource = self
-        scrollView.addSubview(emailField)
-        scrollView.addSubview(passwordField)
-        scrollView.addSubview(firstNameField)
-        scrollView.addSubview(lastNameField)
-        scrollView.addSubview(chooseTeamLabel)
         
-        scrollView.isUserInteractionEnabled = true
+        
+        view.isUserInteractionEnabled = true
         imageView.isUserInteractionEnabled = true
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Create",
@@ -151,7 +143,17 @@ class RegisterViewController: UIViewController {
         let gesture = UITapGestureRecognizer(target: self,
                                              action: #selector(didTapChangeProfileImage))
         imageView.addGestureRecognizer(gesture)
-        
+        initializeHideKeyboard()
+    }
+    
+    private func addSubviews() {
+        view.addSubview(imageView)
+        view.addSubview(teamChooseOption)
+        view.addSubview(emailField)
+        view.addSubview(passwordField)
+        view.addSubview(firstNameField)
+        view.addSubview(lastNameField)
+        view.addSubview(chooseTeamLabel)
     }
     
     private func showSpinnerLoadingView(isShowing: Bool) {
@@ -213,7 +215,6 @@ class RegisterViewController: UIViewController {
                 
                 let fileName = NSUUID().uuidString
                 
-                print ("start uploading image")
                 
                 self.showSpinnerLoadingView(isShowing: true)
                 
@@ -223,16 +224,15 @@ class RegisterViewController: UIViewController {
                         return
                 }
                     
-                    print ("success in download")
+
                     storage.child("profile_avatars").child(fileName).downloadURL { url, error in
                         guard error == nil, let url = url else {
                             return
                         }
                         
-                        print ("success in download url")
                         
                         let urlString = url.absoluteString
-                        print ("Downloaded url: \(urlString)")
+
                         
                         guard let uid = user?.user.uid else { return }
                         
@@ -248,11 +248,8 @@ class RegisterViewController: UIViewController {
                             }
                             
                             self.showSpinnerLoadingView(isShowing: false)
-                            print ("successfully saved")
-                            
                             self.navigationController?.popToRootViewController(animated: true)
                             self.view.endEditing(true)
-                            print (team)
                         }
                     }
             }
@@ -282,45 +279,46 @@ class RegisterViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        scrollView.frame = view.bounds
-        let size = scrollView.width / 3
+        let size = view.width / 3
         
-        imageView.frame = CGRect(x: (scrollView.width - size)/2,
-                                 y: 20,
+        guard let navBarBottom = navigationController?.navigationBar.bottom else { return }
+        
+        imageView.frame = CGRect(x: (view.width - size)/2,
+                                 y: navBarBottom + 10,
                                  width: size,
                                  height: size)
         
         imageView.layer.cornerRadius = size / 2
         
-        emailField.frame = CGRect(x: 30,
+        emailField.frame = CGRect(x: view.center.x - ((view.width - 70) / 2),
                                   y: imageView.bottom + 20,
-                                  width: scrollView.width - 70,
+                                  width: view.width - 70,
                                   height: 50)
         
-        passwordField.frame = CGRect(x: 30,
+        passwordField.frame = CGRect(x: view.center.x - ((view.width - 70) / 2),
                                      y: emailField.bottom + 10,
-                                     width: scrollView.width - 70,
+                                     width: view.width - 70,
                                      height: 50)
         
-        firstNameField.frame = CGRect(x: 30,
+        firstNameField.frame = CGRect(x: view.center.x - ((view.width - 70) / 2),
                                       y: passwordField.bottom + 10,
-                                      width: scrollView.width - 70,
+                                      width: view.width - 70,
                                       height: 50)
         
-        lastNameField.frame = CGRect(x: 30,
+        lastNameField.frame = CGRect(x: view.center.x - ((view.width - 70) / 2),
                                      y: firstNameField.bottom + 10,
-                                     width: scrollView.width - 70,
+                                     width: view.width - 70,
                                      height: 50)
         
         
-        chooseTeamLabel.frame = CGRect(x: 30,
+        chooseTeamLabel.frame = CGRect(x: view.center.x - ((view.width - 70) / 2),
                                        y: lastNameField.bottom + 20,
-                                       width: scrollView.width - 70,
+                                       width: view.width - 70,
                                        height: 70)
         
-        teamChooseOption.frame = CGRect(x: 30,
+        teamChooseOption.frame = CGRect(x: view.center.x - ((view.width - 70) / 2),
                                         y: chooseTeamLabel.bottom + 20,
-                                        width: scrollView.width - 70,
+                                        width: view.width - 70,
                                         height: 70)
         
     }

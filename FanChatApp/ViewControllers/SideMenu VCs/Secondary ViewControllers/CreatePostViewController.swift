@@ -50,7 +50,10 @@ class CreatePostViewController: UIViewController {
         view.addSubview(createButton)
         view.addSubview(textView)
         view.addSubview(questionLabel)
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"), style: .done, target: self, action: #selector(didTapCloseButton))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark"),
+                                                            style: .done,
+                                                            target: self,
+                                                            action: #selector(didTapCloseButton))
         createButton.addTarget(self, action: #selector(createButtonTapped), for: .touchUpInside)
     }
     

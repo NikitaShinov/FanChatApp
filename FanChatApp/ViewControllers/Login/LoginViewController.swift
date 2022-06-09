@@ -16,18 +16,12 @@ class LoginViewController: UIViewController {
         
         return imageView
     }()
-    
-    private let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.clipsToBounds = true
-        return scrollView
-    }()
+
     
     private let emailTextField: UITextField = {
         
         let login = UITextField()
         login.placeholder = "Enter your e-mail"
-//        login.text = "a@mail.ru"
         login.autocorrectionType = .no
         login.returnKeyType = .continue
         login.layer.cornerRadius = 15
@@ -45,7 +39,6 @@ class LoginViewController: UIViewController {
         
         let password = UITextField()
         password.placeholder = "Enter your password"
-//        password.text = "arsenal"
         password.autocorrectionType = .no
         password.returnKeyType = .done
         password.layer.cornerRadius = 15
@@ -110,20 +103,10 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = UIColor.lightGreen()
-        view.addSubview(scrollView)
-        scrollView.addSubview(appLogo)
-        scrollView.addSubview(emailTextField)
-        scrollView.addSubview(passwordTextField)
-        scrollView.addSubview(loginButton)
-        scrollView.addSubview(registerButton)
-        scrollView.addSubview(forgotPasswordButton)
-        scrollView.addSubview(biometricLoginButton)
-        
-        registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
-        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
-        forgotPasswordButton.addTarget(self, action: #selector(forgotPassword), for: .touchUpInside)
-        biometricLoginButton.addTarget(self, action: #selector(biometricLoginButtonTapped), for: .touchUpInside)
+        view.backgroundColor = .white
+        addSubviews()
+        registerButtons()
+        initializeHideKeyboard()
         
     }
     
@@ -132,69 +115,88 @@ class LoginViewController: UIViewController {
         
         let biometricEnabled = UserDefaults.standard.value(forKey: Constants.kBiometricEnabled) as? Bool
         if biometricEnabled != nil && biometricEnabled == true && biometricAuth.canEvaluatePolicy() {
-//            biometricLoginButton.isHidden = false
+            biometricLoginButton.isHidden = false
         } else {
-//            biometricLoginButton.isHidden = true
+            biometricLoginButton.isHidden = true
         }
         
         switch biometricAuth.biometricType() {
         case .faceID:
             biometricLoginButton.setTitle("Login with Face ID", for: .normal)
         default:
-            biometricLoginButton.setTitle("Login with Touch ID", for: .normal)
+            biometricLoginButton.setTitle("Login with", for: .normal)
         }
         
         if let userName = UserDefaults.standard.value(forKey: Constants.kUserName) as? String {
             emailTextField.text = userName
-//            let passwordItem = KeychainPasswordItem(service: KeychainConfig.serviceName, account: userName, accessGroup: KeychainConfig.accessGroup)
-//            if let password = try? passwordItem.readPassword() {
-//                passwordTextField.text = password
-//            }
+            let passwordItem = KeychainPasswordItem(service: KeychainConfig.serviceName, account: userName, accessGroup: KeychainConfig.accessGroup)
+            if let password = try? passwordItem.readPassword() {
+                passwordTextField.text = password
+            }
         }
     }
     
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        scrollView.frame = view.bounds
-        let size = scrollView.width / 3
         
-        appLogo.frame = CGRect(x: (scrollView.width - size)/2,
-                               y: 20,
+        let size = view.width / 3
+        
+        guard let navBarBottom = navigationController?.navigationBar.bottom else { return }
+        
+        appLogo.frame = CGRect(x: (view.width - size)/2,
+                               y: navBarBottom + 10,
                                width: size,
                                height: size * 1.5)
 
         
-        emailTextField.frame = CGRect(x: scrollView.center.x - ((scrollView.width - 70) / 2),
+        emailTextField.frame = CGRect(x: view.center.x - ((view.width - 70) / 2),
                                       y: appLogo.bottom + 10,
-                                      width: scrollView.width - 70,
+                                      width: view.width - 70,
                                       height: 50)
         
-        passwordTextField.frame = CGRect(x: scrollView.center.x - ((scrollView.width - 70) / 2),
+        passwordTextField.frame = CGRect(x: view.center.x - ((view.width - 70) / 2),
                                          y: emailTextField.bottom + 10,
-                                         width: scrollView.width - 70,
+                                         width: view.width - 70,
                                          height: 50)
         
-        loginButton.frame = CGRect(x: scrollView.center.x - ((scrollView.width - 70) / 2),
+        loginButton.frame = CGRect(x: view.center.x - ((view.width - 70) / 2),
                                    y: passwordTextField.bottom + 10,
-                                   width: scrollView.width - 70,
+                                   width: view.width - 70,
                                    height: 50)
         
-        registerButton.frame = CGRect(x: scrollView.center.x - ((scrollView.width - 70) / 2),
+        registerButton.frame = CGRect(x: view.center.x - ((view.width - 70) / 2),
                                       y: loginButton.bottom + 10,
-                                      width: scrollView.width - 70,
+                                      width: view.width - 70,
                                       height: 50)
         
-        biometricLoginButton.frame = CGRect(x: scrollView.center.x - ((scrollView.width - 70) / 2),
+        biometricLoginButton.frame = CGRect(x: view.center.x - ((view.width - 70) / 2),
                                             y: registerButton.bottom + 10,
-                                            width: scrollView.width - 70,
+                                            width: view.width - 70,
                                             height: 50)
         
-        forgotPasswordButton.frame = CGRect(x: scrollView.center.x - ((scrollView.width - 70) / 2),
+        forgotPasswordButton.frame = CGRect(x: view.center.x - ((view.width - 70) / 2),
                                             y: biometricLoginButton.bottom + 10,
-                                            width: scrollView.width - 70,
+                                            width: view.width - 70,
                                             height: 50)
         
+    }
+    
+    private func addSubviews() {
+        view.addSubview(appLogo)
+        view.addSubview(emailTextField)
+        view.addSubview(passwordTextField)
+        view.addSubview(loginButton)
+        view.addSubview(registerButton)
+        view.addSubview(forgotPasswordButton)
+        view.addSubview(biometricLoginButton)
+    }
+    
+    private func registerButtons() {
+        registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        forgotPasswordButton.addTarget(self, action: #selector(forgotPassword), for: .touchUpInside)
+        biometricLoginButton.addTarget(self, action: #selector(biometricLoginButtonTapped), for: .touchUpInside)
     }
     
     @objc private func registerButtonTapped() {
@@ -267,7 +269,7 @@ class LoginViewController: UIViewController {
             let biometricEnabled = UserDefaults.standard.value(forKey: Constants.kBiometricEnabled) as? Bool
             if biometricEnabled != nil && biometricEnabled == true {
                 self.goToMainMenu()
-            } else if self.biometricAuth.canEvaluatePolicy() == true {
+            } else if self.biometricAuth.canEvaluatePolicy() == true && biometricEnabled == false {
                 let vc = EnableBiometricViewController()
                 vc.modalPresentationStyle = .fullScreen
                 self.present(vc, animated: true, completion: nil)

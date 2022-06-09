@@ -17,13 +17,6 @@ class ProfileViewController: UIViewController {
     
     var menu: SideMenuNavigationController!
     
-    private let scrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.clipsToBounds = true
-        scrollView.isUserInteractionEnabled = true
-        return scrollView
-    }()
-    
     private let imageView: CustomImageView = {
         let imageView = CustomImageView()
         imageView.tintColor = .gray
@@ -44,7 +37,7 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Profile"
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = .white
         setupScrollView()
         setupNavBarItem()
         setupProfile()
@@ -52,13 +45,13 @@ class ProfileViewController: UIViewController {
     }
     
     private func setupScrollView() {
-        view.addSubview(scrollView)
-        scrollView.addSubview(imageView)
-        scrollView.addSubview(nameLabel)
+        view.addSubview(imageView)
+        view.addSubview(nameLabel)
     }
     
     private func setupNavBarItem() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "sidebar.leading"), style: .done, target: self, action: #selector(didTapMenuButton))
+        navigationItem.leftBarButtonItem?.tintColor = .purple
         menu = SideMenuNavigationController(rootViewController: MenuListController())
         menu?.leftSide = true
         menu?.setNavigationBarHidden(true, animated: false)
@@ -69,7 +62,7 @@ class ProfileViewController: UIViewController {
                                                             action: #selector(logOutButtonPressed))
         
         
-        navigationItem.rightBarButtonItem?.tintColor = .black
+        navigationItem.rightBarButtonItem?.tintColor = .purple
         
     }
     
@@ -83,11 +76,13 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        scrollView.frame = view.bounds
-        let size = scrollView.width / 3
+
+        let size = view.width / 3
         
-        imageView.frame = CGRect(x: (scrollView.width - size)/2,
-                                 y: 20,
+        guard let navBarBottom = navigationController?.navigationBar.bottom else { return }
+        
+        imageView.frame = CGRect(x: (view.width - size)/2,
+                                 y: navBarBottom + 20,
                                  width: size,
                                  height: size)
         
@@ -95,7 +90,7 @@ class ProfileViewController: UIViewController {
         
         nameLabel.frame = CGRect(x: 30,
                                  y: imageView.bottom + 10,
-                                 width: scrollView.width - 70,
+                                 width: view.width - 70,
                                  height: 50)
 
         

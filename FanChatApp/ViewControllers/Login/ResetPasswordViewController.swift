@@ -48,7 +48,7 @@ class ResetPasswordViewController: UIViewController {
         super.viewDidLoad()
         title = "RESET PASSWORD"
         
-        view.backgroundColor = UIColor.lightGreen()
+        view.backgroundColor = .white
         view.addSubview(scrollView)
         scrollView.addSubview(emailField)
         scrollView.addSubview(resetButton)

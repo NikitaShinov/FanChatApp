@@ -15,13 +15,6 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
     var collectionView: UICollectionView?
     
     var menu: SideMenuNavigationController!
-    
-//    var searchBar: UISearchBar = {
-//        let search = UISearchBar()
-//        search.placeholder = "Search for user"
-//        search.barTintColor = .gray
-//        return search
-//    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +38,11 @@ class UsersViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     private func setupUI() {
         title = "Users"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "sidebar.leading"), style: .done, target: self, action: #selector(didTapMenuButton))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "sidebar.leading"),
+                                                           style: .done,
+                                                           target: self,
+                                                           action: #selector(didTapMenuButton))
+        navigationItem.leftBarButtonItem?.tintColor = .purple
         menu = SideMenuNavigationController(rootViewController: MenuListController())
         menu?.leftSide = true
         menu?.setNavigationBarHidden(true, animated: false)

@@ -9,8 +9,6 @@ import UIKit
 import Firebase
 import SideMenu
 
-private let reuseIdentifier = "cellId"
-
 class UsersFeedCollectionViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     private var collectionView: UICollectionView?
@@ -44,15 +42,23 @@ class UsersFeedCollectionViewController: UIViewController, UICollectionViewDeleg
         collectionView.frame = view.bounds
         view.addSubview(collectionView)
         view.backgroundColor = .systemBackground
-        collectionView.register(UserPostCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        collectionView.register(UserPostCollectionViewCell.self, forCellWithReuseIdentifier: UserPostCollectionViewCell.identifier)
         collectionView.delegate = self
         collectionView.dataSource = self
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "sidebar.leading"), style: .done, target: self, action: #selector(didTapMenuButton))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "sidebar.leading"),
+                                                           style: .done,
+                                                           target: self,
+                                                           action: #selector(didTapMenuButton))
+        navigationItem.leftBarButtonItem?.tintColor = .purple
         menu = SideMenuNavigationController(rootViewController: MenuListController())
         menu?.leftSide = true
         menu?.setNavigationBarHidden(true, animated: false)
         SideMenuManager.default.leftMenuNavigationController = menu
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus.bubble"), style: .done, target: self, action: #selector(createPost))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus.bubble"),
+                                                            style: .done,
+                                                            target: self,
+                                                            action: #selector(createPost))
+        navigationItem.rightBarButtonItem?.tintColor = .purple
     }
     
     @objc private func handleUpdateFeed() {
@@ -80,7 +86,7 @@ class UsersFeedCollectionViewController: UIViewController, UICollectionViewDeleg
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath) as! UserPostCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: UserPostCollectionViewCell.identifier, for: indexPath) as! UserPostCollectionViewCell
         
         cell.postLabel.text = viewModel.feed[indexPath.item].caption
         cell.userNameLabel.text = viewModel.feed[indexPath.item].userName

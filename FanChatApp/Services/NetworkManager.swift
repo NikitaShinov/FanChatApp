@@ -48,12 +48,8 @@ class NetworkManager {
                 return
             }
             
-            print ("getting snapshot")
-            
             guard let dictionary = snapshot.value as? [String: Any] else { return }
             self.team = dictionary["favourite_team"] as? String
-            
-            print ("getting team")
             
             var searchedTeam = self.team?.lowercased()
             let chars: Set<Character> = [" ", ",", "."]

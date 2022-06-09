@@ -41,7 +41,7 @@ class UsersViewModel: UsersViewModelProtocol {
     
     func searchUsers(with name: String, completion: @escaping () -> Void) {
         
-        self.users.removeAll()
+        users.removeAll()
         reference.observeSingleEvent(of: .value) { snapshot in
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
             dictionaries.forEach { key, value in
@@ -58,8 +58,6 @@ class UsersViewModel: UsersViewModelProtocol {
             }
         }
     }
-    
-    // РЕАЛИЗОВАТЬ ПОИСК ПО ЮЗЕРАМ
     
     func userCellViewModel(at indexPath: IndexPath) -> UserCellViewModelProtocol {
         let userItem = users[indexPath.item]

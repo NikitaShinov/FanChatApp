@@ -43,13 +43,10 @@ extension UIColor {
         
     }
     
-    static func mainBlue() -> UIColor {
-        return UIColor.rgb(red: 17, green: 154, blue: 237)
-    }
-    
     static func lightGreen() -> UIColor {
         return UIColor.rgb(red: 105, green: 255, blue: 204)
     }
+    
 }
 
 extension UIView {
@@ -96,6 +93,17 @@ extension Database {
         } withCancel: { error in
             print ("failed to fetch user: \(error)")
         }
+    }
+}
+
+extension UIViewController {
+    func initializeHideKeyboard(){
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self,
+                                                                 action: #selector(dismissMyKeyboard))
+        view.addGestureRecognizer(tap)
+    }
+    @objc func dismissMyKeyboard(){
+        view.endEditing(true)
     }
 }
 

@@ -33,13 +33,18 @@ class NewsViewController: UITableViewController {
         navigationController?.navigationBar.prefersLargeTitles = true
         
         title = "News"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "sidebar.leading"), style: .done, target: self, action: #selector(didTapMenuButton))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "sidebar.leading"),
+                                                           style: .done,
+                                                           target: self,
+                                                           action: #selector(didTapMenuButton))
+        navigationItem.leftBarButtonItem?.tintColor = .purple
         menu = SideMenuNavigationController(rootViewController: MenuListController())
         menu?.leftSide = true
         menu?.setNavigationBarHidden(true, animated: false)
         SideMenuManager.default.leftMenuNavigationController = menu
         configureSpinnerView()
         showSpinnerLoadingView(isShowing: true)
+        
         viewModel.getNews {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -94,10 +99,8 @@ class NewsViewController: UITableViewController {
         spinner.translatesAutoresizingMaskIntoConstraints = false
 
         NSLayoutConstraint.activate([
-            spinner.centerXAnchor.constraint(equalTo: tableView.centerXAnchor, constant: 0),
-            spinner.centerYAnchor.constraint(equalTo: tableView.centerYAnchor, constant: -75),
-            spinner.heightAnchor.constraint(equalToConstant: 24),
-            spinner.widthAnchor.constraint(equalToConstant: 24)
+            spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
+            spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -100)
         ])
         
         spinner.isHidden = true

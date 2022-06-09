@@ -4,8 +4,6 @@
 <dict>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Please provide your biometric data for logging in.</string>
-	<key>NSCalendarsUsageDescription</key>
-	<string>Please allow access to take a picture.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Please allow access to photo vault.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
