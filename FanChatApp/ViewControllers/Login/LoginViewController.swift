@@ -113,13 +113,6 @@ class LoginViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-//        let biometricEnabled = UserDefaults.standard.value(forKey: Constants.kBiometricEnabled) as? Bool
-//        if biometricEnabled != nil && biometricEnabled == true && biometricAuth.canEvaluatePolicy() {
-//            biometricLoginButton.isHidden = false
-//        } else {
-//            biometricLoginButton.isHidden = true
-//        }
-        
         switch biometricAuth.biometricType() {
         case .faceID:
             biometricLoginButton.setTitle("Login with Face ID", for: .normal)

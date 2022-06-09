@@ -25,7 +25,6 @@ class FeedCellViewModel: FeedCellViewModelProtocol {
     
     var image: String? {
         news.imgsrc.absoluteString
-//        ImageManager.shared.fetchImageData(from: news.imgsrc)
     }
     
     private let news: News

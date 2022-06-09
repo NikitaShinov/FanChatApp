@@ -174,9 +174,7 @@ class RegisterViewController: UIViewController {
 
         NSLayoutConstraint.activate([
             spinner.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0),
-            spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0),
-            spinner.heightAnchor.constraint(equalToConstant: 24),
-            spinner.widthAnchor.constraint(equalToConstant: 24)
+            spinner.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: 0)
         ])
         
         spinner.isHidden = true

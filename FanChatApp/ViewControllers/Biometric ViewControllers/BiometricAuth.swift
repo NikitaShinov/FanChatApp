@@ -26,10 +26,8 @@ class BiometricAuth {
         let _ = context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
         switch context.biometryType {
         case .touchID:
-//            loginReason = loginReason
             return .touchID
         case .faceID:
-//            loginReason = loginReason
             return .faceID
         default:
             return .none
