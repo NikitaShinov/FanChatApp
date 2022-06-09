@@ -7,6 +7,7 @@ Currently developing personal social network for people keen on football. The ap
 - Firebase Login
 - Firebase Database
 - Firebase Storage
+- Side Menu implemented
 - Password reset 
 - URLSession
 - Keychain
